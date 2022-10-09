@@ -1,2 +1,2 @@
 # atm
-Trying to emulate Automated Teller Machine (ATM), using c++, qt and mySql db with other students of NaUKMA
+Project in the form of a desktop client application that emulates the work of the ATM, using the Qt cross-platform toolkit for developing a graphical user interface, c++ pl and mySql. NauKMA pj, MOOP, Byblyk, 2022
