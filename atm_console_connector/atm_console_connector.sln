@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "atm_console_connector", "atm_console_connector\atm_console_connector.vcxproj", "{2D01A5F6-0980-40FD-B6C0-63D37371DB05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D01A5F6-0980-40FD-B6C0-63D37371DB05}.Debug|x64.ActiveCfg = Debug|x64
+		{2D01A5F6-0980-40FD-B6C0-63D37371DB05}.Debug|x64.Build.0 = Debug|x64
+		{2D01A5F6-0980-40FD-B6C0-63D37371DB05}.Release|x64.ActiveCfg = Release|x64
+		{2D01A5F6-0980-40FD-B6C0-63D37371DB05}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D819A692-D701-477A-8DC6-91D258E4FD7B}
+	EndGlobalSection
+EndGlobal
