@@ -188,6 +188,7 @@ end //
 delimiter ;
 
 -- should check for currencies of atm itself //check
+-- should
 -- 3.2}} make withdraw
 delimiter //
 create procedure withdraw(
@@ -227,49 +228,66 @@ select t_sum, is_success;
 end //
 delimiter ;
 
+-- 2.1}} show acc info(balance) //check
+delimiter //
+create function get_acc_blnc(acc_id int)
+returns double deterministic
+begin 
+	declare blnc double;
+	select balance into blnc
+    from Accounts as accs
+    where acc_id = accs.account_id;
+    return blnc;
+end //
+delimiter ;
+
+delimiter //
+create function get_atm_fee(acc_id INT)
+returns double deterministic
+begin 
+	declare fee double;
+	select atm_fee into fee
+    from Accounts as accs
+    where accs.account_id = acc_id;
+    return fee;
+end //
+delimiter ;
 
 -- check for
 -- enougth funds on account being charged after t_sum is suplmented with atm_fee coefficient
--- if trans_lim is not excedeeing (we need functions to count how many operations were made by this acc for last month)
--- if acc_type is 1,2 or 3
+-- MAYBE if trans_lim is not excedeeing (we need functions to count how many operations were made by this acc for last month)
 -- 3.2}} make withdraw
 delimiter //
 create procedure charge
-(acc_from INT, IN t_sum INT) 
+(acc_from INT,
+ IN t_sum INT,
+ out is_successful tinyint) 
 begin 
 
-
-
 declare not_enougth_funds
-condition for sqlstate '45000'; 
+condition for sqlstate '45000';  
 
 declare sum double;
 declare blnc double;
 declare atm_fee double;
-declare fee double;
-declare is_success tinyint;
 
-call get_acc_balance(acc_from, blnc);
-call get_atm_fee(acc_from, atm_fee);
-set fee = t_sum*atm_fee;
-set sum = t_sum + fee;
-
-if ()
+set blnc = get_acc_balance(acc_from);
+set atm_fee = t_sum*get_atm_fee(acc_from);
+set sum = t_sum + atm_fee;
 
 if (blnc < sum)
 	then
-		set is_success = false;
+		set is_successful = false;
 		signal not_enougth_funds SET MESSAGE_TEXT = 'Not enougth funds';
 else
+	 set is_successful = true;
 	 update Accounts as accs
 	 set balance = balance-sum
 	 where accs.account_id = acc_from;
-     set is_success = true;
 end if;
 
 insert into Transactions
-VALUES ( null , mach_id , acc_from, null , t_sum , curdate(), is_success , null);
-select t_sum, is_success;
+VALUES ( null , mach_id , acc_from, null , t_sum , curdate(), is_successful , null);
 end //
 delimiter ;
 
