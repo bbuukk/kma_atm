@@ -22,13 +22,17 @@ int main(int argc, char *argv[])
 
     sql::Driver* driver;
     sql::Connection* con;
+
     sql::Statement* stmt;
     sql::PreparedStatement* pstmt;
+
+    sql::ResultSet* res;
 
     try
     {
         driver = get_driver_instance();
         con = driver->connect(server, username, password);
+        cout << "Successfully connected" << endl;
     }
     catch (sql::SQLException e)
     {
@@ -37,37 +41,25 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    //please create database "quickstartdb" ahead of time
     con->setSchema("atm");
 
-   /* stmt = con->createStatement();
-    stmt->execute("DROP TABLE IF EXISTS inventory");
-    cout << "Finished dropping table (if existed)" << endl;
-    stmt->execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);");
-    cout << "Finished creating table" << endl;
-    delete stmt;*/
+    stmt = con->createStatement();
 
-    /*pstmt = con->prepareStatement("INSERT INTO inventory(name, quantity) VALUES(?,?)");
-    pstmt->setString(1, "banana");
-    pstmt->setInt(2, 150);
-    pstmt->execute();
-    cout << "One row inserted." << endl;
+    res = stmt->executeQuery("SELECT client_id, first_name, last_name FROM Clients ORDER BY client_id ASC");
+    while (res->next()) {
+        
+        cout << "id = " << res->getInt("client_id") << " ";
+        cout << "first_name = " << res->getString("first_name") << " ";
+        cout << "last_name = " << res->getString("last_name") << endl;
 
-    pstmt->setString(1, "orange");
-    pstmt->setInt(2, 154);
-    pstmt->execute();
-    cout << "One row inserted." << endl;
+      
+    }
 
-    pstmt->setString(1, "apple");
-    pstmt->setInt(2, 100);
-    pstmt->execute();
-    cout << "One row inserted." << endl;*/
-
-    delete pstmt;
+    delete res;
+    delete stmt;
     delete con;
+
     system("pause");
-
-
     return a.exec();
 }
 
