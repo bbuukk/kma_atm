@@ -24,28 +24,20 @@ DB::DB(
 
 DB::~DB(){}
 
-void DB::init()
+sql::Connection*& DB::getConnection()
 {
 
-    //std::unique_ptr<sql::Connection> con;
+    sql::Connection* con;
 
-    //sql::Driver* driver;
+    sql::Driver* driver;
 
-    //try
-    //{
+    driver = get_driver_instance();
+    con = driver->connect(server, username, password);
+    con->setSchema("atm");
 
-    //    driver = get_driver_instance();
-    //    con.reset(driver->connect(server, username, password));
+	std::cout << "Successfully connected" << "\n";
 
-    //    std::cout << "Successfully connected" << "\n";
-    //}
-    //catch (sql::SQLException& e)
-    //{
-    //    std::cout << "Could not connect to server. Error message: " << e.what() << "\n";
-    //    system("pause");
-    //    return EXIT_FAILURE;
-    //}
-
-    //con->setSchema("atm");
-
+    return con;
+    
+ 
 }

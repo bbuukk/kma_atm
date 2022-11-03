@@ -25,6 +25,20 @@ Acc::Acc(int acc_id, int dgt_code,
 
 Acc::~Acc() {};
 
+
+std::ostream& operator<<(std::ostream& os, const Acc& acc)
+{
+	
+	os << acc.getAccId(); os << acc.getDgtCode();
+	os << acc.getOffId(); os << acc.getClntId();
+	os << acc.getAccType(); os << acc.getAccNum();
+	os << acc.getBalance(); os << acc.getOpenDate();
+	os << acc.getIsBlocked(); os << acc.getAtmFee();
+	os << acc.getIntrest();
+
+	return os;
+}
+
 //int acc_id;
 //int dgt_code;
 //int off_id;

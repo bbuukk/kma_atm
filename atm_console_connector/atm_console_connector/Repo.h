@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Acc.h"
+
 #include <string>
 
 #include <memory>
@@ -16,7 +18,7 @@ public:
 	Repo(sql::Connection*& con);
 	~Repo();
 
-	void getAccInfo(int acc_id);
+	Acc& getAccInfo(int acc_id);
 
 
 private:

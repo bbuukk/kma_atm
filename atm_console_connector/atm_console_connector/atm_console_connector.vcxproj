@@ -99,6 +99,7 @@
     <ClCompile Include="CheckAcc.cpp" />
     <ClCompile Include="DB.cpp" />
     <ClCompile Include="LocAcc.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="ProcedureReturnRSTesting.cpp" />
     <ClCompile Include="Repo.cpp" />
     <ClCompile Include="SvAcc.cpp" />
