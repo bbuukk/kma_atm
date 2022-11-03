@@ -15,14 +15,13 @@ public:
 	Acc(int acc_id, int dgt_code,
 		int off_id, int clnt_id,
 		int acc_type, std::string acc_num,
-		int balance, std::string  open_date,
+		double balance, std::string  open_date,
 		bool is_blocked, double atm_fee,
 		double intrest);
 
+	Acc(const Acc&);
 	
-
-
-	virtual ~Acc();
+	~Acc();
 
 
 	//getters
