@@ -10,7 +10,7 @@
 --
 				-- functions
 --
-
+-- deprecated
 drop procedure if exists get_atm_info;
 delimiter //
 create procedure get_atm_info(IN m_id INT) 
@@ -33,13 +33,17 @@ drop procedure if exists get_acc_info;
 delimiter //
 create procedure get_acc_info(IN acc_id INT) 
 begin 
-	select acc_num, date_open, balance, is_blocked, tps.name, tps.descript
+	select acc_num, open_date, balance, is_blocked, tps.name, tps.descript
     from Accounts as accs
-    inner join Account_types as tps
-    on tps.account_type = accs.account_type
-    where acc_id = accs.account_id;
+    inner join Acc_types as tps
+    on tps.acc_type = accs.acc_type
+    where acc_id = accs.acc_id;
 end //
 delimiter ;
+
+show columns from Accounts;
+
+call get_acc_info(1);
 
 -- 3p}} get info about office by acc_id 
 drop procedure if exists get_acc_off_info;

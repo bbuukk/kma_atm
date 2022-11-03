@@ -96,6 +96,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ProcedureReturnRSTesting.cpp" />
     <ClCompile Include="testing.cpp" />
     <ClCompile Include="UniqTesting.cpp" />
   </ItemGroup>
