@@ -63,7 +63,9 @@ int main(int argc, char* argv[])
             std::cout << "open_date = " << res->getString("open_date") << " ";
             std::cout << "balance = " << res->getDouble("balance") << "\n";
             std::cout << "is_blocked = " << res->getBoolean("is_blocked") << "\n";
-            //std::cout << "last_name = " << res->getBoolean("name") << "\n";
+            std::cout << "name = " << res->getBoolean("name") << "\n";
+            std::cout << "descript = " << res->getBoolean("descript") << "\n";
+
 
         }
         if (pstmt->getMoreResults())

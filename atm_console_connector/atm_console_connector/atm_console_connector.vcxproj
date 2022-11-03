@@ -95,10 +95,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Acc.cpp" />
+    <ClCompile Include="CheckAcc.cpp" />
+    <ClCompile Include="DB.cpp" />
+    <ClCompile Include="LocAcc.cpp" />
     <ClCompile Include="ProcedureReturnRSTesting.cpp" />
-    <ClCompile Include="testing.cpp" />
+    <ClCompile Include="Repo.cpp" />
+    <ClCompile Include="SvAcc.cpp" />
+    <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="UniqTesting.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Acc.h" />
+    <ClInclude Include="CheckAcc.h" />
+    <ClInclude Include="DB.h" />
+    <ClInclude Include="LocAcc.h" />
+    <ClInclude Include="Repo.h" />
+    <ClInclude Include="SvAcc.h" />
+    <ClInclude Include="Transaction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

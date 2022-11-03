@@ -3,6 +3,7 @@
 				-- procedures
 --
 -- • get_acc_info    	  -- get info about bank account   				   -- by acc_id
+-- • get_acc_off_info     -- get info about office 						   -- by acc_id 
 -- • get_acc_balance_info -- get balance & dgt_code 	   				   -- by acc_id
 -- • block_acc            -- change is_blocked in account record to true   -- by acc_id
 --
@@ -21,6 +22,19 @@ begin
     from Accounts as accs
     inner join Account_types as tps
     on tps.account_type = accs.account_type
+    where acc_id = accs.account_id;
+end //
+delimiter ;
+
+drop procedure if exists get_acc_off_info;
+delimiter //
+create procedure get_acc_off_info(IN acc_id INT) 
+begin 
+	select office_city, office_street,
+           office_building
+    from Accounts as accs
+	inner join Offices as offs
+    on offs.office_id = accs.office_id
     where acc_id = accs.account_id;
 end //
 delimiter ;
