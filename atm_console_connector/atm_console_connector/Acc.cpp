@@ -20,13 +20,14 @@ Acc::Acc(int acc_id, int dgt_code,
 	  balance(balance), open_date(open_date),
 	  is_blocked(0), atm_fee(0), intrest(0) {};
 
-Acc::Acc(const Acc& other)
-	: Acc() {
 
-
-
-};
-
+Acc::Acc(const Acc& a)
+	: Acc(a.getAccId(), a.getDgtCode(),
+		  a. getOffId(), a.getClntId(),
+		  a.getAccType(), a.getAccNum(),
+		  a.getBalance(), a.getOpenDate(),
+		  a.getIsBlocked(), a.getAtmFee(),
+		  a.getIntrest()) {};
 
 Acc::~Acc() {};
 
