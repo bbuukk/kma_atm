@@ -2,15 +2,15 @@
 
 				-- procedures
 --
--- • get_acc_info    	  -- get info about bank account by acc_id
--- • get_acc_balance_info -- get balance & dgt_code by acc_id
--- • block_acc            -- change is_blocked in account record to true by acc_id
+-- • get_acc_info    	  -- get info about bank account   				   -- by acc_id
+-- • get_acc_balance_info -- get balance & dgt_code 	   				   -- by acc_id
+-- • block_acc            -- change is_blocked in account record to true   -- by acc_id
 --
 				-- functions
--- • get_acc_blnc   	  -- get balance of acc by acc_id
--- • is_acc_blocked 	  -- get is_blocked of acc by acc_id
--- • get_acc_atm_fee 	  -- get atm_fee by acc_id
--- • get_acc_tp    	  	  --  returns acc_type by acc_id
+-- • get_acc_blnc   	  -- returns balance of acc 	-- by acc_id
+-- • is_acc_blocked 	  -- returns is_blocked of acc 	-- by acc_id
+-- • get_acc_atm_fee 	  -- returns atm_fee 			-- by acc_id
+-- • get_acc_tp    	  	  -- returns acc_type 			-- by acc_id
 --
 
 drop procedure if exists get_acc_info;

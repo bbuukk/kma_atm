@@ -2,14 +2,14 @@
 
 				-- procedures
 --
--- • withdrawal    	  			  -- (private) take money out of bank account
--- • deposit 					  -- (private) put money on bank account 
--- • transact           		  -- make transaction
--- • withdraw   	  			  -- make withdraw
--- • get_all_acc_trans 	     	  -- show account's all history of transactions
--- • get_acc_trans_curr_month 	  -- show account's all history of transactions in current month
--- • get_acc_trans_by_month    	  -- show account's all history of transactions in exact month
--- • get_acc_trans_by_date    	  -- show account's all history of transactions by exact date
+-- • withdrawal    	  			  -- (private) take money out of bank account 					  -- by acc_id, t_sum, (out) is_successful
+-- • deposit 					  -- (private) put money on bank account 						  -- by acc_id, t_sum, (out) is_successful
+-- • transact           		  -- make transaction 											  -- by acc_id, acc_id, t_sum, (out) is_successful
+-- • withdraw   	  			  -- make withdraw												  -- by acc_id, t_sum, (out) is_successful
+-- • get_all_acc_trans 	     	  -- get transactions of account for the whole time				  -- by acc_id
+-- • get_acc_trans_curr_month 	  -- get transactions of account for the current month			  -- by acc_id
+-- • get_acc_trans_by_month    	  -- get transactions of account for input month in this year	  -- by acc_id, tns_date
+-- • get_acc_trans_by_date    	  -- get transactions of account for exact date                   -- by acc_id, tns_date
 --
 				-- functions
 --
@@ -138,22 +138,9 @@ drop procedure if exists get_acc_trans_curr_month;
 delimiter //
 create procedure get_acc_trans_curr_month(IN acc_id INT) 
 begin 
-	select  acc_from, acc_to, t_sum,
-			t_date, successful, off_city,
-            atm_street, atm_building
-    from Transactions as t
-    inner join AutoTellerMachine as atm
-    on atm.mach_id = t.mach_id
-    inner join Offices as offs
-    on offs.off_id = atm.off_id
-    where (acc_from = acc_id OR 
-		  acc_to   = acc_id) AND
-		  t_date between
-          DATE_FORMAT(NOW() ,'%Y %m 01') AND NOW();
+	call get_acc_trans_by_month(acc_id, DATE_FORMAT(NOW() ,'%Y %m 01'));
 end //
 delimiter ;
-
-
 
 drop procedure if exists get_acc_trans_by_month;
 delimiter //
@@ -169,7 +156,8 @@ begin
     on offs.off_id = atm.off_id
     where (acc_from = acc_id OR 
 		  acc_to   = acc_id) AND
-		  month(t_date) = month(t_month);
+		  month(t_date) = month(t_month) AND
+          year(t_month) = year(now());
 end //
 delimiter ;
 

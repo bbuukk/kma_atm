@@ -2,23 +2,14 @@
 
 				-- procedures
 --
--- • get_atm_info    	  -- get info about ATM by mach_id 
--- • get_acc_info    	  -- get info about bank acc by acc_id
--- • get_acc_off_info     -- get info about office by acc_id 
--- • get_acc_client_info  -- get info about client by acc_id
--- • get_acc_balance_info -- get balance & dgt_code by acc_id
-
+-- • get_atm_info    	  -- get info about ATM			-- by mach_id 
+-- • get_acc_info    	  -- get info about bank acc 	-- by acc_id
+-- • get_acc_off_info     -- get info about office 		-- by acc_id 
+-- • get_acc_client_info  -- get info about client 		-- by acc_id
+-- • get_acc_balance_info -- get balance & dgt_code 	-- by acc_id
 --
 				-- functions
 --
-
---  procedures & functions in file  -- general info
--- 1p}} get info about ATM by mach_id 
--- 2p}} get info about bank account 
--- 3p}} get info about office by acc_id 
--- 4p}} get info about client by acc_id
--- 5p}} get balance & dgt_code by acc_id
-
 
 drop procedure if exists get_atm_info;
 delimiter //

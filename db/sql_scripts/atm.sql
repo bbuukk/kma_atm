@@ -2,7 +2,7 @@
 
 				-- procedures
 --
--- • get_atm_info    	  --  get info about ATM by mach_id 
+-- • get_atm_info    	  --  get info about ATM  -- by mach_id 
 --
 				-- functions
 --

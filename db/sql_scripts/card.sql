@@ -2,12 +2,12 @@
 
 				-- procedures
 --
--- • get_card_id_by_pan    	  -- get card_id by pan
--- • update_card    	      -- update procedure for card table by * from card table
+-- • get_card_id_by_pan    	  -- get card_id                      -- by pan
+-- • update_card    	      -- update procedure for card table  -- by * from card table
 --
 				-- functions
--- • is_card_corr_pin    	  -- returns bool if pin code is correct to card by card_id, pin_code
--- • is_card_acc_owner    	  -- returns bool if card client own card's account by card_id
+-- • is_card_corr_pin    	  -- returns bool if pin code is correct to card     -- by card_id, pin_code
+-- • is_card_acc_owner    	  -- returns bool if card client own card's account  -- by card_id
 --
 
 drop procedure if exists get_card_id_by_pan;

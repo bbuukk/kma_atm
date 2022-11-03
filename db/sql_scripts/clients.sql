@@ -2,7 +2,7 @@
 
 				-- procedures
 --
--- • get_acc_client_info    	  --  get info about client by acc_id
+-- • get_acc_client_info    	  --  get info about client  -- by acc_id
 --
 				-- functions
 --
