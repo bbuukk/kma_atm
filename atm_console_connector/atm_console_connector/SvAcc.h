@@ -23,5 +23,7 @@ public:
 
 
 private:
+	std::ostream& print(std::ostream& os) const override;
+
 	size_t trans_lim;
 };

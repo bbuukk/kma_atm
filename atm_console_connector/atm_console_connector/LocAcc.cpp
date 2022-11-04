@@ -31,4 +31,11 @@ LocAcc::LocAcc(
 		atm_fee, intrest), crd_taken(crd_taken),
 		loc_lim(loc_lim), crd_return(crd_return) {};
 
+std::ostream& LocAcc::print(std::ostream& os) const {
+	return Acc::print(os) 
+		<< "Credit is: " << crd_taken << "\n"
+		<< "Creditn limit is: " << loc_lim << "\n"
+		<< "Credit returned: " << crd_return << "\n";
+}
+
 

@@ -28,10 +28,7 @@ CheckAcc::CheckAcc(
 
 
 std::ostream& CheckAcc::print(std::ostream& os) const {
-	
-	
-	
-	return Acc::print(os) << "Overdraft limit is: " << overdraft_lim << "\n";;
+	return Acc::print(os) << "Overdraft limit is: " << overdraft_lim << "\n";
 }
 
 

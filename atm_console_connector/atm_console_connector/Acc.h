@@ -20,8 +20,8 @@ public:
 	Acc(const Acc&) = default;
 	Acc& operator=(const Acc&) = default;
 
-	//Acc& operator=(Acc&&) = default;
-	//Acc(Acc&&) noexcept = default;
+	Acc& operator=(Acc&&) = default;
+	Acc(Acc&&) noexcept = default;
 	
 	virtual ~Acc() = default;
 

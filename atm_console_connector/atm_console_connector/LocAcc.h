@@ -28,6 +28,8 @@ public:
 	inline double getCrdReturned() const { return crd_return; };
 
 private:
+	std::ostream& print(std::ostream& os) const override;
+
 	size_t crd_taken;
 	size_t loc_lim;
 	double crd_return;

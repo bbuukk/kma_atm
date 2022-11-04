@@ -5,8 +5,8 @@
 
 Acc::Acc(void)
 	: acc_id(0), dgt_code(0), off_id(0),
-	clnt_id(0), acc_type(0), acc_num(nullptr),
-	balance(0), open_date(nullptr), is_blocked(0),
+	clnt_id(0), acc_type(0), acc_num(""),
+	balance(0), open_date(""), is_blocked(0),
 	atm_fee(0), intrest(0) {};
 
 

@@ -3,6 +3,8 @@
 #include "Acc.h"
 #include "CheckAcc.h"
 #include "Repo.h"
+#include "SvAcc.h"
+#include "LocAcc.h"
 
 #include <QtCore/QCoreApplication>
 
@@ -18,11 +20,6 @@ int main(int argc, char* argv[]) {
 
 	Repo repo(db.getConnection());
 
-
-	/*repo.test(1); 
-
-	repo.test(1);*/
-
 	Acc acc(repo.getAccInfo(2));
 	
 	std::cout << "=========Acc=========" << std::endl;
@@ -35,11 +32,23 @@ int main(int argc, char* argv[]) {
 	std::cout << acc2 << "\n";
 	std::cout << "==================";
 
-	//CheckAcc checking(acc2, 0);
+	CheckAcc checking(acc2, 236);
 
-	//std::cout << "=======Checking======" << std::endl;
-	//std::cout << checking << "\n";
-	//std::cout << "==================";
+	std::cout << "=======Checking======" << std::endl;
+	std::cout << checking << "\n";
+	std::cout << "==================";
+
+	SvAcc savings(acc2, 278);
+
+	std::cout << "=======Checking======" << std::endl;
+	std::cout << savings << "\n";
+	std::cout << "==================";
+
+	LocAcc loc(acc2, 236,2,0);
+
+	std::cout << "=======Checking======" << std::endl;
+	std::cout << loc << "\n";
+	std::cout << "==================";
 
 	system("pause");
 	return a.exec();

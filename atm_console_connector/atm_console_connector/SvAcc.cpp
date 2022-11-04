@@ -27,3 +27,8 @@ SvAcc::SvAcc(
 		trans_lim(trans_lim) {};
 
 
+std::ostream& SvAcc::print(std::ostream& os) const {
+	return Acc::print(os) << "Transaction limit is: " << trans_lim << "\n";
+}
+
+
