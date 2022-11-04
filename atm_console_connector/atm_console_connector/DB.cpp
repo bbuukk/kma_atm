@@ -2,11 +2,7 @@
 
 #include "DB.h"
 
-#include <string>
-#include <memory>
 
-#include "mysql_connection.h"
-#include <cppconn/driver.h>
 
 
 DB::DB()

@@ -6,10 +6,7 @@
 //
 //#include <memory>
 //
-//#include "mysql_connection.h"
-//#include <cppconn/driver.h>
-//#include <cppconn/exception.h>
-//#include <cppconn/prepared_statement.h>
+//#include <mysql/jdbc.h>
 //
 //
 ////for demonstration only. never save your password in the code!

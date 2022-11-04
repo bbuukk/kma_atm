@@ -3,10 +3,7 @@
 #include <string>
 #include <ostream>
 
-#include "mysql_connection.h"
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/prepared_statement.h>
+#include <mysql/jdbc.h>
 
 //Account
 class Acc {
@@ -19,9 +16,12 @@ public:
 		double balance, std::string  open_date,
 		bool is_blocked, double atm_fee,
 		double intrest);
+	
+	Acc(const Acc&);
+	Acc& operator=(const Acc&);
 
-	Acc(const Acc&) = default;
-	Acc& operator=(const Acc&) = default;
+	//Acc& operator=(Acc&&) = default;
+	//Acc(Acc&&) noexcept = default;
 	
 	virtual ~Acc() = default;
 
@@ -46,6 +46,9 @@ public:
 
 protected:
 	virtual std::ostream& print(std::ostream& os) const;
+
+	void swap(Acc& first, Acc& second); // nothrow
+	
 
 	size_t acc_id;
 	size_t dgt_code;

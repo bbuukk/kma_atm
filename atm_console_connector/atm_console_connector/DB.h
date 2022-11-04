@@ -1,12 +1,9 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
-
-#include "mysql_connection.h"
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/prepared_statement.h>
+#include <mysql/jdbc.h>
 
 class DB {
 public:

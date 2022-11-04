@@ -3,13 +3,10 @@
 #include "Acc.h"
 
 #include <string>
-
+#include <ostream>
 #include <memory>
 
-#include "mysql_connection.h"
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/prepared_statement.h>
+#include <mysql/jdbc.h>
 
 class Repo {
 public:
@@ -19,12 +16,14 @@ public:
 	~Repo();
 
 	Acc& getAccInfo(int acc_id);
+	void test(size_t acc_id);
 	Acc& getAccBalanceInfo(size_t acc_id);
 
 
 
 private:
 	std::unique_ptr<sql::Connection> con;
-	std::unique_ptr<sql::PreparedStatement> pstmt;
-	std::unique_ptr<sql::ResultSet> res;
+	/*std::unique_ptr<sql::PreparedStatement> pstmt;
+	std::unique_ptr<sql::Statement> stmt;
+	std::unique_ptr<sql::ResultSet> res;*/
 };
