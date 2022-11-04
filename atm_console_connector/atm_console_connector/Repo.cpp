@@ -12,11 +12,37 @@ Repo::Repo(sql::Connection*& con)
 Repo::~Repo() {};
 
 Acc& Repo::getAccInfo(int acc_id) {
-   /*stmt->execute("call get_acc_info(1)");*/
+
+    std::unique_ptr<sql::PreparedStatement> pstmt(
+        this->con->prepareStatement("call get_acc_info(?);"));
+    pstmt->setInt(1, acc_id);
+
+    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+
+    std::string acc_num;
+    double balance;
+    std::string open_date;
+    bool is_blocked;
+
+    do {
+        while (res->next()) {  // extract data from statement
+            acc_num = res->getString("acc_num");
+            balance = res->getDouble("balance");
+            open_date = res->getString("open_date");
+            is_blocked = res->getBoolean("is_blocked");
+        }
+    } while (pstmt->getMoreResults());
+
+    
+
+    return *(new Acc(0, 0, 0, 0, 0, acc_num, balance, open_date, is_blocked, 0, 0));
+
+   /*stmt->execute("call get_acc_info(1)");
 
     Acc acc;
 
-   /* do {
+    do {
         res.reset(stmt->getResultSet());
         while (res->next()) {
             acc = *(new Acc(0, 0, 0, 0, 0,
@@ -26,8 +52,8 @@ Acc& Repo::getAccInfo(int acc_id) {
                 res->getBoolean("is_blocked"),
                 0, 0));
         }
-    } while (stmt->getMoreResults());*/
-    return acc;
+    } while (stmt->getMoreResults());
+    return acc;*/
 }
 
 void Repo::test(size_t acc_id) {
@@ -37,19 +63,24 @@ void Repo::test(size_t acc_id) {
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    Acc acc;
+
+    std::string acc_num;
+    double balance;
+    std::string open_date;
+    bool is_blocked;
+
     do {
         while (res->next()) {  // extract data from statement
-            acc = (* (new Acc(0, 0, 0, 0, 0,
-                res->getString("acc_num"),
-                res->getDouble("balance"),
-                res->getString("open_date"),
-                res->getBoolean("is_blocked"),
-                0, 0)));
+            acc_num = res->getString("acc_num");
+            balance = res->getDouble("balance");
+            open_date = res->getString("open_date");
+            is_blocked = res->getBoolean("is_blocked");
         }
     } while (pstmt->getMoreResults());
 
-  
+    Acc acc = *(new Acc(0, 0, 0, 0, 0, acc_num, balance, open_date, is_blocked, 0, 0));
+
+    
 };
 
 Acc& Repo::getAccBalanceInfo(size_t acc_id) {

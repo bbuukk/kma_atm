@@ -22,49 +22,6 @@ Acc::Acc(size_t acc_id, size_t dgt_code,
 	  balance(balance), open_date(std::move(open_date)),
 	  is_blocked(0), atm_fee(0), intrest(0) {};
 
-Acc::Acc (const Acc& a) {
-	acc_id = a.getAccId();
-	dgt_code = a.getDgtCode();
-	off_id = a.getOffId();
-	clnt_id = a.getClntId();
-	acc_type = a.getAccType();
-	acc_num = a.getAccNum();
-	balance = a.getBalance();
-	open_date = a.getOpenDate();
-	is_blocked = a.getIsBlocked();
-	atm_fee = a.getAtmFee();
-	intrest = a.getIntrest();
-};
-//todo put const or implement copy-and-swap
-Acc& Acc::operator=(const Acc& a) {
-
-	acc_id = a.getAccId();
-	dgt_code = a.getDgtCode();
-	off_id = a.getOffId();
-	clnt_id = a.getClntId();
-	acc_type = a.getAccType();
-	acc_num = a.getAccNum();
-	balance = a.getBalance();
-	open_date = a.getOpenDate();
-	is_blocked = a.getIsBlocked();
-	atm_fee = a.getAtmFee();
-	intrest = a.getIntrest();
-
-	return *(new Acc(a.getAccId(), a.getDgtCode(),
-		a.getOffId(), a. getClntId(), a.getAccType(),
-		a.getAccNum(), a.getBalance(), a.getOpenDate(),
-		a.getIsBlocked(), a.getAtmFee(), a.getIntrest()));
-};
-
-void Acc::swap(Acc& first, Acc& second) // nothrow
-{
-	// by swapping the members of two objects,
-	// the two objects are effectively swapped
-	std::swap(first.acc_num, second.acc_num);
-	std::swap(first.open_date, second.open_date);
-}
-
-
 std::ostream& Acc::print(std::ostream& os) const {
 	os << "Account id is: " << acc_id<< "\n";
 	os << "Digital code is:" << dgt_code<< "\n";

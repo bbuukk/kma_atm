@@ -13,12 +13,12 @@ public:
 	Acc(size_t acc_id, size_t dgt_code,
 		size_t off_id, size_t clnt_id,
 		size_t acc_type, std::string acc_num,
-		double balance, std::string  open_date,
+		double balance, std::string open_date,
 		bool is_blocked, double atm_fee,
 		double intrest);
 	
-	Acc(const Acc&);
-	Acc& operator=(const Acc&);
+	Acc(const Acc&) = default;
+	Acc& operator=(const Acc&) = default;
 
 	//Acc& operator=(Acc&&) = default;
 	//Acc(Acc&&) noexcept = default;

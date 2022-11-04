@@ -19,21 +19,21 @@ int main(int argc, char* argv[]) {
 	Repo repo(db.getConnection());
 
 
-	repo.test(1); 
+	/*repo.test(1); 
 
-	repo.test(1);
+	repo.test(1);*/
 
-	/*Acc acc(repo.getAccInfo(2));*/
+	Acc acc(repo.getAccInfo(2));
 	
-	//std::cout << "=========Acc=========" << std::endl;
-	//std::cout << acc << "\n";
-	//std::cout << "==================";
+	std::cout << "=========Acc=========" << std::endl;
+	std::cout << acc << "\n";
+	std::cout << "==================";
 
-	//Acc acc2(repo.getAccInfo(2));
+	Acc acc2(repo.getAccInfo(2));
 
-	//std::cout << "=========Acc=========" << std::endl;
-	//std::cout << acc2 << "\n";
-	//std::cout << "==================";
+	std::cout << "=========Acc=========" << std::endl;
+	std::cout << acc2 << "\n";
+	std::cout << "==================";
 
 	//CheckAcc checking(acc2, 0);
 
