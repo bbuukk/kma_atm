@@ -1,10 +1,10 @@
 
 #include "DB.h"
 #include "Account.h"
-#include "CheckAcc.h"
+#include "Checking.h"
 #include "Repo.h"
-#include "SvAcc.h"
-#include "LocAcc.h"
+#include "Savings.h"
+#include "LOC.h"
 #include "ATM.h"
 #include "Card.h"
 
@@ -35,6 +35,9 @@ int main(int argc, char* argv[]) {
 	//std::cout << off << "\n";
 	//std::cout << "==================";
 
+	Card card = repo.get_card("5313532532254855");
+
+	std::cout << card << "\n";
 
 	system("pause");
 	return a.exec();

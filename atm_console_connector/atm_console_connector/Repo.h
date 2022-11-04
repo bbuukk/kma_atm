@@ -8,6 +8,7 @@
 
 #include "Account.h"
 #include "Office.h"
+#include "Card.h"
 
 
 class Repo {
@@ -36,6 +37,9 @@ public:
 
 	//ATM repo
 	std::string& get_atm_info(size_t mach_id);
+
+	//Card repo
+	Card& get_card(std::string pan);
 
 private:
 	std::unique_ptr<sql::Connection> con;

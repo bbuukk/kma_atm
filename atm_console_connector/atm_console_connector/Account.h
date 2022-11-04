@@ -44,8 +44,6 @@ public:
 		return acc.print(os);
 	}
 
-
-
 protected:
 	virtual std::ostream& print(std::ostream& os) const;
 

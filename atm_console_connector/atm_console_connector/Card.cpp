@@ -13,13 +13,14 @@ Card::Card(
 
 std::ostream& operator<<(std::ostream& os, const Card& card) {
 	return os
-		<< "Machine id:" << card.get_card_id() << "\n"
-		<< "Office id: " << card.get_account_id() << "\n"
-		<< "Card street:" << card.get_pan() << "\n"
-		<< "Card street:" << card.get_pin_code() << "\n"
-		<< "Card street:" << card.get_expr_date() << "\n"
-		<< "Card street:" << card.get_cvv() << "\n"
-		<< "Card street:" << card.get_given_date() << "\n";
+		<< "Card id:" << card.get_card_id() << "\n"
+		<< "Account id: " << card.get_account_id() << "\n"
+		<< "Client id:" << card.get_client_id() << "\n"
+		<< "PAN:" << card.get_pan() << "\n"
+		<< "Pin code:" << card.get_pin_code() << "\n"
+		<< "Expiration date:" << card.get_expr_date() << "\n"
+		<< "CVV:" << card.get_cvv() << "\n"
+		<< "Given date:" << card.get_given_date() << "\n";
 }
 
 

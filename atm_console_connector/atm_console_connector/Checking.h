@@ -4,13 +4,13 @@
 
 #include <mysql/jdbc.h>
 
-class CheckAcc : public Account {
+class Checking : public Account {
 public:
-	CheckAcc(void) = default;
+	Checking(void) = default;
 
-	CheckAcc(Account&, size_t overdraft_lim);
+	Checking(Account&, size_t overdraft_lim);
 
-	CheckAcc(size_t acc_id, size_t dgt_code,
+	Checking(size_t acc_id, size_t dgt_code,
 			 size_t off_id, size_t clnt_id,
 			 size_t acc_type, std::string acc_num,
 			 double balance, std::string  open_date,
@@ -18,10 +18,10 @@ public:
 			 double intrest, size_t overdraft_lim);
 
 
-	CheckAcc(const CheckAcc&) = default;
-	CheckAcc& operator=(const CheckAcc&) = default;
+	Checking(const Checking&) = default;
+	Checking& operator=(const Checking&) = default;
 	
-	~CheckAcc() = default;
+	~Checking() = default;
 
 	inline size_t get_overdraft_lim() const { return overdraft_lim; };
 

@@ -62,13 +62,13 @@
     <ClCompile Include="Account.cpp">
       <Filter>Source Files\Modules\Account</Filter>
     </ClCompile>
-    <ClCompile Include="CheckAcc.cpp">
+    <ClCompile Include="Checking.cpp">
       <Filter>Source Files\Modules\Account</Filter>
     </ClCompile>
-    <ClCompile Include="LocAcc.cpp">
+    <ClCompile Include="LOC.cpp">
       <Filter>Source Files\Modules\Account</Filter>
     </ClCompile>
-    <ClCompile Include="SvAcc.cpp">
+    <ClCompile Include="Savings.cpp">
       <Filter>Source Files\Modules\Account</Filter>
     </ClCompile>
     <ClCompile Include="Transaction.cpp">
@@ -95,6 +95,9 @@
     <ClCompile Include="Card.cpp">
       <Filter>Source Files\Modules\Card</Filter>
     </ClCompile>
+    <ClCompile Include="Card_Repo.cpp">
+      <Filter>Source Files\DB\Repository</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DB.h">
@@ -103,13 +106,13 @@
     <ClInclude Include="Account.h">
       <Filter>Source Files\Modules\Account</Filter>
     </ClInclude>
-    <ClInclude Include="CheckAcc.h">
+    <ClInclude Include="Checking.h">
       <Filter>Source Files\Modules\Account</Filter>
     </ClInclude>
-    <ClInclude Include="LocAcc.h">
+    <ClInclude Include="LOC.h">
       <Filter>Source Files\Modules\Account</Filter>
     </ClInclude>
-    <ClInclude Include="SvAcc.h">
+    <ClInclude Include="Savings.h">
       <Filter>Source Files\Modules\Account</Filter>
     </ClInclude>
     <ClInclude Include="Transaction.h">

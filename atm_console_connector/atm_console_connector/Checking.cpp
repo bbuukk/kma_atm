@@ -1,6 +1,6 @@
-#include "CheckAcc.h"
+#include "Checking.h"
 
-CheckAcc::CheckAcc(Account& acc, size_t overdraft_lim )
+Checking::Checking(Account& acc, size_t overdraft_lim )
 	: Account(
 		acc.get_account_id(), acc.get_digital_code(),
 		acc.get_office_id(), acc.get_client_id(),
@@ -9,7 +9,7 @@ CheckAcc::CheckAcc(Account& acc, size_t overdraft_lim )
 		acc.get_is_blocked(), acc.get_atm_fee(),
 		acc.get_intrest()), overdraft_lim(overdraft_lim) {};
 
-CheckAcc::CheckAcc(
+Checking::Checking(
 	size_t acc_id, size_t dgt_code,
 	size_t off_id, size_t clnt_id,
 	size_t acc_type, std::string acc_num,
@@ -24,7 +24,7 @@ CheckAcc::CheckAcc(
 		overdraft_lim(overdraft_lim) {};
 
 
-std::ostream& CheckAcc::print(std::ostream& os) const {
+std::ostream& Checking::print(std::ostream& os) const {
 	return Account::print(os) << "Overdraft limit is: " << overdraft_lim << "\n";
 }
 

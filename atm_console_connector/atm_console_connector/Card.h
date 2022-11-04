@@ -41,7 +41,7 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Card& off);
 
-
+//todo
 //card_id	int unsigned	NO	PRI		auto_increment
 //acc_id	int unsigned	NO	MUL
 //clnt_id	int unsigned	NO	MUL
