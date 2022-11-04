@@ -39,6 +39,11 @@ int main(int argc, char* argv[]) {
 
 	std::cout << card << "\n";
 
+	repo.update_card(1, 1, 1, "123", 9308, "2024-02-18", 674, "2021-11-18");
+
+
+
+	
 	system("pause");
 	return a.exec();
 }

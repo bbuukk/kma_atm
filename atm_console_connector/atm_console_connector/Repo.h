@@ -40,6 +40,11 @@ public:
 
 	//Card repo
 	Card& get_card(std::string pan);
+	void update_card(
+		size_t card_id, size_t acc_id,
+		size_t clnt_id, std::string pan,
+		size_t pin_code, std::string expr_date,
+		size_t cvv, std::string given_date);
 
 private:
 	std::unique_ptr<sql::Connection> con;

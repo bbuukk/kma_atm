@@ -12,26 +12,25 @@
 
 show columns from Cards;
 
-drop procedure if exists get_card_id_by_pan;
+drop procedure if exists get_card;
 delimiter //
-create function get_card_id_by_pan(pan nvarchar(20)) 
-returns int deterministic
+create procedure get_card(pan varchar(20)) 
 begin 
-	declare card_id int;
-    select crds.card_id into card_id
+    select pan, pin_code,
+		   expr_date, cvv,
+           given_date
     from Cards as crds
-    where crds.pan = pan;
-    return card_id;
+    where crds.pan = trim(pan);
 end //
-delimiter ;
+delimiter ;		
 
 drop procedure if exists update_card;
 delimiter //
 create procedure update_card
-(in card_id int, in acc_id int,
-in clnt_id int, in pan nvarchar(20),
-in pin_code int, in expr_date date,
-in cvv int, in given_date date)
+(in card_id int unsigned, in acc_id int unsigned,
+in clnt_id int unsigned, in pan varchar(20),
+in pin_code int unsigned, in expr_date date,
+in cvv int unsigned, in given_date date)
 begin 
 	update Cards as c
     set
@@ -46,6 +45,17 @@ begin
     where c.card_id = card_id;
 end //
 delimiter ;
+
+call update_card(1, 1, 1, "123", 9308, "2024 - 02 - 18", 674, "2021 - 11 - 18");
+
+-- card_id	int unsigned	NO	PRI		auto_increment
+-- acc_id	int unsigned	NO	MUL		
+-- clnt_id	int unsigned	NO	MUL		
+-- pan	varchar(20)	NO	UNI		
+-- pin_code	int unsigned	NO			
+-- expr_date	date	NO			
+-- cvv	int unsigned	NO			
+-- given_date	date	NO	
 
 drop function if exists is_card_corr_pin;
 delimiter //
