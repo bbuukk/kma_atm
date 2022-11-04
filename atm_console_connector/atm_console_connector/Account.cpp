@@ -11,8 +11,8 @@ Account::Account(size_t acc_id, size_t dgt_code,
 		 double intrest)
 	: acc_id(acc_id), dgt_code(dgt_code),
 	  off_id(off_id),clnt_id(clnt_id),
-	  acc_type(acc_type), acc_num(std::move(acc_num)),
-	  balance(balance), open_date(std::move(open_date)),
+	  acc_type(acc_type), acc_num(acc_num),
+	  balance(balance), open_date(open_date),
 	  is_blocked(0), atm_fee(0), intrest(0) {};
 
 std::ostream& Account::print(std::ostream& os) const {

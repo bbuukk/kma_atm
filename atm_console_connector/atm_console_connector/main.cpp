@@ -6,6 +6,7 @@
 #include "SvAcc.h"
 #include "LocAcc.h"
 #include "ATM.h"
+#include "Card.h"
 
 #include <QtCore/QCoreApplication>
 
@@ -22,11 +23,23 @@ int main(int argc, char* argv[]) {
 	//std::cout << acc << "\n";
 	//std::cout << "==================";
 
+	//Account acc2(repo.get_acc(1));
+	//
+	//std::cout << "=========Account=========" << std::endl;
+	//std::cout << acc2 << "\n";
+	//std::cout << "==================";
+
 	//Office off(repo.get_acc_off(2));
 	//
 	//std::cout << "=========Office=========" << std::endl;
 	//std::cout << off << "\n";
 	//std::cout << "==================";
+
+	Card card(0,0,0, "" ,0 , "KOZAK", 0 , "date");
+
+	std::cout << card << "\n";
+
+
 
 
 	system("pause");

@@ -10,6 +10,8 @@
 -- • is_card_acc_owner    	  -- returns bool if card client own card's account  -- by card_id
 --
 
+show columns from Cards;
+
 drop procedure if exists get_card_id_by_pan;
 delimiter //
 create function get_card_id_by_pan(pan nvarchar(20)) 

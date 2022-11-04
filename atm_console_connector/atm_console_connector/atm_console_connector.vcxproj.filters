@@ -42,6 +42,9 @@
     <Filter Include="Source Files\Modules\ATM">
       <UniqueIdentifier>{a9f4f8ff-6d6b-44f7-94c1-0fb3243b7670}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Modules\Card">
+      <UniqueIdentifier>{e0ff324d-82a5-4480-a862-58f986740251}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UniqTesting.cpp">
@@ -89,6 +92,9 @@
     <ClCompile Include="ATM.cpp">
       <Filter>Source Files\Modules\ATM</Filter>
     </ClCompile>
+    <ClCompile Include="Card.cpp">
+      <Filter>Source Files\Modules\Card</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DB.h">
@@ -117,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="ATM.h">
       <Filter>Source Files\Modules\ATM</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>Source Files\Modules\Card</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
