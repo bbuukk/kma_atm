@@ -106,6 +106,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
+    <ClCompile Include="ATM_Repo.cpp" />
     <ClCompile Include="CheckAcc.cpp" />
     <ClCompile Include="DB.cpp" />
     <ClCompile Include="LocAcc.cpp" />

@@ -27,18 +27,9 @@ int main(int argc, char* argv[]) {
 	//std::cout << off << "\n";
 	//std::cout << "==================";
 
-
-	
-
-	std::cout << repo.get_acc_atm_fee(1) << "\n";
-
-	std::cout << repo.get_acc_type(1);
+	std::cout << repo.get_atm_info(1) << "\n";
 
 
-
-
-
-	
 
 	system("pause");
 	return a.exec();

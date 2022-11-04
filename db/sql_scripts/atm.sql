@@ -11,7 +11,7 @@
 
 drop procedure if exists get_atm_info;
 delimiter //
-create procedure get_atm_info(IN m_id INT) 
+create procedure get_atm_info(IN mach_id INT) 
 begin 
 	select concat('ATM is located in ', off_city,
 				  ' at ',atm_street, '.\n',
@@ -23,8 +23,6 @@ begin
     where atms.mach_id = mach_id;
 end //
 delimiter ;
-
-
 
 -- off_id	int unsigned	NO	PRI		auto_increment
 -- head_off	tinyint	NO			

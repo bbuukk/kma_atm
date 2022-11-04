@@ -80,6 +80,9 @@
     <ClCompile Include="Transaction_Repo.cpp">
       <Filter>Source Files\DB\Repository</Filter>
     </ClCompile>
+    <ClCompile Include="ATM_Repo.cpp">
+      <Filter>Source Files\DB\Repository</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DB.h">

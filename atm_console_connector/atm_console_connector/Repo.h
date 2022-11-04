@@ -34,6 +34,9 @@ public:
 	//Office repo
 	Office& get_acc_off(size_t acc_id);
 
+	//ATM repo
+	std::string& get_atm_info(size_t mach_id);
+
 private:
 	std::unique_ptr<sql::Connection> con;
 };
