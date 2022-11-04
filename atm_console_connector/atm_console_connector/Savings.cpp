@@ -1,15 +1,15 @@
-#include "SvAcc.h"
+#include "Savings.h"
 
-SvAcc::SvAcc(Account& acc, size_t trans_lim)
+Savings::Savings(Account& acc, size_t trans_lim)
 	: Account(
-		acc.getAccId(), acc.getDgtCode(),
-		acc.getOffId(), acc.getClntId(),
-		acc.getAccType(), acc.getAccNum(),
-		acc.getBalance(), acc.getOpenDate(),
-		acc.getIsBlocked(), acc.getAtmFee(),
-		acc.getIntrest()), trans_lim(trans_lim) {};
+		acc.get_account_id(), acc.get_digital_code(),
+		acc.get_office_id(), acc.get_client_id(),
+		acc.get_account_type(), acc.get_account_num(),
+		acc.get_balance(), acc.get_open_date(),
+		acc.get_is_blocked(), acc.get_atm_fee(),
+		acc.get_intrest()), trans_lim(trans_lim) {};
 
-SvAcc::SvAcc(
+Savings::Savings(
 	size_t acc_id, size_t dgt_code,
 	size_t off_id, size_t clnt_id,
 	size_t acc_type, std::string acc_num,
@@ -24,7 +24,7 @@ SvAcc::SvAcc(
 		trans_lim(trans_lim) {};
 
 
-std::ostream& SvAcc::print(std::ostream& os) const {
+std::ostream& Savings::print(std::ostream& os) const {
 	return Account::print(os) << "Transaction limit is: " << trans_lim << "\n";
 }
 

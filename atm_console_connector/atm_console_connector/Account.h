@@ -26,19 +26,19 @@ public:
 	virtual ~Account() = default;
 
 	//getters
-	inline size_t getAccId() const { return acc_id; };
-	inline size_t getDgtCode() const { return dgt_code; }; //get currency digital code
-	inline size_t getOffId() const { return off_id; }; // get office id
-	inline size_t getClntId() const { return clnt_id; }; //get client id
-	inline size_t getAccType() const { return acc_type; };
+	inline size_t get_account_id() const { return acc_id; };
+	inline size_t get_digital_code() const { return dgt_code; }; //get currency digital code
+	inline size_t get_office_id() const { return off_id; }; // get office id
+	inline size_t get_client_id() const { return clnt_id; }; //get client id
+	inline size_t get_account_type() const { return acc_type; };
 
-	inline std::string getAccNum() const { return acc_num; };
-	inline double getBalance() const { return balance; };
-	inline std::string getOpenDate() const { return open_date; };
-	inline bool getIsBlocked() const { return is_blocked; };
+	inline std::string get_account_num() const { return acc_num; };
+	inline double get_balance() const { return balance; };
+	inline std::string get_open_date() const { return open_date; };
+	inline bool get_is_blocked() const { return is_blocked; };
 
-	inline double getAtmFee() const { return atm_fee; };
-	inline double getIntrest() const { return intrest; };
+	inline double get_atm_fee() const { return atm_fee; };
+	inline double get_intrest() const { return intrest; };
 
 	friend std::ostream& operator<<(std::ostream& os, const Account& acc) {
 		return acc.print(os);
@@ -48,9 +48,6 @@ public:
 
 protected:
 	virtual std::ostream& print(std::ostream& os) const;
-
-	void swap(Account& first, Account& second); // nothrow
-	
 
 	size_t acc_id;
 	size_t dgt_code;

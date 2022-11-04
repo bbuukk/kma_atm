@@ -23,9 +23,7 @@ public:
 	
 	~CheckAcc() = default;
 
-	inline size_t getOverdraftLim() const { return overdraft_lim; };
-
-
+	inline size_t get_overdraft_lim() const { return overdraft_lim; };
 
 
 private:

@@ -1,18 +1,18 @@
-#include "LocAcc.h"
+#include "LOC.h"
 
-LocAcc::LocAcc(
+LOC::LOC(
 	Account& acc, size_t crd_taken,
 	size_t loc_lim, double crd_return)
 	: Account(
-		acc.getAccId(), acc.getDgtCode(),
-		acc.getOffId(), acc.getClntId(),
-		acc.getAccType(), acc.getAccNum(),
-		acc.getBalance(), acc.getOpenDate(),
-		acc.getIsBlocked(), acc.getAtmFee(),
-		acc.getIntrest()), crd_taken(crd_taken),
+		acc.get_account_id(), acc.get_digital_code(),
+		acc.get_office_id(), acc.get_client_id(),
+		acc.get_account_type(), acc.get_account_num(),
+		acc.get_balance(), acc.get_open_date(),
+		acc.get_is_blocked(), acc.get_atm_fee(),
+		acc.get_intrest()), crd_taken(crd_taken),
 		loc_lim(loc_lim), crd_return(crd_return) {};
 
-LocAcc::LocAcc(
+LOC::LOC(
 	int acc_id, int dgt_code,
 	int off_id, int clnt_id,
 	int acc_type, std::string acc_num,
@@ -27,7 +27,7 @@ LocAcc::LocAcc(
 		atm_fee, intrest), crd_taken(crd_taken),
 		loc_lim(loc_lim), crd_return(crd_return) {};
 
-std::ostream& LocAcc::print(std::ostream& os) const {
+std::ostream& LOC::print(std::ostream& os) const {
 	return Account::print(os) 
 		<< "Credit is: " << crd_taken << "\n"
 		<< "Creditn limit is: " << loc_lim << "\n"

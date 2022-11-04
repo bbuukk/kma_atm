@@ -12,7 +12,7 @@ public:
 
 	~DB() = default;
 
-	sql::Connection*& getConnection();
+	sql::Connection*& get_connection();
 
 private:
 };

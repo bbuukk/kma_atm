@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
 
 	DB db;
 
-	Repo repo(db.getConnection());
+	Repo repo(db.get_connection());
 
 	//Account acc(repo.get_acc(2));
 	//
@@ -34,12 +34,6 @@ int main(int argc, char* argv[]) {
 	//std::cout << "=========Office=========" << std::endl;
 	//std::cout << off << "\n";
 	//std::cout << "==================";
-
-	Card card(0,0,0, "" ,0 , "KOZAK", 0 , "date");
-
-	std::cout << card << "\n";
-
-
 
 
 	system("pause");

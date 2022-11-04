@@ -2,12 +2,12 @@
 
 CheckAcc::CheckAcc(Account& acc, size_t overdraft_lim )
 	: Account(
-		acc.getAccId(), acc.getDgtCode(),
-		acc.getOffId(), acc.getClntId(),
-		acc.getAccType(), acc.getAccNum(),
-		acc.getBalance(), acc.getOpenDate(),
-		acc.getIsBlocked(), acc.getAtmFee(),
-		acc.getIntrest()), overdraft_lim(overdraft_lim) {};
+		acc.get_account_id(), acc.get_digital_code(),
+		acc.get_office_id(), acc.get_client_id(),
+		acc.get_account_type(), acc.get_account_num(),
+		acc.get_balance(), acc.get_open_date(),
+		acc.get_is_blocked(), acc.get_atm_fee(),
+		acc.get_intrest()), overdraft_lim(overdraft_lim) {};
 
 CheckAcc::CheckAcc(
 	size_t acc_id, size_t dgt_code,

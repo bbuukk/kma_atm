@@ -3,7 +3,7 @@
 #include "DB.h"
 
 
-sql::Connection*& DB::getConnection()
+sql::Connection*& DB::get_connection()
 {
 	sql::ConnectOptionsMap connection_properties;
 
