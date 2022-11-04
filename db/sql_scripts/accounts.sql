@@ -2,10 +2,16 @@
 
 				-- procedures
 --
--- • get_acc    	  -- get info about bank account   				   -- by acc_id
--- • get_acc_off     -- get info about office 						   -- by acc_id 
--- • //not realized // get_acc_balance_info -- get balance & dgt_code 	   				   -- by acc_id
--- • block_acc            -- change is_blocked in account record to true   -- by acc_id
+-- • get_acc    	  	-- get info about bank account   				   -- by acc_id
+-- • get_acc_off     	-- get info about office 						   -- by acc_id 
+-- • //not realized //  -- get_acc_balance_info -- get balance & dgt_code 	   				   -- by acc_id
+-- • block_acc          -- change is_blocked in account record to true     -- by acc_id
+-- • unblock_acc        -- change is_blocked in account record to false    -- by acc_id 
+
+-- • is_acc_blocked     -- get is_blocked from account          	       -- by acc_id
+-- • get_acc_blnc 		-- get balance from account          	       	   -- by acc_id 
+-- • get_acc_atm_fee 	-- get atm_fee from account          	       	   -- by acc_id
+-- • get_acc_tp 		-- get acc_type from account          	       	   -- by acc_id
 --
 				-- functions
 -- • get_acc_blnc   	  -- returns balance of acc 	-- by acc_id
@@ -75,6 +81,46 @@ begin
 end //
 delimiter ;
 
+drop procedure if exists is_acc_blocked;
+delimiter //
+create procedure is_acc_blocked(in acc_id int)
+begin 
+	select is_blocked 
+    from Accounts as accs
+    where accs.acc_id = acc_id;
+end //
+delimiter ;
+
+drop procedure if exists get_acc_blnc;
+delimiter //
+create procedure get_acc_blnc(in acc_id int)
+begin 
+	select balance
+    from Accounts as accs
+    where acc_id = accs.acc_id;
+end //
+delimiter ;
+
+drop procedure if exists get_acc_atm_fee;
+delimiter //
+create procedure get_acc_atm_fee(in acc_id int)
+begin 
+	select atm_fee
+    from Accounts as accs
+    where accs.acc_id = acc_id;
+end //
+delimiter ;
+
+drop procedure if exists get_acc_tp;
+delimiter //
+create procedure get_acc_tp(in acc_id int)
+begin 
+	select acc_type
+	from Accounts as accs
+	where accs.acc_id = acc_id;
+end //
+delimiter ;
+
 drop function if exists get_acc_blnc;
 delimiter //
 create function get_acc_blnc(acc_id int)
@@ -88,8 +134,6 @@ begin
 end //
 delimiter ;
 
-
-
 drop function if exists is_acc_blocked;
 delimiter //
 create function is_acc_blocked(acc_id INT)
@@ -98,11 +142,10 @@ begin
 	declare blocked double;
 	select is_blocked into blocked
     from Accounts as accs
-    where accs.account_id = acc_id;
+    where accs.acc_id = acc_id;
     return blocked;
 end //
 delimiter ;
-
 
 drop function if exists get_acc_atm_fee;
 delimiter //

@@ -28,7 +28,15 @@ int main(int argc, char* argv[]) {
 	//std::cout << "==================";
 
 
-	repo.unblock_acc(1);
+	
+
+	std::cout << repo.get_acc_atm_fee(1) << "\n";
+
+	std::cout << repo.get_acc_type(1);
+
+
+
+
 
 	
 
