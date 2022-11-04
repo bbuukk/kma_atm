@@ -1,12 +1,4 @@
-
 #include "Repo.h"
-
-Repo::Repo(void) 
-    : con(nullptr) {};
-
-Repo::Repo(sql::Connection*& con) 
-    : con(con) {};
-
 
 Acc& Repo::getAccInfo(size_t acc_id) {
 
@@ -19,7 +11,7 @@ Acc& Repo::getAccInfo(size_t acc_id) {
     Acc* acc;
 
     do {
-        while (res->next()) {  
+        while (res->next()) {
             acc = (new Acc(0, 0, 0, 0, 0,
                 res->getString("acc_num"),
                 res->getDouble("balance"),
@@ -50,3 +42,4 @@ Acc& Repo::getAccBalanceInfo(size_t acc_id) {
 //bool is_blocked;
 //double atm_fee;
 //double intrest;
+
