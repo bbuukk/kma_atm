@@ -1,8 +1,5 @@
 #include "CheckAcc.h"
 
-CheckAcc::CheckAcc(void)
-	: Account(), overdraft_lim(0) {};
-
 CheckAcc::CheckAcc(Account& acc, size_t overdraft_lim )
 	: Account(
 		acc.getAccId(), acc.getDgtCode(),

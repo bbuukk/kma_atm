@@ -5,6 +5,7 @@
 #include "Repo.h"
 #include "SvAcc.h"
 #include "LocAcc.h"
+#include "ATM.h"
 
 #include <QtCore/QCoreApplication>
 
@@ -26,9 +27,6 @@ int main(int argc, char* argv[]) {
 	//std::cout << "=========Office=========" << std::endl;
 	//std::cout << off << "\n";
 	//std::cout << "==================";
-
-	std::cout << repo.get_atm_info(1) << "\n";
-
 
 
 	system("pause");

@@ -6,7 +6,7 @@
 
 class CheckAcc : public Account {
 public:
-	CheckAcc(void);
+	CheckAcc(void) = default;
 
 	CheckAcc(Account&, size_t overdraft_lim);
 
@@ -16,6 +16,10 @@ public:
 			 double balance, std::string  open_date,
 			 bool is_blocked, double atm_fee,
 			 double intrest, size_t overdraft_lim);
+
+
+	CheckAcc(const CheckAcc&) = default;
+	CheckAcc& operator=(const CheckAcc&) = default;
 	
 	~CheckAcc() = default;
 

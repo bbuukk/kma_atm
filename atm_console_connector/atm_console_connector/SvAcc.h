@@ -6,7 +6,7 @@
 
 class SvAcc : public Account {
 public:
-	SvAcc(void);
+	SvAcc(void) = default;
 
 	SvAcc(Account&, size_t trans_lim);
 
@@ -17,10 +17,12 @@ public:
 		bool is_blocked, double atm_fee,
 		double intrest, size_t trans_lim);
 
+	SvAcc(const SvAcc&) = default;
+	SvAcc& operator=(const SvAcc&) = default;
+
 	~SvAcc() = default;
 
 	inline size_t getTransLim() const { return trans_lim; };
-
 
 private:
 	std::ostream& print(std::ostream& os) const override;

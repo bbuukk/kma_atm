@@ -1,8 +1,5 @@
 #include "SvAcc.h"
 
-SvAcc::SvAcc(void)
-	: Account(), trans_lim(0) {};
-
 SvAcc::SvAcc(Account& acc, size_t trans_lim)
 	: Account(
 		acc.getAccId(), acc.getDgtCode(),

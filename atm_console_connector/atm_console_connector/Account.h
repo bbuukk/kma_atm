@@ -8,7 +8,7 @@
 //Account
 class Account {
 public:
-	Account(void);
+	Account(void) = default;
 
 	Account(size_t acc_id, size_t dgt_code,
 		size_t off_id, size_t clnt_id,

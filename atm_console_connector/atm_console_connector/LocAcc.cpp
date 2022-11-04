@@ -1,9 +1,5 @@
 #include "LocAcc.h"
 
-LocAcc::LocAcc(void)
-	: Account(), crd_taken(0),
-	loc_lim(0), crd_return(0) {};
-
 LocAcc::LocAcc(
 	Account& acc, size_t crd_taken,
 	size_t loc_lim, double crd_return)

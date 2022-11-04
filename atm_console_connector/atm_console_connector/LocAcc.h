@@ -6,7 +6,7 @@
 
 class LocAcc : public Account {
 public:
-	LocAcc(void);
+	LocAcc(void) = default;
 
 	LocAcc(
 		Account& acc, size_t crd_taken,
@@ -20,6 +20,9 @@ public:
 		bool is_blocked, double atm_fee,
 		double intrest, size_t crd_taken,
 		size_t loc_lim, double crd_return);
+
+	LocAcc(const LocAcc&) = default;
+	LocAcc& operator=(const LocAcc&) = default;
 
 	~LocAcc() = default;
 

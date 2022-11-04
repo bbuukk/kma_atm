@@ -12,7 +12,6 @@ std::string& Repo::get_atm_info(size_t mach_id) {
 
     std::string* atm_info = new std::string;
 
-
     do {
         while (res->next()) {
             *atm_info = res->getString("atm_info");

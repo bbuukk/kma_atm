@@ -3,13 +3,6 @@
 #include <memory> 
 #include <string>
 
-Account::Account(void)
-	: acc_id(0), dgt_code(0), off_id(0),
-	clnt_id(0), acc_type(0), acc_num(""),
-	balance(0), open_date(""), is_blocked(0),
-	atm_fee(0), intrest(0) {};
-
-
 Account::Account(size_t acc_id, size_t dgt_code,
 		 size_t off_id, size_t clnt_id,
 		 size_t acc_type, std::string acc_num,
