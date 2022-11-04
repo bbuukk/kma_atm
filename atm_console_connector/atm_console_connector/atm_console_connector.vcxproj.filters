@@ -27,6 +27,15 @@
     <Filter Include="Source Files\DB">
       <UniqueIdentifier>{286edc6d-2e79-41ac-9f11-b3e3a8e2d09b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Modules\Account">
+      <UniqueIdentifier>{671e543a-cd24-4713-a1ea-0ac9954cbe8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Transaction">
+      <UniqueIdentifier>{827ae449-be9a-45d4-8505-79ef25255d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Office">
+      <UniqueIdentifier>{35d0d142-e219-44ca-b5ce-e70085ddaaf1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UniqTesting.cpp">
@@ -35,52 +44,55 @@
     <ClCompile Include="ProcedureReturnRSTesting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transaction.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="CheckAcc.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Acc.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="SvAcc.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="LocAcc.cpp">
-      <Filter>Source Files\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="DB.cpp">
-      <Filter>Source Files\DB</Filter>
-    </ClCompile>
-    <ClCompile Include="Repo.cpp">
       <Filter>Source Files\DB</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Acc.cpp">
+      <Filter>Source Files\Modules\Account</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckAcc.cpp">
+      <Filter>Source Files\Modules\Account</Filter>
+    </ClCompile>
+    <ClCompile Include="LocAcc.cpp">
+      <Filter>Source Files\Modules\Account</Filter>
+    </ClCompile>
+    <ClCompile Include="SvAcc.cpp">
+      <Filter>Source Files\Modules\Account</Filter>
+    </ClCompile>
+    <ClCompile Include="Transaction.cpp">
+      <Filter>Source Files\Modules\Transaction</Filter>
+    </ClCompile>
+    <ClCompile Include="Office.cpp">
+      <Filter>Source Files\Modules\Office</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Acc.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Transaction.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="CheckAcc.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="SvAcc.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="LocAcc.h">
-      <Filter>Source Files\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="DB.h">
       <Filter>Source Files\DB</Filter>
     </ClInclude>
     <ClInclude Include="Repo.h">
       <Filter>Source Files\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="Acc.h">
+      <Filter>Source Files\Modules\Account</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckAcc.h">
+      <Filter>Source Files\Modules\Account</Filter>
+    </ClInclude>
+    <ClInclude Include="LocAcc.h">
+      <Filter>Source Files\Modules\Account</Filter>
+    </ClInclude>
+    <ClInclude Include="SvAcc.h">
+      <Filter>Source Files\Modules\Account</Filter>
+    </ClInclude>
+    <ClInclude Include="Transaction.h">
+      <Filter>Source Files\Modules\Transaction</Filter>
+    </ClInclude>
+    <ClInclude Include="Office.h">
+      <Filter>Source Files\Modules\Office</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

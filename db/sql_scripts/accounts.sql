@@ -14,17 +14,18 @@
 -- • get_acc_tp    	  	  -- returns acc_type 			-- by acc_id
 --
 
+
 drop procedure if exists get_acc_info;
 delimiter //
 create procedure get_acc_info(IN acc_id INT) 
 begin 
-	select acc_num, date_open, balance, is_blocked, tps.name, tps.descript
+	select acc_num, balance, open_date, is_blocked
     from Accounts as accs
-    inner join Account_types as tps
-    on tps.account_type = accs.account_type
-    where acc_id = accs.account_id;
+    where acc_id = accs.acc_id;
 end //
 delimiter ;
+
+call get_acc_info(1);
 
 drop procedure if exists get_acc_off_info;
 delimiter //
@@ -43,11 +44,13 @@ drop procedure if exists get_acc_balance_info;
 delimiter //
 create procedure get_acc_balance_info(IN acc_id INT) 
 begin 
-	select balance, digital_code
+	select balance, dgt_code
     from Accounts as accs
-    where acc_id = accs.account_id;
+    where acc_id = accs.acc_id;
 end //
 delimiter ;
+
+call get_acc_balance_info(1);
 
 drop procedure if exists block_acc;
 delimiter //

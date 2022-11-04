@@ -8,17 +8,11 @@
 class DB {
 public:
 
-	DB();
-	DB(std::string server,
-	   std::string username,
-	   std::string password);
-	~DB();
+	DB() = default;
+
+	~DB() = default;
 
 	sql::Connection*& getConnection();
 
-
 private:
-	std::string server;
-	std::string username;
-	std::string password;
 };

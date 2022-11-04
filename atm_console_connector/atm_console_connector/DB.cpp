@@ -3,32 +3,17 @@
 #include "DB.h"
 
 
-
-
-DB::DB()
-	: server(nullptr),
-	  username(nullptr),
-	  password(nullptr){};
-
-DB::DB(
-	std::string server,
-	std::string username,
-	std::string password)
-	: server(server),
-	  username(username),
-	  password(password) {};
-
-DB::~DB(){}
-
 sql::Connection*& DB::getConnection()
 {
+	sql::ConnectOptionsMap connection_properties;
 
-    sql::Connection* con;
+	connection_properties["hostName"] = sql::SQLString("tcp://automatedmachinetellerdb.cuccuzhaeiiv.eu-central-1.rds.amazonaws.com:3306");
+	connection_properties["userName"] = sql::SQLString("tgd_nWaA");
+	connection_properties["password"] = sql::SQLString("ba9s5JNgN3d4AkQ");
+	connection_properties["CLIENT_MULTI_STATEMENTS"] = (true);
 
-    sql::Driver* driver;
-
-    driver = get_driver_instance();
-    con = driver->connect(server, username, password);
+	sql::Driver* driver(get_driver_instance());
+    sql::Connection* con(driver->connect(connection_properties));
     con->setSchema("atm");
 
 	std::cout << "Successfully connected" << "\n";

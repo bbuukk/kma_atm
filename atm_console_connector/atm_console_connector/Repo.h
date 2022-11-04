@@ -8,22 +8,25 @@
 
 #include <mysql/jdbc.h>
 
+namespace epo {
+	void test(void);
+}
+
+
 class Repo {
 public:
 
-	Repo();
-	Repo(sql::Connection*& con);
-	~Repo();
+	Repo(void) = default;
 
-	Acc& getAccInfo(int acc_id);
+	inline Repo(sql::Connection*& con)
+		: con(con) {};
+
+	~Repo() = default;
+
+	Acc& getAccInfo(size_t acc_id);
 	void test(size_t acc_id);
 	Acc& getAccBalanceInfo(size_t acc_id);
 
-
-
 private:
 	std::unique_ptr<sql::Connection> con;
-	/*std::unique_ptr<sql::PreparedStatement> pstmt;
-	std::unique_ptr<sql::Statement> stmt;
-	std::unique_ptr<sql::ResultSet> res;*/
 };
