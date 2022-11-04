@@ -1,16 +1,16 @@
-#include "Acc.h"
+#include "Account.h"
 
 #include <memory> 
 #include <string>
 
-Acc::Acc(void)
+Account::Account(void)
 	: acc_id(0), dgt_code(0), off_id(0),
 	clnt_id(0), acc_type(0), acc_num(""),
 	balance(0), open_date(""), is_blocked(0),
 	atm_fee(0), intrest(0) {};
 
 
-Acc::Acc(size_t acc_id, size_t dgt_code,
+Account::Account(size_t acc_id, size_t dgt_code,
 		 size_t off_id, size_t clnt_id,
 		 size_t acc_type, std::string acc_num,
 		 double balance, std::string open_date,
@@ -22,7 +22,7 @@ Acc::Acc(size_t acc_id, size_t dgt_code,
 	  balance(balance), open_date(std::move(open_date)),
 	  is_blocked(0), atm_fee(0), intrest(0) {};
 
-std::ostream& Acc::print(std::ostream& os) const {
+std::ostream& Account::print(std::ostream& os) const {
 	os << "Account id is: " << acc_id<< "\n";
 	os << "Digital code is:" << dgt_code<< "\n";
 	os << "Office id is: " << off_id<< "\n";

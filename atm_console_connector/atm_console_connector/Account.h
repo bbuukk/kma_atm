@@ -6,24 +6,24 @@
 #include <mysql/jdbc.h>
 
 //Account
-class Acc {
+class Account {
 public:
-	Acc(void);
+	Account(void);
 
-	Acc(size_t acc_id, size_t dgt_code,
+	Account(size_t acc_id, size_t dgt_code,
 		size_t off_id, size_t clnt_id,
 		size_t acc_type, std::string acc_num,
 		double balance, std::string open_date,
 		bool is_blocked, double atm_fee,
 		double intrest);
 	
-	Acc(const Acc&) = default;
-	Acc& operator=(const Acc&) = default;
+	Account(const Account&) = default;
+	Account& operator=(const Account&) = default;
 
-	Acc& operator=(Acc&&) = default;
-	Acc(Acc&&) noexcept = default;
+	Account& operator=(Account&&) = default;
+	Account(Account&&) noexcept = default;
 	
-	virtual ~Acc() = default;
+	virtual ~Account() = default;
 
 	//getters
 	inline size_t getAccId() const { return acc_id; };
@@ -40,14 +40,14 @@ public:
 	inline double getAtmFee() const { return atm_fee; };
 	inline double getIntrest() const { return intrest; };
 
-	friend std::ostream& operator<<(std::ostream& os, const Acc& acc) {
+	friend std::ostream& operator<<(std::ostream& os, const Account& acc) {
 		return acc.print(os);
 	}
 
 protected:
 	virtual std::ostream& print(std::ostream& os) const;
 
-	void swap(Acc& first, Acc& second); // nothrow
+	void swap(Account& first, Account& second); // nothrow
 	
 
 	size_t acc_id;

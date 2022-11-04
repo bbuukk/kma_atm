@@ -1,15 +1,15 @@
 #pragma once
 
-#include "Acc.h"
+#include "Account.h"
 
 #include <mysql/jdbc.h>
 
-class LocAcc : public Acc {
+class LocAcc : public Account {
 public:
 	LocAcc(void);
 
 	LocAcc(
-		Acc& acc, size_t crd_taken,
+		Account& acc, size_t crd_taken,
 		size_t loc_lim, double crd_return);
 
 	LocAcc(

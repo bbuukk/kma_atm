@@ -1,10 +1,10 @@
 #include "SvAcc.h"
 
 SvAcc::SvAcc(void)
-	: Acc(), trans_lim(0) {};
+	: Account(), trans_lim(0) {};
 
-SvAcc::SvAcc(Acc& acc, size_t trans_lim)
-	: Acc(
+SvAcc::SvAcc(Account& acc, size_t trans_lim)
+	: Account(
 		acc.getAccId(), acc.getDgtCode(),
 		acc.getOffId(), acc.getClntId(),
 		acc.getAccType(), acc.getAccNum(),
@@ -19,7 +19,7 @@ SvAcc::SvAcc(
 	double balance, std::string  open_date,
 	bool is_blocked, double atm_fee,
 	double intrest, size_t trans_lim)
-	: Acc(
+	: Account(
 		acc_id, dgt_code, off_id,
 		clnt_id, acc_type, acc_num,
 		balance, open_date, is_blocked,
@@ -28,7 +28,7 @@ SvAcc::SvAcc(
 
 
 std::ostream& SvAcc::print(std::ostream& os) const {
-	return Acc::print(os) << "Transaction limit is: " << trans_lim << "\n";
+	return Account::print(os) << "Transaction limit is: " << trans_lim << "\n";
 }
 
 

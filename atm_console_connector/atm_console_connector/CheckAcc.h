@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Acc.h"
+#include "Account.h"
 
 #include <mysql/jdbc.h>
 
-class CheckAcc : public Acc {
+class CheckAcc : public Account {
 public:
 	CheckAcc(void);
 
-	CheckAcc(Acc&, size_t overdraft_lim);
+	CheckAcc(Account&, size_t overdraft_lim);
 
 	CheckAcc(size_t acc_id, size_t dgt_code,
 			 size_t off_id, size_t clnt_id,

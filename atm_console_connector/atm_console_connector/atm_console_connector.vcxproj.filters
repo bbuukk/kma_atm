@@ -36,6 +36,9 @@
     <Filter Include="Source Files\Modules\Office">
       <UniqueIdentifier>{35d0d142-e219-44ca-b5ce-e70085ddaaf1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\DB\Repository">
+      <UniqueIdentifier>{ac5e2506-3d3a-4d9a-b83f-7b4ba1225957}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UniqTesting.cpp">
@@ -50,7 +53,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Acc.cpp">
+    <ClCompile Include="Account.cpp">
       <Filter>Source Files\Modules\Account</Filter>
     </ClCompile>
     <ClCompile Include="CheckAcc.cpp">
@@ -68,15 +71,21 @@
     <ClCompile Include="Office.cpp">
       <Filter>Source Files\Modules\Office</Filter>
     </ClCompile>
+    <ClCompile Include="Account_Repo.cpp">
+      <Filter>Source Files\DB\Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="Office_Repo.cpp">
+      <Filter>Source Files\DB\Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="Transaction_Repo.cpp">
+      <Filter>Source Files\DB\Repository</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DB.h">
       <Filter>Source Files\DB</Filter>
     </ClInclude>
-    <ClInclude Include="Repo.h">
-      <Filter>Source Files\DB</Filter>
-    </ClInclude>
-    <ClInclude Include="Acc.h">
+    <ClInclude Include="Account.h">
       <Filter>Source Files\Modules\Account</Filter>
     </ClInclude>
     <ClInclude Include="CheckAcc.h">
@@ -93,6 +102,9 @@
     </ClInclude>
     <ClInclude Include="Office.h">
       <Filter>Source Files\Modules\Office</Filter>
+    </ClInclude>
+    <ClInclude Include="Repo.h">
+      <Filter>Source Files\DB\Repository</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

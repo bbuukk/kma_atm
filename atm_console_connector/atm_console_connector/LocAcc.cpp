@@ -1,13 +1,13 @@
 #include "LocAcc.h"
 
 LocAcc::LocAcc(void)
-	: Acc(), crd_taken(0),
+	: Account(), crd_taken(0),
 	loc_lim(0), crd_return(0) {};
 
 LocAcc::LocAcc(
-	Acc& acc, size_t crd_taken,
+	Account& acc, size_t crd_taken,
 	size_t loc_lim, double crd_return)
-	: Acc(
+	: Account(
 		acc.getAccId(), acc.getDgtCode(),
 		acc.getOffId(), acc.getClntId(),
 		acc.getAccType(), acc.getAccNum(),
@@ -24,7 +24,7 @@ LocAcc::LocAcc(
 	bool is_blocked, double atm_fee,
 	double intrest, size_t crd_taken,
 	size_t loc_lim, double crd_return)
-	: Acc(
+	: Account(
 		acc_id, dgt_code, off_id,
 		clnt_id, acc_type, acc_num,
 		balance, open_date, is_blocked,
@@ -32,7 +32,7 @@ LocAcc::LocAcc(
 		loc_lim(loc_lim), crd_return(crd_return) {};
 
 std::ostream& LocAcc::print(std::ostream& os) const {
-	return Acc::print(os) 
+	return Account::print(os) 
 		<< "Credit is: " << crd_taken << "\n"
 		<< "Creditn limit is: " << loc_lim << "\n"
 		<< "Credit returned: " << crd_return << "\n";

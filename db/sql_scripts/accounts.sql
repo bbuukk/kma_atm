@@ -2,9 +2,9 @@
 
 				-- procedures
 --
--- • get_acc_info    	  -- get info about bank account   				   -- by acc_id
--- • get_acc_off_info     -- get info about office 						   -- by acc_id 
--- • get_acc_balance_info -- get balance & dgt_code 	   				   -- by acc_id
+-- • get_acc    	  -- get info about bank account   				   -- by acc_id
+-- • get_acc_off     -- get info about office 						   -- by acc_id 
+-- • //not realized // get_acc_balance_info -- get balance & dgt_code 	   				   -- by acc_id
 -- • block_acc            -- change is_blocked in account record to true   -- by acc_id
 --
 				-- functions
@@ -15,9 +15,9 @@
 --
 
 
-drop procedure if exists get_acc_info;
+drop procedure if exists get_acc;
 delimiter //
-create procedure get_acc_info(IN acc_id INT) 
+create procedure get_acc(IN acc_id INT) 
 begin 
 	select acc_num, balance, open_date, is_blocked
     from Accounts as accs
@@ -25,32 +25,35 @@ begin
 end //
 delimiter ;
 
-call get_acc_info(1);
 
-drop procedure if exists get_acc_off_info;
+
+show columns from Offices;
+
+drop procedure if exists get_acc_off;
 delimiter //
-create procedure get_acc_off_info(IN acc_id INT) 
+create procedure get_acc_off(IN acc_id INT) 
 begin 
-	select office_city, office_street,
-           office_building
+	select head_off, off_city,
+		   off_street, postal
     from Accounts as accs
 	inner join Offices as offs
-    on offs.office_id = accs.office_id
-    where acc_id = accs.account_id;
-end //
-delimiter ;
-
-drop procedure if exists get_acc_balance_info;
-delimiter //
-create procedure get_acc_balance_info(IN acc_id INT) 
-begin 
-	select balance, dgt_code
-    from Accounts as accs
+    on offs.off_id = accs.off_id
     where acc_id = accs.acc_id;
 end //
 delimiter ;
 
-call get_acc_balance_info(1);
+call get_acc_off(2);
+
+
+-- drop procedure if exists get_acc_balance_info;
+-- delimiter //
+-- create procedure get_acc_balance_info(IN acc_id INT) 
+-- begin 
+-- 	select balance, dgt_code
+--     from Accounts as accs
+--     where acc_id = accs.acc_id;
+-- end //
+-- delimiter ;
 
 drop procedure if exists block_acc;
 delimiter //
@@ -58,6 +61,16 @@ create procedure block_acc(IN acc_id INT)
 begin 
 	update Accounts as accs
 	set is_blocked = 1
+	where acc_id = accs.acc_id;
+end //
+delimiter ;
+
+drop procedure if exists unblock_acc;
+delimiter //
+create procedure unblock_acc(IN acc_id INT) 
+begin 
+	update Accounts as accs
+	set is_blocked = 0
 	where acc_id = accs.acc_id;
 end //
 delimiter ;

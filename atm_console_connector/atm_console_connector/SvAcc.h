@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Acc.h"
+#include "Account.h"
 
 #include <mysql/jdbc.h>
 
-class SvAcc : public Acc {
+class SvAcc : public Account {
 public:
 	SvAcc(void);
 
-	SvAcc(Acc&, size_t trans_lim);
+	SvAcc(Account&, size_t trans_lim);
 
 	SvAcc(size_t acc_id, size_t dgt_code,
 		size_t off_id, size_t clnt_id,

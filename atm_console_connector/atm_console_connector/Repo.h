@@ -1,16 +1,13 @@
 #pragma once
 
-#include "Acc.h"
-
 #include <string>
 #include <ostream>
 #include <memory>
 
 #include <mysql/jdbc.h>
 
-namespace epo {
-	void test(void);
-}
+#include "Account.h"
+#include "Office.h"
 
 
 class Repo {
@@ -23,10 +20,17 @@ public:
 
 	~Repo() = default;
 
-	Acc& getAccInfo(size_t acc_id);
-	void test(size_t acc_id);
-	Acc& getAccBalanceInfo(size_t acc_id);
+
+	//Account repo
+	Account& get_acc(size_t acc_id);
+	void block_acc(size_t acc_id);
+	void unblock_acc(size_t acc_id);
+	//Account& get_acc_balance(size_t acc_id);
+
+	//Office repo
+	Office& get_acc_off(size_t acc_id);
 
 private:
 	std::unique_ptr<sql::Connection> con;
 };
+

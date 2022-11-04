@@ -105,19 +105,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Acc.cpp" />
+    <ClCompile Include="Account.cpp" />
     <ClCompile Include="CheckAcc.cpp" />
     <ClCompile Include="DB.cpp" />
     <ClCompile Include="LocAcc.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Office.cpp" />
+    <ClCompile Include="Office_Repo.cpp" />
     <ClCompile Include="ProcedureReturnRSTesting.cpp" />
+    <ClCompile Include="Account_Repo.cpp" />
     <ClCompile Include="SvAcc.cpp" />
     <ClCompile Include="Transaction.cpp" />
+    <ClCompile Include="Transaction_Repo.cpp" />
     <ClCompile Include="UniqTesting.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Acc.h" />
+    <ClInclude Include="Account.h" />
     <ClInclude Include="CheckAcc.h" />
     <ClInclude Include="DB.h" />
     <ClInclude Include="LocAcc.h" />

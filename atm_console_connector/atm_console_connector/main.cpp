@@ -1,6 +1,6 @@
 
 #include "DB.h"
-#include "Acc.h"
+#include "Account.h"
 #include "CheckAcc.h"
 #include "Repo.h"
 #include "SvAcc.h"
@@ -15,13 +15,20 @@ int main(int argc, char* argv[]) {
 
 	Repo repo(db.getConnection());
 
+	//Account acc(repo.get_acc(2));
+	//
+	//std::cout << "=========Account=========" << std::endl;
+	//std::cout << acc << "\n";
+	//std::cout << "==================";
+
+	//Office off(repo.get_acc_off(2));
+	//
+	//std::cout << "=========Office=========" << std::endl;
+	//std::cout << off << "\n";
+	//std::cout << "==================";
 
 
-	Acc acc(repo.getAccInfo(2));
-	
-	std::cout << "=========Acc=========" << std::endl;
-	std::cout << acc << "\n";
-	std::cout << "==================";
+	repo.unblock_acc(1);
 
 	
 
