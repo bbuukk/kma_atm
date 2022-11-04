@@ -1,6 +1,7 @@
 
 #include "DB.h"
 #include "Acc.h"
+#include "CheckAcc.h"
 #include "Repo.h"
 
 #include <QtCore/QCoreApplication>
@@ -17,14 +18,23 @@ int main(int argc, char* argv[]) {
 
 	Repo repo(db.getConnection());
 
-	//std::unique_ptr<Acc> acc = std::make_unique<Acc>(repo.getAccInfo(1));
-	Acc* acc(repo.getAccInfo(1));
+	Acc acc(repo.getAccInfo(2));
+	
+	std::cout << "=========Acc=========" << std::endl;
+	std::cout << acc << "\n";
+	std::cout << "==================";
 
+	Acc acc2(repo.getAccInfo(2));
 
-	std::cout << "POST: NUMBER is: " << acc->getAccNum() << "\n";
-	std::cout << "POST: BLNC is: " << acc->getBalance() << "\n";
-	std::cout << "POST: OPEN is: " << acc->getOpenDate() << "\n";
-	std::cout << "POST: BLOCKED is: " << acc->getIsBlocked() << "\n";
+	std::cout << "=========Acc=========" << std::endl;
+	std::cout << acc2 << "\n";
+	std::cout << "==================";
+
+	//CheckAcc checking(acc2, 0);
+
+	//std::cout << "=======Checking======" << std::endl;
+	//std::cout << checking << "\n";
+	//std::cout << "==================";
 
 	system("pause");
 	return a.exec();

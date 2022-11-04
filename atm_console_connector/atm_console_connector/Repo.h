@@ -18,7 +18,9 @@ public:
 	Repo(sql::Connection*& con);
 	~Repo();
 
-	Acc* getAccInfo(int acc_id);
+	Acc& getAccInfo(int acc_id);
+	Acc& getAccBalanceInfo(size_t acc_id);
+
 
 
 private:

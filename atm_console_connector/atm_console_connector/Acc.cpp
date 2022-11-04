@@ -3,15 +3,15 @@
 #include <memory> 
 #include <string>
 
-Acc::Acc()
+Acc::Acc(void)
 	: acc_id(0), dgt_code(0), off_id(0),
 	clnt_id(0), acc_type(0), acc_num(nullptr),
 	balance(0), open_date(nullptr), is_blocked(0),
 	atm_fee(0), intrest(0) {};
 
-Acc::Acc(int acc_id, int dgt_code,
-		 int off_id, int clnt_id,
-		 int acc_type, std::string acc_num,
+Acc::Acc(size_t acc_id, size_t dgt_code,
+		 size_t off_id, size_t clnt_id,
+		 size_t acc_type, std::string acc_num,
 		 double balance, std::string open_date,
 		 bool is_blocked, double atm_fee,
 		 double intrest)
@@ -21,25 +21,20 @@ Acc::Acc(int acc_id, int dgt_code,
 	  balance(balance), open_date(std::move(open_date)),
 	  is_blocked(0), atm_fee(0), intrest(0) {};
 
-	
-Acc::~Acc() {  };
 
-
-std::ostream& operator<<(std::ostream& os, const Acc& acc)
-{
-	os << "=====================================" << "\n";
-	os << "Account id is: " << acc.getAccId() << "\n";
-	os << "Digital code is:" << acc.getDgtCode() << "\n";
-	os << "Office id is: " << acc.getOffId() << "\n";
-	os << "Client id is: " << acc.getClntId() << "\n";
-	os << "Account type is: " << acc.getAccType() << "\n";
-	os << "Account number is: " << acc.getAccNum().c_str() << "\n";
-	os << "Balance is: " << acc.getBalance() << "\n";
-	os << "Open date is: " << acc.getOpenDate().c_str() << "\n";
-	os << "Is Blocked: " << acc.getIsBlocked() << "\n";
-	os << "ATM fee is:: " << acc.getAtmFee() << "\n";
-	os << "Intrest is: " << acc.getIntrest() << "\n";
-	os << "=====================================" << "\n";
-
+std::ostream& Acc::print(std::ostream& os) const {
+	os << "Account id is: " << acc_id<< "\n";
+	os << "Digital code is:" << dgt_code<< "\n";
+	os << "Office id is: " << off_id<< "\n";
+	os << "Client id is: " << clnt_id << "\n";
+	os << "Account type is: " << acc_type<< "\n";
+	os << "Account number is: " << acc_num.c_str() << "\n";
+	os << "Balance is: " << balance << "\n";
+	os << "Open date is: " << open_date.c_str() << "\n";
+	os << std::boolalpha;
+	os << "Is Blocked: " << is_blocked << "\n";
+	os << std::noboolalpha;
+	os << "ATM fee is:: " << atm_fee << "\n";
+	os << "Intrest is: " << intrest << "\n";
 	return os;
 }
