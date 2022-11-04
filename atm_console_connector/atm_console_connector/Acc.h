@@ -12,14 +12,13 @@
 class Acc {
 public:
 	Acc();
+
 	Acc(int acc_id, int dgt_code,
 		int off_id, int clnt_id,
 		int acc_type, std::string acc_num,
 		double balance, std::string  open_date,
 		bool is_blocked, double atm_fee,
 		double intrest);
-
-	Acc(const Acc&);
 	
 	~Acc();
 
@@ -32,7 +31,7 @@ public:
 	inline int getAccType() const { return acc_type; };
 
 	inline std::string getAccNum() const { return acc_num; };
-	inline double getBalance() const { return balance; };
+	inline long double getBalance() const { return balance; };
 	inline std::string getOpenDate() const { return open_date; };
 	inline bool getIsBlocked() const { return is_blocked; };
 
@@ -47,7 +46,7 @@ protected:
 	int acc_type;
 
 	std::string acc_num;
-	double balance;
+	long double balance;
 	std::string open_date;
 	bool is_blocked;
 	

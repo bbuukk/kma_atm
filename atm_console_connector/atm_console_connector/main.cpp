@@ -17,16 +17,14 @@ int main(int argc, char* argv[]) {
 
 	Repo repo(db.getConnection());
 
-	Acc acc = repo.getAccInfo(1);
-
-	std::cout << "Account is :" << acc;
-
-	std::cout << "NUMBER is: " << acc.getAccNum() << "\n";
-	std::cout << "BLNC is: " << acc.getBalance() << "\n";
-	std::cout << "OPEN is: " << acc.getOpenDate() << "\n";
-	std::cout << "BLOCKED is: " << acc.getIsBlocked() << "\n";
+	//std::unique_ptr<Acc> acc = std::make_unique<Acc>(repo.getAccInfo(1));
+	Acc* acc(repo.getAccInfo(1));
 
 
+	std::cout << "POST: NUMBER is: " << acc->getAccNum() << "\n";
+	std::cout << "POST: BLNC is: " << acc->getBalance() << "\n";
+	std::cout << "POST: OPEN is: " << acc->getOpenDate() << "\n";
+	std::cout << "POST: BLOCKED is: " << acc->getIsBlocked() << "\n";
 
 	system("pause");
 	return a.exec();
