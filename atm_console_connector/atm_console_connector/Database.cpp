@@ -1,9 +1,9 @@
 #pragma once
 
-#include "DB.h"
+#include "Database.h"
 
 
-sql::Connection*& DB::get_connection()
+sql::Connection*& Database::get_connection()
 {
 	sql::ConnectOptionsMap connection_properties;
 

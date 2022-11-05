@@ -1,7 +1,5 @@
 #pragma once
 
-#include "ATM.h"
-
 #include <mysql/jdbc.h>
 
 namespace mdls {
@@ -23,9 +21,9 @@ namespace mdls {
 
 		~ATM() = default;
 
-		inline std::string get_num() const { return num; };
-		inline std::string get_city() const { return city; };
-		inline std::string get_street() const { return street; };
+		inline const std::string& get_num() const { return num; };
+		inline const std::string& get_city() const { return city; };
+		inline const std::string& get_street() const { return street; };
 
 	private:
 		std::string num;

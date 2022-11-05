@@ -24,9 +24,9 @@ namespace mdls {
 		~Office() = default;
 
 		inline bool is_head_office() const { return head_off; };
-		inline std::string get_city() const { return city; };
-		inline std::string get_street() const { return street; };
-		inline std::string get_postal() const { return postal; };
+		inline const std::string& get_city() const { return city; };
+		inline const std::string& get_street() const { return street; };
+		inline const std::string& get_postal() const { return postal; };
 
 	private:
 

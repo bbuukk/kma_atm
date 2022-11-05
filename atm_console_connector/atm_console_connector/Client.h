@@ -22,9 +22,9 @@ namespace mdls {
 
 		~Client() = default;
 
-		inline std::string get_first_name() const { return f_name; };
-		inline std::string get_last_name() const { return l_name; };
-		inline std::string get_mobile_phone() const { return mobile_phone; };
+		inline const std::string& get_first_name() const { return f_name; };
+		inline const std::string& get_last_name() const { return l_name; };
+		inline const std::string& get_mobile_phone() const { return mobile_phone; };
 
 	private:
 		std::string f_name;

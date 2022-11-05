@@ -22,11 +22,11 @@ namespace mdls {
 
 		~Card() = default;
 
-		inline std::string get_pan() const { return pan; };
+		inline const std::string& get_pan() const { return pan; };
 		inline size_t get_pin_code() const { return pin_code; };
-		inline std::string get_expr_date() const { return expr_date; };
+		inline const std::string& get_expr_date() const { return expr_date; };
 		inline size_t get_cvv() const { return cvv; };
-		inline std::string get_given_date() const { return given_date; };
+		inline const std::string& get_given_date() const { return given_date; };
 
 	private:
 		std::string pan;

@@ -27,10 +27,10 @@ namespace mdls {
 		virtual ~Account() = default;
 
 		//getters
-		inline std::string get_num() const { return num; };
+		inline const std::string& get_num() const { return num; };
 		inline size_t get_digital_code() const { return dgt_code; }; //get currency digital code
 		inline double get_balance() const { return balance; };
-		inline std::string get_open_date() const { return open_date; };
+		inline const std::string& get_open_date() const { return open_date; };
 		inline bool is_blocked() const { return blocked; };
 		inline double get_atm_fee() const { return atm_fee; };
 		inline double get_intrest() const { return intrest; };
