@@ -1,5 +1,5 @@
 		-- account relating scripts
-
+        
 				-- procedures
 --
 -- • get_transaction    	  	  -- get transaction number with account number of payer and account number of payee 					
@@ -198,70 +198,5 @@ begin
 end //
 delimiter ;
 
+	
 
-
-
--- Transaction(
--- 		std::string num,
--- 		std::string acc_from,
--- 		std::string acc_to,
--- 		size_t sum, std::string date,
--- 		bool successful, std::string descript);
-
--- id	int unsigned	NO	PRI		auto_increment
--- num	varchar(30)	NO	UNI		
--- atm_id	int unsigned	YES	MUL		
--- acc_from	int unsigned	NO	MUL		
--- acc_to	int unsigned	YES	MUL		
--- sum	int unsigned	NO			
--- date	date	NO			
--- successful	tinyint	NO			
--- descript	tinytext	NO		
-
-
--- should check for correcteness of (DATE_FORMAT(NOW() ,'%Y %m 01') AND NOW();) expression
-drop procedure if exists get_acc_trans_curr_month;
-delimiter //
-create procedure get_acc_trans_curr_month(IN acc_id INT) 
-begin 
-	call get_acc_trans_by_month(acc_id, DATE_FORMAT(NOW() ,'%Y %m 01'));
-end //
-delimiter ;
-
-drop procedure if exists get_acc_trans_by_month;
-delimiter //
-create procedure get_acc_trans_by_month(IN acc_id INT, in t_month date) 
-begin 
-	select  acc_from, acc_to, t_sum,
-			t_date, successful, off_city,
-            atm_street, atm_building
-    from Transactions as t
-    inner join AutoTellerMachine as atm
-    on atm.mach_id = t.mach_id
-    inner join Offices as offs
-    on offs.off_id = atm.off_id
-    where (acc_from = acc_id OR 
-		  acc_to   = acc_id) AND
-		  month(t_date) = month(t_month) AND
-          year(t_month) = year(now());
-end //
-delimiter ;
-
-
-drop procedure if exists get_acc_trans_by_date;
-delimiter //
-create procedure get_acc_trans_by_date(in acc_id int, in tns_date date) 
-begin 
-	select  acc_from, acc_to, t_sum,
-			t.t_date, successful, off_city,
-            atm_street, atm_building
-    from Transactions as t
-    inner join AutoTellerMachine as atm
-    on atm.mach_id = t.mach_id
-    inner join Offices as offs
-    on offs.off_id = atm.off_id
-    where (acc_from = acc_id OR 
-		  acc_to   = acc_id) AND
-		  t.t_date = tns_date;
-end //
-delimiter ;

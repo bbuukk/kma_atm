@@ -3,7 +3,7 @@
 #include <memory> 
 #include <string>
 
-Account::Account(
+mdls::Account::Account(
 		 std::string num, size_t dgt_code,
 		 double balance, std::string open_date,
 		 bool blocked, double atm_fee,
@@ -12,7 +12,7 @@ Account::Account(
 	     balance(balance), open_date(open_date),
 	     blocked(blocked), atm_fee(atm_fee), intrest(intrest) {};
 
-std::ostream& Account::print(std::ostream& os) const {
+std::ostream& mdls::Account::print(std::ostream& os) const {
 	os << "Account number: " << num.c_str() << "\n";
 	os << "Digital code:" << dgt_code<< "\n";
 	os << "Balance: " << balance << "\n";

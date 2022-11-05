@@ -1,6 +1,6 @@
 #include "Repo.h"
 
-ATM& Repo::get_atm(std::string num) {
+mdls::ATM& Repo::get_atm(std::string num) {
 
     std::string query = "call get_atm(?);";
 
@@ -10,11 +10,11 @@ ATM& Repo::get_atm(std::string num) {
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    ATM* atm;
+    mdls::ATM* atm;
 
     do {
         while (res->next()) {
-            atm = new ATM(
+            atm = new mdls::ATM(
                 res->getString("num"),
                 res->getString("city"),
                 res->getString("street"));

@@ -1,7 +1,7 @@
 
 #include "Transaction.h"
 
-Transaction::Transaction(
+mdls::Transaction::Transaction(
 	std::string num,
 	std::string acc_from,
 	std::string acc_to,
@@ -12,7 +12,7 @@ Transaction::Transaction(
 	  sum(sum), date(date), successful(successful),
 	  atm_num(atm_num), descript(descript) {};
 
-std::ostream& operator<<(std::ostream& os, const Transaction& trans) {
+std::ostream& operator<<(std::ostream& os, const mdls::Transaction& trans) {
 	return os
 		<< "Transaction number: " << trans.get_num() << "\n"
 		<< "Payer account number: " << trans.get_account_from() << "\n"

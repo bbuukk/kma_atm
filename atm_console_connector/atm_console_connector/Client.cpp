@@ -1,6 +1,6 @@
 #include "Client.h"
 
-Client::Client(
+mdls::Client::Client(
 	std::string f_name,
 	std::string l_name,
 	std::string mobile_phone)
@@ -9,7 +9,7 @@ Client::Client(
 	  mobile_phone(mobile_phone) {};
 
 
-std::ostream& operator<<(std::ostream& os, const Client& client) {
+std::ostream& operator<<(std::ostream& os, const mdls::Client& client) {
 	return os
 		<< "First name: " << client.get_first_name() << "\n"
 		<< "Last name:" << client.get_last_name() << "\n"

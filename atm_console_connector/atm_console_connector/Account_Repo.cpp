@@ -1,6 +1,7 @@
 #include "Repo.h"
+#include <vector>
 
-Account& Repo::get_acc(std::string num) {
+mdls::Account& Repo::get_acc(std::string num) {
 
     std::string query = "call get_acc(?);";
 
@@ -10,11 +11,11 @@ Account& Repo::get_acc(std::string num) {
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    Account* acc;
+    mdls::Account* acc;
 
     do {
         while (res->next()) {
-            acc = new Account(
+            acc = new mdls::Account(
                 res->getString("num"),
                 res->getUInt("dgt_code"),
                 res->getDouble("balance"),
@@ -29,7 +30,7 @@ Account& Repo::get_acc(std::string num) {
     return *acc;
 }
 
-Office& Repo::get_acc_office(std::string num) {
+mdls::Office& Repo::get_acc_office(std::string num) {
     
     std::string query = "call get_office(?);";
 
@@ -39,11 +40,11 @@ Office& Repo::get_acc_office(std::string num) {
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    Office* off;
+    mdls::Office* off;
 
     do {
         while (res->next()) {
-            off = new Office(
+            off = new mdls::Office(
                 res->getBoolean("head_off"),
                 res->getString("city"),
                 res->getString("street"),
@@ -76,11 +77,9 @@ void Repo::unblock_acc(std::string num) {
     pstmt->execute();
 }
 
+std::vector <mdls::Transaction>& Repo::get_all_acc_trans(std::string num) {
 
-//return vector
-Transaction& Repo::get_all_acc_trans(std::string num) {
-
-    std::string query = "call get_all_acc_trans(?);";
+    std::string query("call get_all_acc_trans(?);");
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         this->con->prepareStatement(query));
@@ -88,12 +87,12 @@ Transaction& Repo::get_all_acc_trans(std::string num) {
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    
+    std::vector <mdls::Transaction>* transs(new std::vector<mdls::Transaction>);
 
     do {
         while (res->next()) {
-            trans = new Transaction(
-
+            (*transs).push_back(
+                mdls::Transaction(
                 res->getString("num"),
                 res->getString("acc_from"),
                 res->getString("acc_to"),
@@ -102,11 +101,11 @@ Transaction& Repo::get_all_acc_trans(std::string num) {
                 res->getString("date"),
                 res->getBoolean("is_successful"),
                 res->getString("atm_num"),
-                res->getString("descript"));
+                res->getString("descript")));
         }
     } while (pstmt->getMoreResults());
 
-    return *trans;
+    return *transs;
 }
 
 
@@ -130,15 +129,3 @@ int Repo::count_all_acc_trans(std::string num) {
 
     return amount_of_trans;
 }
-
-
-
-
-
-//Account(
-//    std::string num, size_t dgt_code,
-//    double balance, std::string open_date,
-//    bool blocked, double atm_fee,
-//    double intrest);
-
-

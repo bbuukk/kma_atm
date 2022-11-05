@@ -24,30 +24,40 @@ public:
 
 	~Repo() = default;
 
-
 	//Account repo =============================
-	Account& get_acc(std::string num);
+	mdls::Account& get_acc(std::string num);
 
-	Office& get_acc_office(std::string num);
+	mdls::Office& get_acc_office(std::string num);
 	void block_acc(std::string num);
 	void unblock_acc(std::string num);
-	bool is_acc_blocked(size_t acc_id);
-	double get_acc_balance(size_t acc_id);
-	double get_acc_atm_fee(size_t acc_id);
-	size_t get_acc_type(size_t acc_id);
+
+	std::vector <mdls::Transaction>&
+		get_all_acc_trans(std::string num);
+	int count_all_acc_trans(std::string num);
 	//Account& get_acc_balance(size_t acc_id);
 
 	//ATM repo =============================
-	ATM& get_atm(std::string num);
+	mdls::ATM& get_atm(std::string num);
 
 	//Card repo =============================
-	Card& get_card(std::string pan);
+	mdls::Card& get_card(std::string pan);
 	void change_pin_code(
 		std::string pan, size_t pin_code);
 
-
 	//Transaction repo =============================
-	Transaction& get_transaction(std::string trans_num);
+	mdls::Transaction& get_transaction(std::string trans_num);
+	bool transact(
+		std::string atm_num,
+		std::string acc_from,
+		std::string acc_to,
+		size_t sum,
+		std::string description);
+	bool withdraw(
+		std::string atm_num,
+		std::string acc_from,
+		size_t sum,
+		std::string description);
+
 
 private:
 	std::unique_ptr<sql::Connection> con;

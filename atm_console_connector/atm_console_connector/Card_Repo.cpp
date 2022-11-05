@@ -1,6 +1,6 @@
 #include "Repo.h"
 
-Card& Repo::get_card(std::string pan) {
+mdls::Card& Repo::get_card(std::string pan) {
 
     std::string query = "call get_card(?);";
 
@@ -10,11 +10,11 @@ Card& Repo::get_card(std::string pan) {
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    Card* card;
+    mdls::Card* card;
 
     do {
         while (res->next()) {
-            card = new Card(
+            card = new mdls::Card(
                 res->getString("pan"),
                 res->getUInt("pin_code"),
                 res->getString("expr_date"),

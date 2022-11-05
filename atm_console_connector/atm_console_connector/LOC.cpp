@@ -1,6 +1,6 @@
 #include "LOC.h"
 
-LOC::LOC(
+mdls::LOC::LOC(
 	Account& acc, size_t crd_taken,
 	size_t loc_lim, double crd_return)
 	: Account(
@@ -10,7 +10,7 @@ LOC::LOC(
 		acc.get_intrest()), crd_taken(crd_taken),
 		loc_lim(loc_lim), crd_return(crd_return) {};
 
-LOC::LOC(
+mdls::LOC::LOC(
 	std::string num, int dgt_code,
 	int balance, std::string  open_date,
 	bool blocked, double atm_fee,
@@ -22,7 +22,7 @@ LOC::LOC(
 		intrest), crd_taken(crd_taken),
 		loc_lim(loc_lim), crd_return(crd_return) {};
 
-std::ostream& LOC::print(std::ostream& os) const {
+std::ostream& mdls::LOC::print(std::ostream& os) const {
 	return Account::print(os) 
 		<< "Credit is: " << crd_taken << "\n"
 		<< "Creditn limit is: " << loc_lim << "\n"

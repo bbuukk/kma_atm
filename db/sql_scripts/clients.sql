@@ -7,8 +7,6 @@
 				-- functions
 --
 
-show columns from Transactions;
-
 drop procedure if exists get_acc_client_info;
 delimiter //
 create procedure get_acc_client_info(IN acc_id INT) 

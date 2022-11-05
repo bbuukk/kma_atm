@@ -21,41 +21,41 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
-    <Filter Include="Source Files\Modules">
-      <UniqueIdentifier>{e9c43bd7-5c18-42ce-88b9-81692b502f51}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\DB">
       <UniqueIdentifier>{286edc6d-2e79-41ac-9f11-b3e3a8e2d09b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Modules\Account">
-      <UniqueIdentifier>{671e543a-cd24-4713-a1ea-0ac9954cbe8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Modules\Transaction">
-      <UniqueIdentifier>{827ae449-be9a-45d4-8505-79ef25255d15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Modules\Office">
-      <UniqueIdentifier>{35d0d142-e219-44ca-b5ce-e70085ddaaf1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\DB\Repository">
       <UniqueIdentifier>{ac5e2506-3d3a-4d9a-b83f-7b4ba1225957}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Modules\ATM">
-      <UniqueIdentifier>{a9f4f8ff-6d6b-44f7-94c1-0fb3243b7670}</UniqueIdentifier>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{e9c43bd7-5c18-42ce-88b9-81692b502f51}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Modules\Card">
-      <UniqueIdentifier>{e0ff324d-82a5-4480-a862-58f986740251}</UniqueIdentifier>
+    <Filter Include="Source Files\Models\Account">
+      <UniqueIdentifier>{671e543a-cd24-4713-a1ea-0ac9954cbe8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Modules\Client">
-      <UniqueIdentifier>{36dd14a4-5fae-4daa-8123-de09fab5e43b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Modules\Account\Checking">
+    <Filter Include="Source Files\Models\Account\Checking">
       <UniqueIdentifier>{363cf79d-123b-4062-be46-a2861d52fbeb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Modules\Account\Savings">
+    <Filter Include="Source Files\Models\Account\Savings">
       <UniqueIdentifier>{5287066f-6fb1-4029-bf35-752149fc8607}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Modules\Account\LOC">
+    <Filter Include="Source Files\Models\Account\LOC">
       <UniqueIdentifier>{5991bbd2-a50e-446c-b858-19aa2a241f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Transaction">
+      <UniqueIdentifier>{827ae449-be9a-45d4-8505-79ef25255d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Office">
+      <UniqueIdentifier>{35d0d142-e219-44ca-b5ce-e70085ddaaf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\ATM">
+      <UniqueIdentifier>{a9f4f8ff-6d6b-44f7-94c1-0fb3243b7670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Card">
+      <UniqueIdentifier>{e0ff324d-82a5-4480-a862-58f986740251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Client">
+      <UniqueIdentifier>{36dd14a4-5fae-4daa-8123-de09fab5e43b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,13 +72,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Account.cpp">
-      <Filter>Source Files\Modules\Account</Filter>
+      <Filter>Source Files\Models\Account</Filter>
     </ClCompile>
     <ClCompile Include="Transaction.cpp">
-      <Filter>Source Files\Modules\Transaction</Filter>
+      <Filter>Source Files\Models\Transaction</Filter>
     </ClCompile>
     <ClCompile Include="Office.cpp">
-      <Filter>Source Files\Modules\Office</Filter>
+      <Filter>Source Files\Models\Office</Filter>
     </ClCompile>
     <ClCompile Include="Account_Repo.cpp">
       <Filter>Source Files\DB\Repository</Filter>
@@ -93,25 +93,25 @@
       <Filter>Source Files\DB\Repository</Filter>
     </ClCompile>
     <ClCompile Include="ATM.cpp">
-      <Filter>Source Files\Modules\ATM</Filter>
+      <Filter>Source Files\Models\ATM</Filter>
     </ClCompile>
     <ClCompile Include="Card.cpp">
-      <Filter>Source Files\Modules\Card</Filter>
+      <Filter>Source Files\Models\Card</Filter>
     </ClCompile>
     <ClCompile Include="Card_Repo.cpp">
       <Filter>Source Files\DB\Repository</Filter>
     </ClCompile>
     <ClCompile Include="Client.cpp">
-      <Filter>Source Files\Modules\Client</Filter>
+      <Filter>Source Files\Models\Client</Filter>
     </ClCompile>
     <ClCompile Include="Checking.cpp">
-      <Filter>Source Files\Modules\Account\Checking</Filter>
+      <Filter>Source Files\Models\Account\Checking</Filter>
     </ClCompile>
     <ClCompile Include="Savings.cpp">
-      <Filter>Source Files\Modules\Account\Savings</Filter>
+      <Filter>Source Files\Models\Account\Savings</Filter>
     </ClCompile>
     <ClCompile Include="LOC.cpp">
-      <Filter>Source Files\Modules\Account\LOC</Filter>
+      <Filter>Source Files\Models\Account\LOC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,34 +119,34 @@
       <Filter>Source Files\DB</Filter>
     </ClInclude>
     <ClInclude Include="Account.h">
-      <Filter>Source Files\Modules\Account</Filter>
+      <Filter>Source Files\Models\Account</Filter>
     </ClInclude>
     <ClInclude Include="Transaction.h">
-      <Filter>Source Files\Modules\Transaction</Filter>
+      <Filter>Source Files\Models\Transaction</Filter>
     </ClInclude>
     <ClInclude Include="Office.h">
-      <Filter>Source Files\Modules\Office</Filter>
+      <Filter>Source Files\Models\Office</Filter>
     </ClInclude>
     <ClInclude Include="Repo.h">
       <Filter>Source Files\DB\Repository</Filter>
     </ClInclude>
     <ClInclude Include="ATM.h">
-      <Filter>Source Files\Modules\ATM</Filter>
+      <Filter>Source Files\Models\ATM</Filter>
     </ClInclude>
     <ClInclude Include="Card.h">
-      <Filter>Source Files\Modules\Card</Filter>
+      <Filter>Source Files\Models\Card</Filter>
     </ClInclude>
     <ClInclude Include="Client.h">
-      <Filter>Source Files\Modules\Client</Filter>
+      <Filter>Source Files\Models\Client</Filter>
     </ClInclude>
     <ClInclude Include="Checking.h">
-      <Filter>Source Files\Modules\Account\Checking</Filter>
+      <Filter>Source Files\Models\Account\Checking</Filter>
     </ClInclude>
     <ClInclude Include="Savings.h">
-      <Filter>Source Files\Modules\Account\Savings</Filter>
+      <Filter>Source Files\Models\Account\Savings</Filter>
     </ClInclude>
     <ClInclude Include="LOC.h">
-      <Filter>Source Files\Modules\Account\LOC</Filter>
+      <Filter>Source Files\Models\Account\LOC</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

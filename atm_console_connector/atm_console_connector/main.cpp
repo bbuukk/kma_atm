@@ -57,3 +57,11 @@ int main(int argc, char* argv[]) {
 	system("pause");
 	return a.exec();
 }
+
+
+namespace space{
+
+	class inner_space {
+
+	};
+}

@@ -10,7 +10,6 @@
 -- • is_card_acc_owner    	  -- returns bool if card client own card's account  -- by card_id
 --
 
-show columns from Cards;
 
 drop procedure if exists get_card;
 delimiter //
