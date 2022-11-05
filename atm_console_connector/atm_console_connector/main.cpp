@@ -8,6 +8,7 @@
 #include "ATM.h"
 #include "Card.h"
 #include "Client.h"
+#include "Transaction.h"
 
 #include <QtCore/QCoreApplication>
 
@@ -42,9 +43,13 @@ int main(int argc, char* argv[]) {
 
 	//repo.update_card(1, 1, 1, "123", 9308, "2024-02-18", 674, "2021-11-18");
 
-	Client client(1, "Mykola", "Piddybnyi", "576789324-678832-38");
+	//Client client(1, "Mykola", "Piddybnyi", "576789324-678832-38");
 
-	std::cout << client << "\n";
+	//std::cout << client << "\n";
+
+	Transaction trans(1,1,1,1,1,	"BORSH", 1,"Z Smetanoyou");
+
+	std::cout << trans << "\n";
 
 	
 	system("pause");
