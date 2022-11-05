@@ -22,6 +22,9 @@ public:
 	LOC(const LOC&) = default;
 	LOC& operator=(const LOC&) = default;
 
+	LOC& operator=(LOC&&) noexcept = default;
+	LOC(LOC&&) noexcept = default;
+
 	~LOC() = default;
 
 	inline size_t get_credit_taken() const { return crd_taken; };

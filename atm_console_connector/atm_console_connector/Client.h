@@ -16,6 +16,9 @@ public:
 	Client(const Client&) = default;
 	Client& operator=(const Client&) = default;
 
+	Client& operator=(Client&&) noexcept = default;
+	Client(Client&&) noexcept = default;
+
 	~Client() = default;
 
 	inline std::string get_first_name() const { return f_name; };

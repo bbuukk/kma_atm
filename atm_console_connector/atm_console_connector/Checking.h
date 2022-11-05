@@ -19,6 +19,9 @@ public:
 
 	Checking(const Checking&) = default;
 	Checking& operator=(const Checking&) = default;
+
+	Checking& operator=(Checking&&) noexcept = default;
+	Checking(Checking&&) noexcept = default;
 	
 	~Checking() = default;
 

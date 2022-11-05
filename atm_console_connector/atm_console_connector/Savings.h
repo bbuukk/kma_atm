@@ -18,6 +18,9 @@ public:
 	Savings(const Savings&) = default;
 	Savings& operator=(const Savings&) = default;
 
+	Savings& operator=(Savings&&) noexcept = default;
+	Savings(Savings&&) noexcept = default;
+
 	~Savings() = default;
 
 	inline size_t get_trans_limit() const { return trans_lim; };

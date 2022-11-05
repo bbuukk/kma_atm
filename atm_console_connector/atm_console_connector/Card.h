@@ -16,6 +16,9 @@ public:
 	Card(const Card&) = default;
 	Card& operator=(const Card&) = default;
 
+	Card& operator=(Card&&) noexcept = default;
+	Card(Card&&) noexcept = default;
+
 	~Card() = default;
 
 	inline std::string get_pan() const { return pan; };

@@ -48,9 +48,9 @@ int main(int argc, char* argv[]) {
 	//std::cout << client << "\n";
 
 
-	Transaction trans = repo.get_transaction("754");
+	//Transaction trans = repo.get_transaction("754");
 
-	std::cout << trans << "\n";
+	//std::cout << trans << "\n";
 
 
 	

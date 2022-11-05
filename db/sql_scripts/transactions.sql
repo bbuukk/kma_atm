@@ -2,25 +2,20 @@
 
 				-- procedures
 --
--- • get_transaction    	  	  -- get transaction number with account number of payer and account number of payer 					  -- by acc_id, t_sum, (out) is_successful
--- • withdrawal    	  			  -- (private) take money out of bank account 					  -- by acc_id, t_sum, (out) is_successful
--- • deposit 					  -- (private) put money on bank account 						  -- by acc_id, t_sum, (out) is_successful
--- • transact           		  -- make transaction 											  -- by acc_id, acc_id, t_sum, (out) is_successful
--- • withdraw   	  			  -- make withdraw												  -- by acc_id, t_sum, (out) is_successful
--- • get_all_acc_trans 	     	  -- get transactions of account for the whole time				  -- by acc_id
--- • get_acc_trans_curr_month 	  -- get transactions of account for the current month			  -- by acc_id
--- • get_acc_trans_by_month    	  -- get transactions of account for input month in this year	  -- by acc_id, tns_date
--- • get_acc_trans_by_date    	  -- get transactions of account for exact date                   -- by acc_id, tns_date
+-- • get_transaction    	  	  -- get transaction number with account number of payer and account number of payee 					
+-- • withdrawal    	  			  -- (private) take money out of bank account 					  
+-- • deposit 					  -- (private) put money on bank account 						 
+-- • transact           		  -- make transaction 											  
+-- • withdraw   	  			  -- make withdraw												  
+-- • get_all_acc_trans 	     	  -- get transactions of account for the whole time				  
+-- • get_acc_trans_curr_month 	  -- get transactions of account for the current month			  
+-- • get_acc_trans_by_month    	  -- get transactions of account for input month in this year	  
+-- • get_acc_trans_by_date    	  -- get transactions of account for exact date                   
 --
 				-- functions
+-- • get_acc_blnc   	  -- returns balance of acc 	
+-- • is_acc_blocked 	  -- returns is_blocked of acc 
 --
-
--- check for
--- enougth funds on account being charged after t_sum is suplmented with atm_fee coefficient
--- MAYBE if trans_lim is not excedeeing (we need functions to count how many operations were made by this acc for last month)
-
-select * from Transactions;
-show columns from Transactions;
 
 drop procedure if exists get_transaction;
 delimiter //
@@ -46,72 +41,18 @@ begin
 end //
 delimiter ;
 
-call get_transaction('754');
-
--- Transaction(
--- 		std::string num,
--- 		std::string acc_from,
--- 		std::string acc_to,
--- 		size_t sum, std::string date,
--- 		bool successful, std::string descript);
-
-
--- trans_id	int unsigned	NO	PRI		auto_increment
--- t_num	varchar(30)	NO	UNI		
--- mach_id	int unsigned	YES	MUL		
--- acc_from	int unsigned	NO	MUL		
--- acc_to	int unsigned	YES	MUL		
--- t_sum	int unsigned	NO			
--- t_date	date	NO			
--- successful	tinyint	NO			
--- t_descript	tinytext	NO			
-
-
-
-
-drop procedure if exists withdrawal;
-delimiter //
-create procedure withdrawal
-(in acc_from INT, IN t_sum INT,
- out is_successful tinyint) 
-begin 
-
-declare not_enougth_funds
-condition for sqlstate '45000';  
-
-declare sum double;
-declare blnc double;
-declare atm_fee double;
-
-set blnc = get_acc_balance(acc_from);
-set atm_fee = t_sum*get_atm_fee(acc_from);
-set sum = t_sum + atm_fee;
-
-if (blnc < sum)
-	then
-		set is_successful = false;
-		signal not_enougth_funds SET MESSAGE_TEXT = 'Not enougth funds';
-else
-	 set is_successful = true;
-	 update Accounts as accs
-	 set balance = balance-sum
-	 where accs.account_id = acc_from;
-end if;
-end //
-delimiter ;
-
-
 -- should check for currency of acc_to !!
 drop procedure if exists deposit;
 delimiter //
 create procedure deposit
-(in acc_to INT, IN t_sum INT,
+(in acc_to nvarchar(30),
+ IN t_sum INT,
  out is_successful tinyint) 
 begin 
 	 set is_successful = true;
-	 update Accounts as accs
+	 update Accounts as a
 	 set balance = balance+t_sum
-	 where accs.account_id = acc_from;
+	 where a.num = acc_to;
 end //
 delimiter ;
 
@@ -129,8 +70,11 @@ delimiter ;
 drop procedure if exists transact;
 delimiter //
 create procedure transact(
-IN mach_id INT, IN acc_from INT,
-IN acc_to INT, IN t_sum INT) 
+in atm_num nvarchar(10),
+in acc_from nvarchar(30),
+in acc_to nvarchar(30),
+in sum int unsigned,
+in descript tinytext) 
 begin 
 
 declare is_successful tinyint;
@@ -143,7 +87,8 @@ if is_successful
 end if;
 
 insert into Transactions
-VALUES ( null , mach_id , acc_from, null , t_sum , curdate(), is_successful , null);
+VALUES ( null, cast(trans_num as char(10)) , atm_num , acc_from , acc_to , 76543, now(), is_successful , descript );
+select is_successful;
 end //
 delimiter ;
 
@@ -151,37 +96,127 @@ delimiter ;
 drop procedure if exists withdraw;
 delimiter //
 create procedure withdraw(
-IN mach_id INT,
-IN acc_from INT,
-IN t_sum INT) 
+in atm_num nvarchar(10),
+in acc_from nvarchar(30),
+in sum int unsigned,
+in descript tinytext) 
 begin 
 
 declare is_successful tinyint;
+declare trans_num int unsigned;
 
-call withdrawal(acc_from, t_sum, is_successful);
+call withdrawal(acc_from, sum, is_successful);
+
+select cast(t.num as unsigned)
+into trans_num
+from Transactions as t
+order by t.id desc limit 1;
+set trans_num = trans_num + 1;
 
 insert into Transactions
-VALUES ( null , mach_id , acc_from, null , t_sum , curdate(), is_successful , null);
-
+VALUES ( null, cast(trans_num as char(10)) , atm_num , acc_from , null , 76543, now(), is_successful , descript );
+select is_successful;
 end //
 delimiter ;
+
+-- check for
+-- enougth funds on account being charged after t_sum is suplmented with atm_fee coefficient
+-- MAYBE if trans_lim is not excedeeing (we need functions to count how many operations were made by this acc for last month)
+
+drop procedure if exists withdrawal;
+delimiter //
+create procedure withdrawal
+(in acc_from nvarchar(30),
+ IN t_sum INT,
+ out is_successful tinyint) 
+begin 
+
+declare not_enougth_funds
+condition for sqlstate '45000';  
+
+declare sum double;
+declare blnc double;
+declare atm_fee double;
+
+set blnc = get_acc_balance(acc_from);
+set atm_fee = t_sum*get_acc_atm_fee(acc_from);
+set sum = t_sum + atm_fee;
+
+if (blnc < sum)
+	then
+		set is_successful = false;
+		signal not_enougth_funds SET MESSAGE_TEXT = 'Not enougth funds';
+else
+	 set is_successful = true;
+	 update Accounts as a
+	 set balance = balance-sum
+	 where a.num = acc_from;
+end if;
+end //
+delimiter ;
+
+drop function if exists get_acc_blnc;
+delimiter //
+create function get_acc_blnc(acc_num nvarchar(30))
+returns double deterministic
+begin 
+	declare blnc double;
+	select balance into blnc
+    from Accounts as a
+    where a.num = acc_num;
+    return blnc;
+end //
+delimiter ;
+
+drop function if exists get_acc_atm_fee;
+delimiter //
+create function get_acc_atm_fee(acc_num nvarchar(30))
+returns double deterministic
+begin 
+	declare fee double;
+	select atm_fee into fee
+    from Accounts as a
+    where a.num = acc_num;
+    return fee;
+end //
+delimiter ;	
 
 drop procedure if exists get_all_acc_trans;
 delimiter //
-create procedure get_all_acc_trans(IN acc_id INT) 
+create procedure get_all_acc_trans(in acc_num nvarchar(30)) 
 begin 
-	select  acc_from, acc_to, t_sum,
-			t_date, successful, off_city,
-            atm_street, atm_building
+	declare acc_id int;
+    select a.id into acc_id 
+    from Accounts as a
+    where a.num = acc_num;
+    
+	select t.num, t.acc_from,
+		   t.acc_to, t.sum, t.date,
+           t.is_successful, t.descript
     from Transactions as t
-	inner join AutoTellerMachine as atm
-    on atm.mach_id = t.mach_id
-    inner join Offices as offs
-    on offs.off_id = atm.off_id
-    where acc_from = acc_id OR 
-		  acc_to   = acc_id;
+    where t.acc_from = acc_id OR t.acc_to = acc_id;
 end //
 delimiter ;
+
+
+
+
+-- Transaction(
+-- 		std::string num,
+-- 		std::string acc_from,
+-- 		std::string acc_to,
+-- 		size_t sum, std::string date,
+-- 		bool successful, std::string descript);
+
+-- id	int unsigned	NO	PRI		auto_increment
+-- num	varchar(30)	NO	UNI		
+-- atm_id	int unsigned	YES	MUL		
+-- acc_from	int unsigned	NO	MUL		
+-- acc_to	int unsigned	YES	MUL		
+-- sum	int unsigned	NO			
+-- date	date	NO			
+-- successful	tinyint	NO			
+-- descript	tinytext	NO		
 
 
 -- should check for correcteness of (DATE_FORMAT(NOW() ,'%Y %m 01') AND NOW();) expression

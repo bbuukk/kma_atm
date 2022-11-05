@@ -17,6 +17,9 @@ public:
 	Office(const Office&) = default;
 	Office& operator=(const Office&) = default;
 
+	Office& operator=(Office&&) noexcept = default;
+	Office(Office&&) noexcept = default;
+
 	~Office() = default;
 
 	inline bool is_head_office() const { return head_off; };

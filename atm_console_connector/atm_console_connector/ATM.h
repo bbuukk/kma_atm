@@ -16,6 +16,9 @@ public:
 	ATM(const ATM&) = default;
 	ATM& operator=(const ATM&) = default;
 
+	ATM& operator=(ATM&&) noexcept = default;
+	ATM(ATM&&) noexcept = default;
+
 	~ATM() = default;
 
 	inline std::string get_num() const { return num; };

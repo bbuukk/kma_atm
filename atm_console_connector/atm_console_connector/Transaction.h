@@ -19,6 +19,9 @@ public:
 	Transaction(const Transaction&) = default;
 	Transaction& operator=(const Transaction&) = default;
 
+	Transaction& operator=(Transaction&&) noexcept = default;
+	Transaction(Transaction&&) noexcept = default;
+
 	~Transaction() = default;
 
 	inline std::string get_num() const { return num; }

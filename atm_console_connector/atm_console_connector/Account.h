@@ -19,7 +19,7 @@ public:
 	Account(const Account&) = default;
 	Account& operator=(const Account&) = default;
 
-	Account& operator=(Account&&) = default;
+	Account& operator=(Account&&) noexcept = default;
 	Account(Account&&) noexcept = default;
 	
 	virtual ~Account() = default;
