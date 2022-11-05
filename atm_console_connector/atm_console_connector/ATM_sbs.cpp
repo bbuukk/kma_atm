@@ -1,9 +1,9 @@
 #include "ATM_sbs.h"
 
-void foo() {
+void sbs::ATM::foo() {
 
 
-	this->get_bank();
+	Repo repo(this->get_bank().get_database().get_repository());
 }
 
 std::ostream& operator<<(std::ostream& os, const sbs::ATM& atm) {

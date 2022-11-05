@@ -22,6 +22,12 @@ public:
 	inline Repo(sql::Connection*& con)
 		: con(con) {};
 
+	Repo(const Repo&) = default;
+	Repo& operator=(const Repo&) = default;
+
+	/*Repo& operator=(Repo&&) noexcept = default;
+	Repo(Repo&&) noexcept = default;*/
+
 	~Repo() = default;
 
 	//Account repo =============================
@@ -57,7 +63,6 @@ public:
 		std::string acc_from,
 		size_t sum,
 		std::string description);
-
 
 private:
 	std::unique_ptr<sql::Connection> con;
