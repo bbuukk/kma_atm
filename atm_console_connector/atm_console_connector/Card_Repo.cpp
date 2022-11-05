@@ -1,6 +1,6 @@
 #include "Repo.h"
 
-mdls::Card& Repo::get_card(std::string pan) {
+mdls::Card& Repo::get_card(std::string pan) const {
 
     std::string query = "call get_card(?);";
 
@@ -27,7 +27,7 @@ mdls::Card& Repo::get_card(std::string pan) {
 }
 
 void Repo::change_pin_code(
-    std::string pan, size_t pin_code) {
+    std::string pan, size_t pin_code) const {
 
     std::string query = "call change_pin_code(?,?);";
 

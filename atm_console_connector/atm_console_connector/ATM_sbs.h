@@ -21,9 +21,6 @@ namespace sbs {
 		~ATM() = default;
 
 		inline const Bank& get_bank() const { return bank; };
-
-	
-
 		
 	private:
 		Bank bank;

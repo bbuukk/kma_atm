@@ -1,6 +1,6 @@
 #include "Repo.h"
 
-mdls::ATM& Repo::get_atm(std::string num) {
+mdls::ATM& Repo::get_atm(std::string num) const {
 
     std::string query = "call get_atm(?);";
 

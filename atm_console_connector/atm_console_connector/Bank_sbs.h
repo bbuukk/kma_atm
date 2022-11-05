@@ -19,10 +19,7 @@ namespace sbs {
 
 		~Bank() = default;
 
-		inline const Database& get_database() const { return db; };
-
 	private:
-		Database db;
 	};
 }
 

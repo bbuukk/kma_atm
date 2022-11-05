@@ -18,7 +18,7 @@ namespace mdls {
 			std::string descript);
 
 		// constructor that's getting info from db
-		Transaction(std::string);
+		Transaction(std::string num);
 
 		Transaction(const Transaction&) = default;
 		Transaction& operator=(const Transaction&) = default;

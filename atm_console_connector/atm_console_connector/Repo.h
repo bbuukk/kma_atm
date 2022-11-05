@@ -31,38 +31,38 @@ public:
 	~Repo() = default;
 
 	//Account repo =============================
-	mdls::Account& get_acc(std::string num);
+	mdls::Account& get_account(std::string num) const;
 
-	mdls::Office& get_acc_office(std::string num);
-	void block_acc(std::string num);
-	void unblock_acc(std::string num);
+	mdls::Office& get_acc_office(std::string num) const;
+	void block_account(std::string num) const;
+	void unblock_account(std::string num) const;
 
 	std::vector <mdls::Transaction>&
-		get_all_acc_trans(std::string num);
-	int count_all_acc_trans(std::string num);
+		get_acc_transactions(std::string num) const;
+	int count_acc_transactions(std::string num) const;
 	//Account& get_acc_balance(size_t acc_id);
 
 	//ATM repo =============================
-	mdls::ATM& get_atm(std::string num);
+	mdls::ATM& get_atm(std::string num) const;
 
 	//Card repo =============================
-	mdls::Card& get_card(std::string pan);
+	mdls::Card& get_card(std::string pan) const;
 	void change_pin_code(
-		std::string pan, size_t pin_code);
+		std::string pan, size_t pin_code) const;
 
 	//Transaction repo =============================
-	mdls::Transaction& get_transaction(std::string trans_num);
+	mdls::Transaction& get_transaction(std::string trans_num) const;
 	bool transact(
 		std::string atm_num,
 		std::string acc_from,
 		std::string acc_to,
 		size_t sum,
-		std::string description);
+		std::string description) const;
 	bool withdraw(
 		std::string atm_num,
 		std::string acc_from,
 		size_t sum,
-		std::string description);
+		std::string description) const;
 
 private:
 	std::unique_ptr<sql::Connection> con;

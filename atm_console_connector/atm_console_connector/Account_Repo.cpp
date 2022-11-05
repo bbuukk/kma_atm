@@ -1,7 +1,7 @@
 #include "Repo.h"
 #include <vector>
 
-mdls::Account& Repo::get_acc(std::string num) {
+mdls::Account& Repo::get_account(std::string num) const {
 
     std::string query = "call get_acc(?);";
 
@@ -30,7 +30,7 @@ mdls::Account& Repo::get_acc(std::string num) {
     return *acc;
 }
 
-mdls::Office& Repo::get_acc_office(std::string num) {
+mdls::Office& Repo::get_acc_office(std::string num) const {
     
     std::string query = "call get_office(?);";
 
@@ -55,7 +55,7 @@ mdls::Office& Repo::get_acc_office(std::string num) {
     return *off;
 }
 
-void Repo::block_acc(std::string num) {
+void Repo::block_account(std::string num) const {
 
     std::string query = "call block_acc(?);";
 
@@ -66,9 +66,9 @@ void Repo::block_acc(std::string num) {
     pstmt->execute();
 }
 
-void Repo::unblock_acc(std::string num) {
+void Repo::unblock_account(std::string num) const {
 
-    std::string query = "call unblock_acc(?);";
+    std::string query = "call unblock_account(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         this->con->prepareStatement(query));
@@ -77,7 +77,7 @@ void Repo::unblock_acc(std::string num) {
     pstmt->execute();
 }
 
-std::vector <mdls::Transaction>& Repo::get_all_acc_trans(std::string num) {
+std::vector <mdls::Transaction>& Repo::get_acc_transactions(std::string num)const {
 
     std::string query("call get_all_acc_trans(?);");
 
@@ -109,7 +109,7 @@ std::vector <mdls::Transaction>& Repo::get_all_acc_trans(std::string num) {
 }
 
 
-int Repo::count_all_acc_trans(std::string num) {
+int Repo::count_acc_transactions(std::string num) const {
 
     std::string query = "call count_all_acc_trans(?);";
 

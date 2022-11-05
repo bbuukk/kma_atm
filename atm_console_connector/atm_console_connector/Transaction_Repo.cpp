@@ -1,6 +1,6 @@
 #include "Repo.h"
 
-mdls::Transaction& Repo::get_transaction(std::string trans_num) {
+mdls::Transaction& Repo::get_transaction(std::string trans_num) const {
 
     std::string query = "call get_transaction(?);";
 
@@ -36,7 +36,7 @@ bool Repo::transact(
     std::string acc_from,
     std::string acc_to,
     size_t sum,
-    std::string description) {
+    std::string description) const {
 
     std::string query = "call transact(?,?,?,?,?);";
 
@@ -64,7 +64,7 @@ bool Repo::withdraw(
     std::string atm_num,
     std::string acc_from,
     size_t sum,
-    std::string description) {
+    std::string description)const {
 
     std::string query = "call withdraw(?,?,?,?,?);";
 
