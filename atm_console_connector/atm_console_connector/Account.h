@@ -18,6 +18,9 @@ namespace mdls {
 			bool blocked, double atm_fee,
 			double intrest);
 
+		// constructor that's getting info from db
+		Account(std::string num);
+
 		Account(const Account&) = default;
 		Account& operator=(const Account&) = default;
 
@@ -25,6 +28,13 @@ namespace mdls {
 		Account(Account&&) noexcept = default;
 
 		virtual ~Account() = default;
+
+		Office& get_office();
+
+		void block();
+		void unblock();
+
+		std::vector<Transaction>& get_transactions();
 
 		//getters
 		inline const std::string& get_num() const { return num; };

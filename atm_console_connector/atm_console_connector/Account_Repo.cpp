@@ -109,23 +109,23 @@ std::vector <mdls::Transaction>& Repo::get_acc_transactions(std::string num)cons
 }
 
 
-int Repo::count_acc_transactions(std::string num) const {
-
-    std::string query = "call count_all_acc_trans(?);";
-
-    std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
-    pstmt->setString(1, num);
-
-    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
-
-    int amount_of_trans;
-
-    do {
-        while (res->next()) {
-            amount_of_trans = res->getUInt("t_amount");
-        }
-    } while (pstmt->getMoreResults());
-
-    return amount_of_trans;
-}
+//int Repo::count_acc_transactions(std::string num) const {
+//
+//    std::string query = "call count_all_acc_trans(?);";
+//
+//    std::unique_ptr<sql::PreparedStatement> pstmt(
+//        this->con->prepareStatement(query));
+//    pstmt->setString(1, num);
+//
+//    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+//
+//    int amount_of_trans;
+//
+//    do {
+//        while (res->next()) {
+//            amount_of_trans = res->getUInt("t_amount");
+//        }
+//    } while (pstmt->getMoreResults());
+//
+//    return amount_of_trans;
+//}
