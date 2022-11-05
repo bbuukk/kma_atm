@@ -42,12 +42,3 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Transaction& off);
 
-//id	int unsigned	NO	PRI		auto_increment
-//mach_id	int unsigned	YES	MUL
-//acc_from	int unsigned	NO	MUL
-//acc_to	int unsigned	YES	MUL
-
-//t_sum	int unsigned	NO
-//t_date	date	NO
-//successful	tinyint	NO
-//descript	tinytext	NO

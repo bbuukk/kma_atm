@@ -9,7 +9,6 @@ public:
 	Office(void) = default;
 
 	Office(
-		size_t id,
 		bool head_off,
 		std::string city,
 		std::string street,
@@ -20,14 +19,13 @@ public:
 
 	~Office() = default;
 
-	inline size_t get_id() const { return id; };
 	inline bool is_head_office() const { return head_off; };
 	inline std::string get_city() const { return city; };
 	inline std::string get_street() const { return street; };
 	inline std::string get_postal() const { return postal; };
 
 private:
-	size_t id;
+	
 	bool head_off;
 	std::string city;
 	std::string street;

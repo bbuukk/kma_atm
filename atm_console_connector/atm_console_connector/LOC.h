@@ -13,11 +13,9 @@ public:
 		size_t loc_lim, double crd_return);
 
 	LOC(
-		int id, int dgt_code,
-		int off_id, int clnt_id,
-		int acc_type, std::string acc_num,
+		std::string acc_num, int dgt_code,
 		int balance, std::string  open_date,
-		bool is_blocked, double atm_fee,
+		bool blocked, double atm_fee,
 		double intrest, size_t crd_taken,
 		size_t loc_lim, double crd_return);
 

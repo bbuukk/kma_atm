@@ -10,11 +10,9 @@ public:
 
 	Savings(Account&, size_t trans_lim);
 
-	Savings(size_t id, size_t dgt_code,
-		size_t off_id, size_t clnt_id,
-		size_t acc_type, std::string acc_num,
+	Savings(std::string num, size_t dgt_code,
 		double balance, std::string  open_date,
-		bool is_blocked, double atm_fee,
+		bool blocked, double atm_fee,
 		double intrest, size_t trans_lim);
 
 	Savings(const Savings&) = default;
