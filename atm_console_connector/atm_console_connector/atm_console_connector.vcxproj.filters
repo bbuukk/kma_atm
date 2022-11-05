@@ -63,9 +63,6 @@
     <Filter Include="Source Files\Subsystems\ATM">
       <UniqueIdentifier>{ffd7a381-35ad-4c6e-b39d-8475eddf9cba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Subsystems\Bank">
-      <UniqueIdentifier>{4355d3c0-55a5-42c8-a7db-b48d6e7007f1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models\Account\LOC">
       <UniqueIdentifier>{5991bbd2-a50e-446c-b858-19aa2a241f60}</UniqueIdentifier>
     </Filter>
@@ -129,7 +126,7 @@
       <Filter>Source Files\Subsystems\ATM</Filter>
     </ClCompile>
     <ClCompile Include="Bank_sbs.cpp">
-      <Filter>Source Files\Subsystems\Bank</Filter>
+      <Filter>Source Files\Subsystems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,9 +165,6 @@
     </ClInclude>
     <ClInclude Include="ATM_sbs.h">
       <Filter>Source Files\Subsystems\ATM</Filter>
-    </ClInclude>
-    <ClInclude Include="Bank_sbs.h">
-      <Filter>Source Files\Subsystems\Bank</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
