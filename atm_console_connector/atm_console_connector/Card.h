@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Card.h"
+#include "Database.h"
 
 #include <mysql/jdbc.h>
 
@@ -14,6 +15,8 @@ namespace mdls {
 			std::string expr_date, size_t cvv,
 			std::string given_date);
 
+		Card(std::string pan);
+
 		Card(const Card&) = default;
 		Card& operator=(const Card&) = default;
 
@@ -21,6 +24,9 @@ namespace mdls {
 		Card(Card&&) noexcept = default;
 
 		~Card() = default;
+
+		void change_pin_code(
+			std::string pan, size_t new_pin);
 
 		inline const std::string& get_pan() const { return pan; };
 		inline size_t get_pin_code() const { return pin_code; };

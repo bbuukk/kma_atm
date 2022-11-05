@@ -1,4 +1,3 @@
-
 #include "Card.h"
 
 mdls::Card::Card(
@@ -8,6 +7,16 @@ mdls::Card::Card(
 	: pan(pan),pin_code(pin_code),
 	  expr_date(expr_date), cvv(cvv),
 	  given_date(given_date) {};
+
+mdls::Card::Card(std::string pan)
+	: Card(Database::get_repository()
+		.get_card(pan)) {}
+
+void change_pin_code(
+	std::string pan, size_t new_pin) {
+	Database::get_repository()
+		.change_pin_code(pan, new_pin);
+};
 
 std::ostream& operator<<(std::ostream& os, const mdls::Card& card) {
 	return os

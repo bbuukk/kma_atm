@@ -11,7 +11,6 @@
 #include "Transaction.h"
 
 #include "ATM_sbs.h"
-#include "Bank_sbs.h"
 
 #include <QtCore/QCoreApplication>
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Database.h"
+
 #include <mysql/jdbc.h>
 
 namespace mdls {
@@ -12,6 +14,8 @@ namespace mdls {
 			std::string num,
 			std::string city,
 			std::string street);
+
+		ATM(std::string num);
 
 		ATM(const ATM&) = default;
 		ATM& operator=(const ATM&) = default;

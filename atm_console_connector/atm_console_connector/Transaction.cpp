@@ -14,7 +14,8 @@ mdls::Transaction::Transaction(
 	  atm_num(atm_num), descript(descript) {};
 
 mdls::Transaction::Transaction(std::string num)
-	: Transaction(Database::get_repository().get_transaction(num)) {}
+	: Transaction(Database::get_repository()
+		.get_transaction(num)) {};
 
 std::ostream& operator<<(std::ostream& os, const mdls::Transaction& trans) {
 	return os
