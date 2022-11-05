@@ -3,6 +3,7 @@
 #include "Database.h"
 #include "Repo.h"
 #include "Bank_sbs.h"
+#include "Account.h"
 
 #include <mysql/jdbc.h>
 
@@ -20,10 +21,10 @@ namespace sbs {
 
 		~ATM() = default;
 
-		inline const Bank& get_bank() const { return bank; };
+		inline const mdls::Account& get_account() const { return account; };
 		
 	private:
-		Bank bank;
+		mdls::Account account; 
 	};
 }
 

@@ -18,16 +18,8 @@
 int main(int argc, char* argv[]) {
 	QCoreApplication a(argc, argv);
 
-	//sbs::ATM atm;
+	sbs::ATM atm;
 
-	mdls::Transaction transaction("1030556743");
-
-	std::cout << transaction << "\n";
-
-	//Database db;
-
-	//Repo repo(db.get_connection());
-	
 	system("pause");
 	return a.exec();
 }
