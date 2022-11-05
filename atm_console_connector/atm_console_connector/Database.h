@@ -10,14 +10,25 @@
 class Database {
 public:
 
-	Database() = default;
+	Database(const Database&) = delete;
+	Database& operator=(const Database&) = delete;
 
 	~Database() = default;
 
-	sql::Connection*& get_connection();
+	static Database& get() {
+		static Database db;
+		return db;
+	}
 
-	inline const Repo& get_repository() const { return repo; };
-
+	static inline const Repo& get_repository(){
+		return get().in_get_repository(); 
+	};
+		
 private:
+	inline const Repo& in_get_repository() const { return repo; };
+
+	Database(void) = default;
+
+	sql::Connection*& get_connection();
 	Repo repo = this-> get_connection();
 };

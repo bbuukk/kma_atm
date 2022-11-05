@@ -22,7 +22,7 @@ namespace sbs {
 
 		inline const Bank& get_bank() const { return bank; };
 
-		void foo();
+	
 
 		
 	private:

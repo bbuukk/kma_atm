@@ -17,6 +17,9 @@ namespace mdls {
 			bool successful, std::string atm_num,
 			std::string descript);
 
+		// constructor that's getting info from db
+		Transaction(std::string);
+
 		Transaction(const Transaction&) = default;
 		Transaction& operator=(const Transaction&) = default;
 

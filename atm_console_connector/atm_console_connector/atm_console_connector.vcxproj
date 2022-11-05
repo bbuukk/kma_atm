@@ -107,12 +107,14 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="ATM.cpp" />
+    <ClCompile Include="ATM_sbs.cpp" />
     <ClCompile Include="ATM_Repo.cpp" />
+    <ClCompile Include="Bank_sbs.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Card_Repo.cpp" />
     <ClCompile Include="Checking.cpp" />
     <ClCompile Include="Client.cpp" />
-    <ClCompile Include="DB.cpp" />
+    <ClCompile Include="Database.cpp" />
     <ClCompile Include="LOC.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Office.cpp" />
@@ -127,10 +129,12 @@
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="ATM.h" />
+    <ClInclude Include="ATM_sbs.h" />
+    <ClInclude Include="Bank_sbs.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Checking.h" />
     <ClInclude Include="Client.h" />
-    <ClInclude Include="DB.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="LOC.h" />
     <ClInclude Include="Office.h" />
     <ClInclude Include="Repo.h" />

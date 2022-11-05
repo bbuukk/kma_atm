@@ -21,12 +21,6 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
-    <Filter Include="Source Files\DB">
-      <UniqueIdentifier>{286edc6d-2e79-41ac-9f11-b3e3a8e2d09b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DB\Repository">
-      <UniqueIdentifier>{ac5e2506-3d3a-4d9a-b83f-7b4ba1225957}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{e9c43bd7-5c18-42ce-88b9-81692b502f51}</UniqueIdentifier>
     </Filter>
@@ -38,9 +32,6 @@
     </Filter>
     <Filter Include="Source Files\Models\Account\Savings">
       <UniqueIdentifier>{5287066f-6fb1-4029-bf35-752149fc8607}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Models\Account\LOC">
-      <UniqueIdentifier>{5991bbd2-a50e-446c-b858-19aa2a241f60}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Models\Transaction">
       <UniqueIdentifier>{827ae449-be9a-45d4-8505-79ef25255d15}</UniqueIdentifier>
@@ -57,16 +48,31 @@
     <Filter Include="Source Files\Models\Client">
       <UniqueIdentifier>{36dd14a4-5fae-4daa-8123-de09fab5e43b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\foo">
+      <UniqueIdentifier>{6193312c-6fa7-469d-b4ce-d0284ede5c86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Subsystems">
+      <UniqueIdentifier>{d0bafd0f-a4c0-468b-b998-6b2bc77b9d0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Database">
+      <UniqueIdentifier>{286edc6d-2e79-41ac-9f11-b3e3a8e2d09b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Database\Repository">
+      <UniqueIdentifier>{ac5e2506-3d3a-4d9a-b83f-7b4ba1225957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Subsystems\ATM">
+      <UniqueIdentifier>{ffd7a381-35ad-4c6e-b39d-8475eddf9cba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Subsystems\Bank">
+      <UniqueIdentifier>{4355d3c0-55a5-42c8-a7db-b48d6e7007f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Account\LOC">
+      <UniqueIdentifier>{5991bbd2-a50e-446c-b858-19aa2a241f60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="UniqTesting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ProcedureReturnRSTesting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DB.cpp">
-      <Filter>Source Files\DB</Filter>
+    <ClCompile Include="Database.cpp">
+      <Filter>Source Files\Database</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
@@ -81,16 +87,16 @@
       <Filter>Source Files\Models\Office</Filter>
     </ClCompile>
     <ClCompile Include="Account_Repo.cpp">
-      <Filter>Source Files\DB\Repository</Filter>
+      <Filter>Source Files\Database\Repository</Filter>
     </ClCompile>
     <ClCompile Include="Office_Repo.cpp">
-      <Filter>Source Files\DB\Repository</Filter>
+      <Filter>Source Files\Database\Repository</Filter>
     </ClCompile>
     <ClCompile Include="Transaction_Repo.cpp">
-      <Filter>Source Files\DB\Repository</Filter>
+      <Filter>Source Files\Database\Repository</Filter>
     </ClCompile>
     <ClCompile Include="ATM_Repo.cpp">
-      <Filter>Source Files\DB\Repository</Filter>
+      <Filter>Source Files\Database\Repository</Filter>
     </ClCompile>
     <ClCompile Include="ATM.cpp">
       <Filter>Source Files\Models\ATM</Filter>
@@ -99,7 +105,7 @@
       <Filter>Source Files\Models\Card</Filter>
     </ClCompile>
     <ClCompile Include="Card_Repo.cpp">
-      <Filter>Source Files\DB\Repository</Filter>
+      <Filter>Source Files\Database\Repository</Filter>
     </ClCompile>
     <ClCompile Include="Client.cpp">
       <Filter>Source Files\Models\Client</Filter>
@@ -113,10 +119,22 @@
     <ClCompile Include="LOC.cpp">
       <Filter>Source Files\Models\Account\LOC</Filter>
     </ClCompile>
+    <ClCompile Include="ProcedureReturnRSTesting.cpp">
+      <Filter>Source Files\foo</Filter>
+    </ClCompile>
+    <ClCompile Include="UniqTesting.cpp">
+      <Filter>Source Files\foo</Filter>
+    </ClCompile>
+    <ClCompile Include="ATM_sbs.cpp">
+      <Filter>Source Files\Subsystems\ATM</Filter>
+    </ClCompile>
+    <ClCompile Include="Bank_sbs.cpp">
+      <Filter>Source Files\Subsystems\Bank</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DB.h">
-      <Filter>Source Files\DB</Filter>
+    <ClInclude Include="Database.h">
+      <Filter>Source Files\Database</Filter>
     </ClInclude>
     <ClInclude Include="Account.h">
       <Filter>Source Files\Models\Account</Filter>
@@ -128,7 +146,7 @@
       <Filter>Source Files\Models\Office</Filter>
     </ClInclude>
     <ClInclude Include="Repo.h">
-      <Filter>Source Files\DB\Repository</Filter>
+      <Filter>Source Files\Database\Repository</Filter>
     </ClInclude>
     <ClInclude Include="ATM.h">
       <Filter>Source Files\Models\ATM</Filter>
@@ -147,6 +165,12 @@
     </ClInclude>
     <ClInclude Include="LOC.h">
       <Filter>Source Files\Models\Account\LOC</Filter>
+    </ClInclude>
+    <ClInclude Include="ATM_sbs.h">
+      <Filter>Source Files\Subsystems\ATM</Filter>
+    </ClInclude>
+    <ClInclude Include="Bank_sbs.h">
+      <Filter>Source Files\Subsystems\Bank</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
