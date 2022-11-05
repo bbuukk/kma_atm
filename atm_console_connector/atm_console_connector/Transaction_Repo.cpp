@@ -4,7 +4,7 @@ Transaction& Repo::get_transaction(std::string trans_num) {
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         this->con->prepareStatement("call get_transaction(?);"));
-    pstmt->setInt(1, trans_num);
+    pstmt->setString(1, trans_num);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
@@ -13,16 +13,36 @@ Transaction& Repo::get_transaction(std::string trans_num) {
     do {
         while (res->next()) {
             trans = new Transaction(
-                0,
-                res->getBoolean("head_off"),
-                res->getString("off_city"),
-                res->getString("off_street"),
-                res->getString("postal"));
+
+                res->getString("num"),
+                res->getString("acc_from"),
+                res->getString("acc_to"),
+                res->getUInt("sum"),
+
+                res->getString("date"),
+                res->getBoolean("successful"),
+                res->getString("atm_num"),
+                res->getString("descript"));
         }
     } while (pstmt->getMoreResults());
 
     return *trans;
 }
+
+//Transaction(
+//    std::string num,
+//    std::string acc_from,
+//    std::string acc_to,
+//    size_t sum, std::string date,
+//    bool successful, std::string descript);
+
+//select t.num,
+//a1.num as acc_from,
+//a2.num as acc_to,
+//t.sum, t.date,
+//t.successful,
+//t.atm_num,
+//t.descript
 
 //trans_id	int unsigned	NO	PRI		auto_increment
 //mach_id	int unsigned	YES	MUL

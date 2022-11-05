@@ -14,40 +14,20 @@ show columns from Cards;
 
 drop procedure if exists get_card;
 delimiter //
-create procedure get_card(pan varchar(20)) 
+create procedure get_card(in pan varchar(20)) 
 begin 
-    select pan, pin_code,
-		   expr_date, cvv,
-           given_date
-    from Cards as crds
-    where crds.pan = trim(pan);
+    select c.pan, c.pin_code,
+		   c.expr_date, c.cvv,
+           c.given_date
+    from Cards as c
+    where c.pan = trim(pan);
 end //
-delimiter ;		
+delimiter ;	
 
-drop procedure if exists update_card;
-delimiter //
-create procedure update_card
-(in card_id int unsigned, in acc_id int unsigned,
-in clnt_id int unsigned, in pan varchar(20),
-in pin_code int unsigned, in expr_date date,
-in cvv int unsigned, in given_date date)
-begin 
-	update Cards as c
-    set
-    c.card_id = card_id,
-	c.acc_id = acc_id,
-	c.clnt_id = clnt_id,
-    c.pan = pan,
-    c.pin_code = pin_code,
-    c.expr_date = expr_date,
-    c.cvv = cvv,
-    c.given_date = given_date
-    where c.card_id = card_id;
-end //
-delimiter ;
-
-select * from Cards where card_id = 1;
-call update_card(1, 1, 1, "5313532532254855", 9308, "2024-02-18", 674, "2021-11-18");
+-- //Card(
+-- //    std::string pan, size_t pin_code,
+-- //    std::string expr_date, size_t cvv,
+-- //    std::string given_date);
 
 -- card_id	int unsigned	NO	PRI		auto_increment
 -- acc_id	int unsigned	NO	MUL		
@@ -57,6 +37,18 @@ call update_card(1, 1, 1, "5313532532254855", 9308, "2024-02-18", 674, "2021-11-
 -- expr_date	date	NO			
 -- cvv	int unsigned	NO			
 -- given_date	date	NO	
+
+drop procedure if exists change_pin_code;
+delimiter //
+create procedure change_pin_code
+(in pan nvarchar(20),
+in pin_code int unsigned)
+begin 
+	update Cards as c
+    set c.pin_code = pin_code
+    where c.pan = pan;
+end //
+delimiter ;
 
 drop function if exists is_card_corr_pin;
 delimiter //

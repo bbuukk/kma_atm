@@ -2,6 +2,7 @@
 
 				-- procedures
 --
+-- • get_transaction    	  	  -- get transaction number with account number of payer and account number of payer 					  -- by acc_id, t_sum, (out) is_successful
 -- • withdrawal    	  			  -- (private) take money out of bank account 					  -- by acc_id, t_sum, (out) is_successful
 -- • deposit 					  -- (private) put money on bank account 						  -- by acc_id, t_sum, (out) is_successful
 -- • transact           		  -- make transaction 											  -- by acc_id, acc_id, t_sum, (out) is_successful
@@ -17,6 +18,56 @@
 -- check for
 -- enougth funds on account being charged after t_sum is suplmented with atm_fee coefficient
 -- MAYBE if trans_lim is not excedeeing (we need functions to count how many operations were made by this acc for last month)
+
+select * from Transactions;
+show columns from Transactions;
+
+drop procedure if exists get_transaction;
+delimiter //
+create procedure get_transaction
+(in trans_num nvarchar(30)) 
+begin 
+	select t.num,
+		   a1.num as acc_from,
+           a2.num as acc_to,
+           t.sum, t.date,
+           t.successful,
+           atms.num as atm_num,
+           t.descript
+    from Transactions as t
+    inner join Accounts as a1
+    on t.acc_from = a1.id
+    left join Accounts as a2
+    on t.acc_to = a2.id
+    left join ATMs as atms
+    on t.atm_id = atms.id
+    where t.num = trans_num;
+    
+end //
+delimiter ;
+
+call get_transaction('754');
+
+-- Transaction(
+-- 		std::string num,
+-- 		std::string acc_from,
+-- 		std::string acc_to,
+-- 		size_t sum, std::string date,
+-- 		bool successful, std::string descript);
+
+
+-- trans_id	int unsigned	NO	PRI		auto_increment
+-- t_num	varchar(30)	NO	UNI		
+-- mach_id	int unsigned	YES	MUL		
+-- acc_from	int unsigned	NO	MUL		
+-- acc_to	int unsigned	YES	MUL		
+-- t_sum	int unsigned	NO			
+-- t_date	date	NO			
+-- successful	tinyint	NO			
+-- t_descript	tinytext	NO			
+
+
+
 
 drop procedure if exists withdrawal;
 delimiter //

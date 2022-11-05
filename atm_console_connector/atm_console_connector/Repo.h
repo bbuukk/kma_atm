@@ -10,6 +10,8 @@
 #include "Office.h"
 #include "Card.h"
 #include "Transaction.h"
+#include "ATM.h"
+
 
 
 class Repo {
@@ -23,29 +25,29 @@ public:
 	~Repo() = default;
 
 
-	//Account repo
-	Account& get_acc(size_t acc_id);
-	void block_acc(size_t acc_id);
-	void unblock_acc(size_t acc_id);
+	//Account repo =============================
+	Account& get_acc(std::string num);
+
+	Office& get_acc_office(std::string num);
+	void block_acc(std::string num);
+	void unblock_acc(std::string num);
 	bool is_acc_blocked(size_t acc_id);
 	double get_acc_balance(size_t acc_id);
 	double get_acc_atm_fee(size_t acc_id);
 	size_t get_acc_type(size_t acc_id);
 	//Account& get_acc_balance(size_t acc_id);
 
-	//Office repo
-	Office& get_acc_off(size_t acc_id);
+	//ATM repo =============================
+	ATM& get_atm(std::string num);
 
-	//ATM repo
-	std::string& get_atm_info(size_t mach_id);
-
-	//Card repo
+	//Card repo =============================
 	Card& get_card(std::string pan);
-	void update_card(
-		size_t card_id, size_t acc_id,
-		size_t clnt_id, std::string pan,
-		size_t pin_code, std::string expr_date,
-		size_t cvv, std::string given_date);
+	void change_pin_code(
+		std::string pan, size_t pin_code);
+
+
+	//Transaction repo =============================
+	Transaction& get_transaction(std::string trans_num);
 
 private:
 	std::unique_ptr<sql::Connection> con;

@@ -3,7 +3,7 @@
 				-- procedures
 --
 -- • get_acc    	  	-- get info about bank account   				   -- by acc_id
--- • get_acc_off     	-- get info about office 						   -- by acc_id 
+-- • get_office     	     -- get office of account						   -- by acc_id 
 -- • //not realized //  -- get_acc_balance_info -- get balance & dgt_code 	   				   -- by acc_id
 -- • block_acc          -- change is_blocked in account record to true     -- by acc_id
 -- • unblock_acc        -- change is_blocked in account record to false    -- by acc_id 
@@ -31,35 +31,31 @@ begin
 end //
 delimiter ;
 
-
-
 show columns from Offices;
 
-drop procedure if exists get_acc_off;
+drop procedure if exists get_office;
 delimiter //
-create procedure get_acc_off(IN acc_id INT) 
+create procedure get_office
+(IN acc_num nvarchar(30)) 
 begin 
-	select head_off, off_city,
-		   off_street, postal
-    from Accounts as accs
-	inner join Offices as offs
-    on offs.off_id = accs.off_id
-    where acc_id = accs.acc_id;
+	select head_off, city, street, postal
+    from Offices as o
+    inner join Accounts as a
+    on a.off_id = o.id
+    where a.num = '01234';
 end //
 delimiter ;
 
-call get_acc_off(2);
+call get_office('01234');
+
+-- id	int unsigned	NO	PRI		auto_increment
+-- head_off	tinyint	NO			
+-- city	varchar(100)	NO			
+-- street	varchar(100)	NO			
+-- postal	varchar(10)	NO			
 
 
--- drop procedure if exists get_acc_balance_info;
--- delimiter //
--- create procedure get_acc_balance_info(IN acc_id INT) 
--- begin 
--- 	select balance, dgt_code
---     from Accounts as accs
---     where acc_id = accs.acc_id;
--- end //
--- delimiter ;
+
 
 drop procedure if exists block_acc;
 delimiter //

@@ -47,9 +47,11 @@ int main(int argc, char* argv[]) {
 
 	//std::cout << client << "\n";
 
-	Transaction trans(1,1,1,1,1,	"BORSH", 1,"Z Smetanoyou");
+
+	Transaction trans = repo.get_transaction("754");
 
 	std::cout << trans << "\n";
+
 
 	
 	system("pause");

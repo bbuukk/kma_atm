@@ -48,6 +48,15 @@
     <Filter Include="Source Files\Modules\Client">
       <UniqueIdentifier>{36dd14a4-5fae-4daa-8123-de09fab5e43b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Modules\Account\Checking">
+      <UniqueIdentifier>{363cf79d-123b-4062-be46-a2861d52fbeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Account\Savings">
+      <UniqueIdentifier>{5287066f-6fb1-4029-bf35-752149fc8607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Account\LOC">
+      <UniqueIdentifier>{5991bbd2-a50e-446c-b858-19aa2a241f60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UniqTesting.cpp">
@@ -63,15 +72,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Account.cpp">
-      <Filter>Source Files\Modules\Account</Filter>
-    </ClCompile>
-    <ClCompile Include="Checking.cpp">
-      <Filter>Source Files\Modules\Account</Filter>
-    </ClCompile>
-    <ClCompile Include="LOC.cpp">
-      <Filter>Source Files\Modules\Account</Filter>
-    </ClCompile>
-    <ClCompile Include="Savings.cpp">
       <Filter>Source Files\Modules\Account</Filter>
     </ClCompile>
     <ClCompile Include="Transaction.cpp">
@@ -104,21 +104,21 @@
     <ClCompile Include="Client.cpp">
       <Filter>Source Files\Modules\Client</Filter>
     </ClCompile>
+    <ClCompile Include="Checking.cpp">
+      <Filter>Source Files\Modules\Account\Checking</Filter>
+    </ClCompile>
+    <ClCompile Include="Savings.cpp">
+      <Filter>Source Files\Modules\Account\Savings</Filter>
+    </ClCompile>
+    <ClCompile Include="LOC.cpp">
+      <Filter>Source Files\Modules\Account\LOC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DB.h">
       <Filter>Source Files\DB</Filter>
     </ClInclude>
     <ClInclude Include="Account.h">
-      <Filter>Source Files\Modules\Account</Filter>
-    </ClInclude>
-    <ClInclude Include="Checking.h">
-      <Filter>Source Files\Modules\Account</Filter>
-    </ClInclude>
-    <ClInclude Include="LOC.h">
-      <Filter>Source Files\Modules\Account</Filter>
-    </ClInclude>
-    <ClInclude Include="Savings.h">
       <Filter>Source Files\Modules\Account</Filter>
     </ClInclude>
     <ClInclude Include="Transaction.h">
@@ -138,6 +138,15 @@
     </ClInclude>
     <ClInclude Include="Client.h">
       <Filter>Source Files\Modules\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Checking.h">
+      <Filter>Source Files\Modules\Account\Checking</Filter>
+    </ClInclude>
+    <ClInclude Include="Savings.h">
+      <Filter>Source Files\Modules\Account\Savings</Filter>
+    </ClInclude>
+    <ClInclude Include="LOC.h">
+      <Filter>Source Files\Modules\Account\LOC</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

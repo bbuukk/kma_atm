@@ -1,22 +1,31 @@
 #include "Repo.h"
 
-std::string& Repo::get_atm_info(size_t mach_id) {
+ATM& Repo::get_atm(std::string num) {
 
-    std::string query = "call get_atm_info(?);";
+    std::string query = "call get_atm(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         this->con->prepareStatement(query));
-    pstmt->setInt(1, mach_id);
+    pstmt->setString(1, num);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    std::string* atm_info = new std::string;
+    ATM* atm;
 
     do {
         while (res->next()) {
-            *atm_info = res->getString("atm_info");
+            atm = new ATM(
+                res->getString("num"),
+                res->getString("city"),
+                res->getString("street"));
         }
     } while (pstmt->getMoreResults());
 
-    return *atm_info;
+    return *atm;
 }
+
+
+//ATM(
+//    std::string num,
+//    std::string city,
+//    std::string street);
