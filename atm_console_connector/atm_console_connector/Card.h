@@ -9,7 +9,7 @@ public:
 	Card(void) = default;
 
 	Card(
-		size_t card_id, size_t acc_id,
+		size_t id, size_t acc_id,
 		size_t clnt_id, std::string pan,
 		size_t pin_code, std::string expr_date,
 		size_t cvv, std::string given_date);
@@ -19,8 +19,8 @@ public:
 
 	~Card() = default;
 
-	inline size_t get_card_id() const { return card_id; };
-	inline size_t get_account_id() const { return acc_id; };
+	inline size_t get_id() const { return id; };
+	inline size_t get_id() const { return acc_id; };
 	inline size_t get_client_id() const { return clnt_id; };
 	inline std::string get_pan() const { return pan; };
 	inline size_t get_pin_code() const { return pin_code; };
@@ -29,7 +29,7 @@ public:
 	inline std::string get_given_date() const { return given_date; };
 
 private:
-	size_t card_id;
+	size_t id;
 	size_t acc_id;
 	size_t clnt_id;
 	std::string pan;
@@ -42,7 +42,7 @@ private:
 std::ostream& operator<<(std::ostream& os, const Card& off);
 
 //todo
-//card_id	int unsigned	NO	PRI		auto_increment
+//id	int unsigned	NO	PRI		auto_increment
 //acc_id	int unsigned	NO	MUL
 //clnt_id	int unsigned	NO	MUL
 //pan	varchar(20)	NO	UNI

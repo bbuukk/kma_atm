@@ -13,7 +13,7 @@ public:
 		size_t loc_lim, double crd_return);
 
 	LOC(
-		int acc_id, int dgt_code,
+		int id, int dgt_code,
 		int off_id, int clnt_id,
 		int acc_type, std::string acc_num,
 		int balance, std::string  open_date,

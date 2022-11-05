@@ -2,11 +2,11 @@
 #include "Transaction.h"
 
 Transaction::Transaction(
-	size_t trans_id, size_t mach_id,
+	size_t id, size_t mach_id,
 	size_t acc_from, size_t acc_to,
 	size_t t_sum, std::string t_date,
 	bool successful, std::string t_descript)
-	: trans_id(trans_id), mach_id(mach_id),
+	: id(id), mach_id(mach_id),
 	  acc_from(acc_from), acc_to(acc_to),
 	  t_sum(t_sum), t_date(t_date),
 	  successful(successful), t_descript(t_descript) {};

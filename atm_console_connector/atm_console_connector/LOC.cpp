@@ -13,7 +13,7 @@ LOC::LOC(
 		loc_lim(loc_lim), crd_return(crd_return) {};
 
 LOC::LOC(
-	int acc_id, int dgt_code,
+	int id, int dgt_code,
 	int off_id, int clnt_id,
 	int acc_type, std::string acc_num,
 	int balance, std::string  open_date,
@@ -21,7 +21,7 @@ LOC::LOC(
 	double intrest, size_t crd_taken,
 	size_t loc_lim, double crd_return)
 	: Account(
-		acc_id, dgt_code, off_id,
+		id, dgt_code, off_id,
 		clnt_id, acc_type, acc_num,
 		balance, open_date, is_blocked,
 		atm_fee, intrest), crd_taken(crd_taken),

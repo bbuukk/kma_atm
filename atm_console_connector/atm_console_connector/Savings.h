@@ -10,7 +10,7 @@ public:
 
 	Savings(Account&, size_t trans_lim);
 
-	Savings(size_t acc_id, size_t dgt_code,
+	Savings(size_t id, size_t dgt_code,
 		size_t off_id, size_t clnt_id,
 		size_t acc_type, std::string acc_num,
 		double balance, std::string  open_date,

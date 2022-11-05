@@ -10,7 +10,7 @@ public:
 
 	Checking(Account&, size_t overdraft_lim);
 
-	Checking(size_t acc_id, size_t dgt_code,
+	Checking(size_t id, size_t dgt_code,
 			 size_t off_id, size_t clnt_id,
 			 size_t acc_type, std::string acc_num,
 			 double balance, std::string  open_date,

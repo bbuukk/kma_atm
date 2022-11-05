@@ -10,14 +10,14 @@ Checking::Checking(Account& acc, size_t overdraft_lim )
 		acc.get_intrest()), overdraft_lim(overdraft_lim) {};
 
 Checking::Checking(
-	size_t acc_id, size_t dgt_code,
+	size_t id, size_t dgt_code,
 	size_t off_id, size_t clnt_id,
 	size_t acc_type, std::string acc_num,
 	double balance, std::string  open_date,
 	bool is_blocked, double atm_fee,
 	double intrest, size_t overdraft_lim)
 	: Account(
-		acc_id, dgt_code, off_id,
+		id, dgt_code, off_id,
 		clnt_id, acc_type, acc_num,
 		balance, open_date, is_blocked,
 		atm_fee, intrest),
