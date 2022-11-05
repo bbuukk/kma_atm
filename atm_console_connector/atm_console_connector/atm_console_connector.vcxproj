@@ -111,6 +111,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Card_Repo.cpp" />
     <ClCompile Include="Checking.cpp" />
+    <ClCompile Include="Client.cpp" />
     <ClCompile Include="DB.cpp" />
     <ClCompile Include="LOC.cpp" />
     <ClCompile Include="main.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="ATM.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Checking.h" />
+    <ClInclude Include="Client.h" />
     <ClInclude Include="DB.h" />
     <ClInclude Include="LOC.h" />
     <ClInclude Include="Office.h" />

@@ -45,6 +45,9 @@
     <Filter Include="Source Files\Modules\Card">
       <UniqueIdentifier>{e0ff324d-82a5-4480-a862-58f986740251}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Modules\Client">
+      <UniqueIdentifier>{36dd14a4-5fae-4daa-8123-de09fab5e43b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UniqTesting.cpp">
@@ -98,6 +101,9 @@
     <ClCompile Include="Card_Repo.cpp">
       <Filter>Source Files\DB\Repository</Filter>
     </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files\Modules\Client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DB.h">
@@ -129,6 +135,9 @@
     </ClInclude>
     <ClInclude Include="Card.h">
       <Filter>Source Files\Modules\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Source Files\Modules\Client</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@
 #include "LOC.h"
 #include "ATM.h"
 #include "Card.h"
+#include "Client.h"
 
 #include <QtCore/QCoreApplication>
 
@@ -35,13 +36,15 @@ int main(int argc, char* argv[]) {
 	//std::cout << off << "\n";
 	//std::cout << "==================";
 
-	Card card = repo.get_card("5313532532254855");
+	//Card card = repo.get_card("5313532532254855");
 
-	std::cout << card << "\n";
+	//std::cout << card << "\n";
 
-	repo.update_card(1, 1, 1, "123", 9308, "2024-02-18", 674, "2021-11-18");
+	//repo.update_card(1, 1, 1, "123", 9308, "2024-02-18", 674, "2021-11-18");
 
+	Client client(1, "Mykola", "Piddybnyi", "576789324-678832-38");
 
+	std::cout << client << "\n";
 
 	
 	system("pause");

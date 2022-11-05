@@ -46,7 +46,8 @@ begin
 end //
 delimiter ;
 
-call update_card(1, 1, 1, "123", 9308, "2024 - 02 - 18", 674, "2021 - 11 - 18");
+select * from Cards where card_id = 1;
+call update_card(1, 1, 1, "5313532532254855", 9308, "2024-02-18", 674, "2021-11-18");
 
 -- card_id	int unsigned	NO	PRI		auto_increment
 -- acc_id	int unsigned	NO	MUL		
