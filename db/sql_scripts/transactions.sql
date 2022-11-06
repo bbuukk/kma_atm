@@ -183,13 +183,9 @@ delimiter ;
 
 drop procedure if exists get_all_acc_trans;
 delimiter //
-create procedure get_all_acc_trans(in acc_num nvarchar(30)) 
+create procedure get_all_acc_trans
+(in acc_id int unsigned) 
 begin 
-	declare acc_id int;
-    select a.id into acc_id 
-    from Accounts as a
-    where a.num = acc_num;
-    
 	select t.num, t.acc_from,
 		   t.acc_to, t.sum, t.date,
            t.is_successful, t.descript

@@ -85,13 +85,13 @@ void Bank::unblock_account(size_t id) {
     pstmt->execute();
 }
 
-std::vector <mdls::Transaction>& Bank::get_acc_transactions(std::string num) {
+std::vector <mdls::Transaction>& Bank::get_acc_transactions(size_t id) {
 
     std::string query("call get_all_acc_trans(?);");
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->prepareStatement(query));
-    pstmt->setString(1, num);
+    pstmt->setUInt(1, id);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
@@ -117,23 +117,3 @@ std::vector <mdls::Transaction>& Bank::get_acc_transactions(std::string num) {
 }
 
 
-//int Repo::count_acc_transactions(std::string num) const {
-//
-//    std::string query = "call count_all_acc_trans(?);";
-//
-//    std::unique_ptr<sql::PreparedStatement> pstmt(
-//        this->con->prepareStatement(query));
-//    pstmt->setString(1, num);
-//
-//    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
-//
-//    int amount_of_trans;
-//
-//    do {
-//        while (res->next()) {
-//            amount_of_trans = res->getUInt("t_amount");
-//        }
-//    } while (pstmt->getMoreResults());
-//
-//    return amount_of_trans;
-//}
