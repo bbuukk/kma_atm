@@ -1,5 +1,7 @@
 #include "Bank.h"
 
+#include "Transaction.h"
+
 mdls::Transaction& Bank::get_transaction(std::string trans_num) {
 
     std::string query = "call get_transaction(?);";

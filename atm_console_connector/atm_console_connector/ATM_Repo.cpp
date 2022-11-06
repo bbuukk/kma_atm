@@ -1,5 +1,7 @@
 #include "Bank.h"
 
+#include "ATM.h"
+
 mdls::ATM& Bank::get_atm(std::string num){
 
     std::string query = "call get_atm(?);";

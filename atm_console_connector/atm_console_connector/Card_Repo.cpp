@@ -1,5 +1,7 @@
 #include "Bank.h"
 
+#include "Card.h"
+
 mdls::Card& Bank::get_card(std::string pan) {
 
     std::string query = "call get_card(?);";

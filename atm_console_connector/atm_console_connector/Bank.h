@@ -1,17 +1,23 @@
 #pragma once
 
+namespace mdls {
+	class Account;
+	class Checking;
+	class Savings;
+	class LOC;
+	class Office;
+	class Card;
+	class Transaction;
+	class Client;
+	class ATM;
+};
+
 #include <string>
 #include <ostream>
 #include <memory>
 #include <vector>
 
 #include <mysql/jdbc.h>
-
-#include "Account.h"
-#include "Office.h"
-#include "Card.h"
-#include "Transaction.h"
-#include "ATM.h"
 
 class Bank {
 public:

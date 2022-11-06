@@ -1,6 +1,8 @@
 #pragma once
 
-#include "Bank.h"
+#include <memory>
+#include "Account.h"
+#include "Card.h"
 
 namespace sbs {
 

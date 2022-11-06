@@ -1,8 +1,6 @@
 #pragma once
-
-#include "Bank.h"
-
-
+#include <string>
+#include <ostream>
 
 namespace mdls {
 	class Card {

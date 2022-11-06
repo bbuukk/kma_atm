@@ -1,16 +1,8 @@
 
-#include "Account.h"
-#include "Checking.h"
-#include "Savings.h"
-#include "LOC.h"
-#include "ATM.h"
-#include "Card.h"
-#include "Client.h"
-#include "Transaction.h"
 #include "Bank.h"
 
-#include "ATM_sbs.h"
 
+#include <ostream>
 #include <QtCore/QCoreApplication>
 
 int main(int argc, char* argv[]) {
@@ -18,9 +10,9 @@ int main(int argc, char* argv[]) {
 
 	/*sbs::ATM atm;*/
 
-	mdls::Account account("01234");
+	/*mdls::Account account("01234");
 
-	std::cout << account << "\n";
+	std::cout << account << "\n";*/
 
 
 	system("pause");

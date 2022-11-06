@@ -1,5 +1,9 @@
 #include "Bank.h"
 
+#include "Account.h"
+#include "Office.h"
+#include "Transaction.h"
+
 mdls::Account& Bank::get_account(std::string num){
 
     std::string query = "call get_acc(?);";
