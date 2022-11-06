@@ -40,12 +40,12 @@ delimiter ;
 drop procedure if exists change_pin_code;
 delimiter //
 create procedure change_pin_code
-(in pan nvarchar(20),
+(in id int unsigned,
 in pin_code int unsigned)
 begin 
 	update Cards as c
     set c.pin_code = pin_code
-    where c.pan = pan;
+    where c.id = id;
 end //
 delimiter ;
 

@@ -31,7 +31,7 @@ mdls::Card& Bank::get_card(std::string pan) {
 }
 
 void Bank::change_pin_code(
-    std::string pan, size_t pin_code) {
+    size_t id, size_t pin_code) {
 
     std::string query = "call change_pin_code(?,?);";
 
@@ -39,7 +39,7 @@ void Bank::change_pin_code(
         Bank::get_connection()->
         prepareStatement(query));
 
-    pstmt->setString(1, pan);
+    pstmt->setUInt(1, id);
     pstmt->setUInt(2, pin_code);
     pstmt->execute();
 

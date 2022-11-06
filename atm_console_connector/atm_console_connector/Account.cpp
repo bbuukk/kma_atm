@@ -10,18 +10,18 @@ mdls::Office& mdls::Account::get_office() {
 }
 
 void mdls::Account::block() {
-	this->blocked = 1;
 	Bank::block_account(this->id);	
+	this->blocked = 1;
 }
 
 void mdls::Account::unblock() {
-	this->blocked = 0;
 	Bank::unblock_account(this->id);
+	this->blocked = 0;
 }
 
 std::vector<mdls::Transaction>&
 mdls::Account::get_transactions() {
-	return Bank::get_acc_transactions(this->num);
+	return Bank::get_acc_transactions(this->id);
 }
 
 std::ostream& mdls::Account::print(std::ostream& os) const {

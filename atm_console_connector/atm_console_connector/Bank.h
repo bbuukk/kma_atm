@@ -39,7 +39,7 @@ public:
 	static void block_account(size_t id);
 	static void unblock_account(size_t id);
 
-	std::vector <mdls::Transaction>&
+	static std::vector <mdls::Transaction>&
 		get_acc_transactions(size_t id);
 	static size_t count_acc_transactions(std::string num);
 	//Account& get_acc_balance(size_t acc_id);
@@ -49,8 +49,7 @@ public:
 
 	//Card repo =============================
 	static mdls::Card& get_card(std::string pan);
-	static void change_pin_code(
-		std::string pan, size_t pin_code);
+	static void change_pin_code(size_t id, size_t pin_code);
 
 	//Transaction repo =============================
 	static mdls::Transaction& get_transaction(std::string trans_num);
