@@ -3,26 +3,23 @@
 #include "LOC.h"
 
 mdls::LOC::LOC(
-	Account& acc, size_t crd_taken,
-	size_t loc_lim, double crd_return)
-	: Account(
-		acc.get_num(), acc.get_digital_code(),
-		acc.get_balance(), acc.get_open_date(),
-		acc.is_blocked(), acc.get_atm_fee(),
-		acc.get_intrest()), crd_taken(crd_taken),
-		loc_lim(loc_lim), crd_return(crd_return) {};
-
-mdls::LOC::LOC(
-	std::string num, int dgt_code,
-	int balance, std::string  open_date,
+	std::string num, size_t dgt_code,
+	double balance, std::string open_date,
 	bool blocked, double atm_fee,
 	double intrest, size_t crd_taken,
-	size_t loc_lim, double crd_return)
+	size_t loc_lim, double crd_return,
+	size_t id = 0, size_t off_id = 0,
+	size_t clnt_id = 0, size_t acc_type = 0)
 	: Account(
 		num, dgt_code, balance,
-		open_date, blocked, atm_fee,
-		intrest), crd_taken(crd_taken),
+		open_date, blocked,
+		atm_fee, intrest,
+		id, off_id, clnt_id,
+		acc_type), crd_taken(crd_taken),
 		loc_lim(loc_lim), crd_return(crd_return) {};
+
+//mdls::LOC::LOC(std::string num)
+//	: LOC(Bank::get_loc(num)) {};
 
 std::ostream& mdls::LOC::print(std::ostream& os) const {
 	return Account::print(os) 

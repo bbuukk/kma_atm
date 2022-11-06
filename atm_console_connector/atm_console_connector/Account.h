@@ -7,22 +7,11 @@ namespace mdls {
 
 	class Account {
 	public:
-		Account(void) = default;
-
-		Account(
-			size_t id, size_t off_id,
-			size_t clnt_id, size_t acc_type,
-			std::string num, size_t dgt_code,
-			double balance, std::string open_date,
-			bool blocked, double atm_fee,
-			double intrest);
-
 		// constructor that's getting info from db
 		Account(std::string num);
 
 		Account(const Account&) = default;
 		Account& operator=(const Account&) = default;
-
 		Account& operator=(Account&&) noexcept = default;
 		Account(Account&&) noexcept = default;
 
@@ -48,8 +37,18 @@ namespace mdls {
 			return acc.print(os);
 		}
 
+		friend mdls::Account& Bank::get_account(std::string num);
+
 	protected:
 		virtual std::ostream& print(std::ostream& os) const;
+
+		Account(void) = default;
+		Account(
+			std::string num, size_t dgt_code,
+			double balance, std::string open_date,
+			bool blocked, double atm_fee,
+			double intrest,	size_t id = 0, size_t off_id = 0,
+			size_t clnt_id = 0, size_t acc_type = 0);
 
 		inline size_t get_id() const { return id; }; 
 		inline size_t get_office_id() const { return off_id; }; 

@@ -1,6 +1,6 @@
 
 #include "Bank.h"
-
+#include "Account.h"
 
 #include <ostream>
 #include <QtCore/QCoreApplication>
@@ -13,7 +13,6 @@ int main(int argc, char* argv[]) {
 	/*mdls::Account account("01234");
 
 	std::cout << account << "\n";*/
-
 
 	system("pause");
 	return a.exec();

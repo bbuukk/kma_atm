@@ -6,7 +6,6 @@
 namespace mdls {
 	class Client {
 	public:
-		Client(void) = default;
 
 		Client(
 			std::string f_name,
@@ -26,6 +25,8 @@ namespace mdls {
 		inline const std::string& get_mobile_phone() const { return mobile_phone; };
 
 	private:
+		Client(void) = default;
+
 		std::string f_name;
 		std::string l_name;
 		std::string mobile_phone;

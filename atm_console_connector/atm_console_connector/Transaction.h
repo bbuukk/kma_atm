@@ -6,7 +6,6 @@
 namespace mdls {
 	class Transaction {
 	public:
-		Transaction(void) = default;
 
 		Transaction(
 			std::string num,
@@ -38,6 +37,8 @@ namespace mdls {
 		inline const std::string& get_descript() const { return descript; }; //description
 
 	private:
+		Transaction(void) = default;
+
 		std::string num;
 		std::string acc_from;
 		std::string acc_to;

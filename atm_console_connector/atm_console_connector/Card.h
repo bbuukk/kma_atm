@@ -5,7 +5,6 @@
 namespace mdls {
 	class Card {
 	public:
-		Card(void) = default;
 
 		Card(
 			std::string pan, size_t pin_code,
@@ -32,6 +31,8 @@ namespace mdls {
 		inline const std::string& get_given_date() const { return given_date; };
 
 	private:
+		Card(void) = default;
+
 		std::string pan;
 		size_t pin_code;
 		std::string expr_date;

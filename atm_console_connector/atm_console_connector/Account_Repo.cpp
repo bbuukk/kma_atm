@@ -19,11 +19,6 @@ mdls::Account& Bank::get_account(std::string num){
     do {
         while (res->next()) {
             acc = new mdls::Account(
-                res->getUInt("id"),
-                res->getUInt("off_id"),
-                res->getUInt("clnt_id"),
-                res->getUInt("acc_type"),
-
                 res->getString("num"),
                 res->getUInt("dgt_code"),
                 res->getDouble("balance"),
@@ -31,7 +26,12 @@ mdls::Account& Bank::get_account(std::string num){
                 res->getString("open_date"),
                 res->getBoolean("is_blocked"),
                 res->getDouble("atm_fee"),
-                res->getDouble("intrest"));
+                res->getDouble("intrest"),
+
+                res->getUInt("id"),
+                res->getUInt("off_id"),
+                res->getUInt("clnt_id"),
+                res->getUInt("acc_type"));
         }
     } while (pstmt->getMoreResults());
 

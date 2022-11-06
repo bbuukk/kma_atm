@@ -7,7 +7,6 @@ namespace mdls {
 
 	class ATM {
 	public:
-		ATM(void) = default;
 
 		ATM(
 			std::string num,
@@ -29,6 +28,8 @@ namespace mdls {
 		inline const std::string& get_street() const { return street; };
 
 	private:
+		ATM(void) = default;
+
 		std::string num;
 		std::string city;
 		std::string street;

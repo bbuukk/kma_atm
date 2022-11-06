@@ -6,8 +6,6 @@
 namespace mdls {
 	class Office {
 	public:
-		Office(void) = default;
-
 		Office(
 			bool head_off,
 			std::string city,
@@ -28,6 +26,7 @@ namespace mdls {
 		inline const std::string& get_postal() const { return postal; };
 
 	private:
+		Office(void) = default;
 
 		bool head_off;
 		std::string city;

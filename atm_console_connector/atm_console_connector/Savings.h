@@ -6,14 +6,9 @@ namespace mdls {
 
 	class Savings : public Account {
 	public:
-		Savings(void) = default;
 
-		Savings(Account&, size_t trans_lim);
-
-		Savings(std::string num, size_t dgt_code,
-			double balance, std::string  open_date,
-			bool blocked, double atm_fee,
-			double intrest, size_t trans_lim);
+		// constructor that's getting info from db
+		Savings(std::string num);
 
 		Savings(const Savings&) = default;
 		Savings& operator=(const Savings&) = default;
@@ -24,8 +19,18 @@ namespace mdls {
 		~Savings() = default;
 
 		inline size_t get_trans_limit() const { return trans_lim; };
-
+		
 	private:
+		Savings(void) = default;
+
+		Savings(
+			std::string num, size_t dgt_code,
+			double balance, std::string open_date,
+			bool blocked, double atm_fee,
+			double intrest, size_t trans_lim,
+			size_t id = 0, size_t off_id = 0,
+			size_t clnt_id = 0, size_t acc_type = 0);
+
 		std::ostream& print(std::ostream& os) const override;
 
 		size_t trans_lim;
