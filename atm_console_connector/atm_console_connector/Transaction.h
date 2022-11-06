@@ -37,6 +37,9 @@ namespace mdls {
 		inline const std::string& get_atm_num() const { return atm_num; };
 		inline const std::string& get_descript() const { return descript; }; //description
 
+		friend mdls::Transaction& Bank::get_transaction(std::string trans_num);
+		friend std::vector <mdls::Transaction>& Bank::get_acc_transactions(size_t id);
+
 		//make transaction
 		bool make() const;
 

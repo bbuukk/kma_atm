@@ -5,8 +5,7 @@
 mdls::Card::Card(std::string pan)
 	: Card(Bank::get_card(pan)) {}
 
-void mdls::Card::change_pin_code(
-	std::string pan, size_t new_pin) {
+void mdls::Card::change_pin_code(size_t new_pin) {
 	Bank::change_pin_code(this->id, new_pin);
 	this->pin_code = pin_code;
 };

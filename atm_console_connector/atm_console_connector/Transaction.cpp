@@ -21,7 +21,7 @@ mdls::Transaction::Transaction(std::string num)
 bool mdls::Transaction::make() const {
 	return acc_to == "" ?
 		  Bank::withdraw(atm_num, acc_from, sum, descript)
-		: Bank::transfer(atm_num, acc_from, acc_to, sum, descript)
+		: Bank::transfer(atm_num, acc_from, acc_to, sum, descript);
 };
 
 std::ostream& operator<<(std::ostream& os, const mdls::Transaction& trans) {
