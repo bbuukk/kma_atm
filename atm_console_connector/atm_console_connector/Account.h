@@ -10,6 +10,8 @@ namespace mdls {
 		Account(void) = default;
 
 		Account(
+			size_t id, size_t off_id,
+			size_t clnt_id, size_t acc_type,
 			std::string num, size_t dgt_code,
 			double balance, std::string open_date,
 			bool blocked, double atm_fee,
@@ -48,6 +50,16 @@ namespace mdls {
 
 	protected:
 		virtual std::ostream& print(std::ostream& os) const;
+
+		inline size_t get_id() const { return id; }; 
+		inline size_t get_office_id() const { return off_id; }; 
+		inline size_t get_client_id() const { return clnt_id; }; 
+		inline size_t get_type() const { return acc_type; };
+
+		size_t id;
+		size_t off_id;
+		size_t clnt_id;
+		size_t acc_type;
 
 		std::string num;
 		size_t dgt_code;

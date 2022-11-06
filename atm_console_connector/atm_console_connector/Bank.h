@@ -35,9 +35,9 @@ public:
 	//Account repo =============================
 	static mdls::Account& get_account(std::string num);
 
-	static mdls::Office& get_acc_office(std::string num);
-	static void block_account(std::string num);
-	static void unblock_account(std::string num);
+	static mdls::Office& get_acc_office(size_t id);
+	static void block_account(size_t id);
+	static void unblock_account(size_t id);
 
 	static std::vector <mdls::Transaction>&
 		get_acc_transactions(std::string num);

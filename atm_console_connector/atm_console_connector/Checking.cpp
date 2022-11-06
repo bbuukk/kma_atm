@@ -4,6 +4,7 @@
 
 mdls::Checking::Checking(Account& acc, size_t overdraft_lim )
 	: Account(
+		acc.get_id(),
 		acc.get_num(), acc.get_digital_code(),
 		acc.get_balance(), acc.get_open_date(),
 		acc.is_blocked(), acc.get_atm_fee(),

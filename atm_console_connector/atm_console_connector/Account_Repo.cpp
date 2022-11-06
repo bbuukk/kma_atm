@@ -19,6 +19,11 @@ mdls::Account& Bank::get_account(std::string num){
     do {
         while (res->next()) {
             acc = new mdls::Account(
+                res->getUInt("id"),
+                res->getUInt("off_id"),
+                res->getUInt("clnt_id"),
+                res->getUInt("acc_type"),
+
                 res->getString("num"),
                 res->getUInt("dgt_code"),
                 res->getDouble("balance"),
@@ -33,13 +38,13 @@ mdls::Account& Bank::get_account(std::string num){
     return *acc;
 }
 
-mdls::Office& Bank::get_acc_office(std::string num) {
+mdls::Office& Bank::get_acc_office(size_t id) {
     
     std::string query = "call get_office(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->prepareStatement(query));
-    pstmt->setString(1, num);
+    pstmt->setUInt(1, id);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
@@ -58,24 +63,24 @@ mdls::Office& Bank::get_acc_office(std::string num) {
     return *off;
 }
 
-void Bank::block_account(std::string num) {
+void Bank::block_account(size_t id) {
 
     std::string query = "call block_acc(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->prepareStatement(query));
-    pstmt->setString(1, num);
+    pstmt->setUInt(1, id);
 
     pstmt->execute();
 }
 
-void Bank::unblock_account(std::string num) {
+void Bank::unblock_account(size_t id) {
 
     std::string query = "call unblock_account(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->prepareStatement(query));
-    pstmt->setString(1, num);
+    pstmt->setUInt(1, id);
 
     pstmt->execute();
 }

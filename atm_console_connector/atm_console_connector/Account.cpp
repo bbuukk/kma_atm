@@ -3,29 +3,34 @@
 #include "Account.h"
 
 mdls::Account::Account(
-		 std::string num, size_t dgt_code,
-		 double balance, std::string open_date,
-		 bool blocked, double atm_fee,
-		 double intrest)
-	   : num(num), dgt_code(dgt_code),
+	size_t id, size_t off_id,
+	size_t clnt_id, size_t acc_type,
+	std::string num, size_t dgt_code,
+	double balance, std::string open_date,
+	bool blocked, double atm_fee,
+	double intrest)
+	   : id(id), off_id(off_id),
+		 clnt_id(clnt_id), acc_type(acc_type),
+		 num(num), dgt_code(dgt_code),
 	     balance(balance), open_date(open_date),
-	     blocked(blocked), atm_fee(atm_fee), intrest(intrest) {};
+	     blocked(blocked), atm_fee(atm_fee),
+		 intrest(intrest) {};
 
 mdls::Account::Account(std::string num)
 	: Account(Bank::get_account(num)) {};
 
 mdls::Office& mdls::Account::get_office() {
-	return Bank::get_acc_office(this->num);
+	return Bank::get_acc_office(this->id);
 }
 
 void mdls::Account::block() {
 	this->blocked = 1;
-	Bank::block_account(this->num);	
+	Bank::block_account(this->id);	
 }
 
 void mdls::Account::unblock() {
 	this->blocked = 0;
-	Bank::unblock_account(this->num);
+	Bank::unblock_account(this->id);
 }
 
 std::vector<mdls::Transaction>&
