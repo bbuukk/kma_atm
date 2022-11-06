@@ -4,11 +4,14 @@
 #include "Account.h"
 #include "Card.h"
 
-namespace sbs {
+namespace clnt {
 
 	class ATM {
 	public:
-		ATM(void) = default;
+		ATM(void) = delete;
+
+		ATM(mdls::Account);
+		ATM(mdls::Card);
 
 		ATM(const ATM&) = delete;
 		ATM& operator=(const ATM&) = delete;
