@@ -1,9 +1,12 @@
 #pragma once
 
-#include "Database.h"
+#include "Bank.h"
 
+Bank::Bank(void) {
+	this->connect();
+};
 
-sql::Connection*& Database::get_connection()
+void Bank::connect()
 {
 	sql::ConnectOptionsMap connection_properties;
 
@@ -13,12 +16,8 @@ sql::Connection*& Database::get_connection()
 	connection_properties["CLIENT_MULTI_STATEMENTS"] = (true);
 
 	sql::Driver* driver(get_driver_instance());
-    sql::Connection* con(driver->connect(connection_properties));
-    con->setSchema("atm");
+	this->con.reset(driver->connect(connection_properties));
+	con->setSchema("atm");
 
 	std::cout << "Successfully connected" << "\n";
-
-    return con;
-    
- 
-}
+};

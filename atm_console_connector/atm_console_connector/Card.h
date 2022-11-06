@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Card.h"
-#include "Database.h"
-
-#include <mysql/jdbc.h>
+#include "Bank.h"
 
 namespace mdls {
 	class Card {

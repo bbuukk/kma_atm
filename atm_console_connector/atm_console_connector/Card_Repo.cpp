@@ -1,11 +1,13 @@
-#include "Repo.h"
+#include "Bank.h"
 
-mdls::Card& Repo::get_card(std::string pan) const {
+mdls::Card& Bank::get_card(std::string pan) {
 
     std::string query = "call get_card(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->
+        prepareStatement(query));
+
     pstmt->setString(1, pan);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
@@ -26,13 +28,15 @@ mdls::Card& Repo::get_card(std::string pan) const {
     return *card;
 }
 
-void Repo::change_pin_code(
-    std::string pan, size_t pin_code) const {
+void Bank::change_pin_code(
+    std::string pan, size_t pin_code) {
 
     std::string query = "call change_pin_code(?,?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->
+        prepareStatement(query));
+
     pstmt->setString(1, pan);
     pstmt->setUInt(2, pin_code);
     pstmt->execute();

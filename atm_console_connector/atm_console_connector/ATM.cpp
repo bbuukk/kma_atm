@@ -1,4 +1,4 @@
-#include "ATM.h"
+s#include "ATM.h"
 
 mdls::ATM::ATM(
 	std::string num,
@@ -7,8 +7,7 @@ mdls::ATM::ATM(
 	: num(num), city(city), street(street) {};
 
 mdls::ATM::ATM(std::string num) 
-	: ATM(Database::get_repository()
-		.get_atm(num)) {};
+	: ATM(Bank::get_atm(num)) {};
 
 std::ostream& operator<<(std::ostream& os, const mdls::ATM& atm) {
 	return os

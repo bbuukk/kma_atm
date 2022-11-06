@@ -1,11 +1,13 @@
-#include "Repo.h"
+#include "Bank.h"
 
-mdls::Transaction& Repo::get_transaction(std::string trans_num) const {
+mdls::Transaction& Bank::get_transaction(std::string trans_num) {
 
     std::string query = "call get_transaction(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->
+        prepareStatement(query));
+
     pstmt->setString(1, trans_num);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
@@ -31,17 +33,19 @@ mdls::Transaction& Repo::get_transaction(std::string trans_num) const {
     return *trans;
 }
 
-bool Repo::transact(
+bool Bank::transact(
     std::string atm_num,
     std::string acc_from,
     std::string acc_to,
     size_t sum,
-    std::string description) const {
+    std::string description) {
 
     std::string query = "call transact(?,?,?,?,?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->
+        prepareStatement(query));
+
     pstmt->setString(1, atm_num);
     pstmt->setString(2, acc_from);
     pstmt->setString(3, acc_to);
@@ -60,16 +64,18 @@ bool Repo::transact(
     return is_successful;
 }
 
-bool Repo::withdraw(
+bool Bank::withdraw(
     std::string atm_num,
     std::string acc_from,
     size_t sum,
-    std::string description)const {
+    std::string description) {
 
     std::string query = "call withdraw(?,?,?,?,?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->
+        prepareStatement(query));
+
     pstmt->setString(1, atm_num);
     pstmt->setString(2, acc_from);
     pstmt->setUInt(3, sum);

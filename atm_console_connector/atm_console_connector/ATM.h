@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Database.h"
-
-#include <mysql/jdbc.h>
+#include "Bank.h"
 
 namespace mdls {
 

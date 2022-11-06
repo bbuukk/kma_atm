@@ -107,24 +107,22 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="ATM.cpp" />
-    <ClCompile Include="ATM_sbs.cpp" />
+    <ClCompile Include="Out_ATM.cpp" />
     <ClCompile Include="ATM_Repo.cpp" />
-    <ClCompile Include="Bank_sbs.cpp" />
+    <ClCompile Include="In_ATM.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Card_Repo.cpp" />
     <ClCompile Include="Checking.cpp" />
     <ClCompile Include="Client.cpp" />
-    <ClCompile Include="Database.cpp" />
+    <ClCompile Include="Bank.cpp" />
     <ClCompile Include="LOC.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Office.cpp" />
     <ClCompile Include="Office_Repo.cpp" />
-    <ClCompile Include="ProcedureReturnRSTesting.cpp" />
     <ClCompile Include="Account_Repo.cpp" />
     <ClCompile Include="Savings.cpp" />
     <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="Transaction_Repo.cpp" />
-    <ClCompile Include="UniqTesting.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
@@ -133,10 +131,9 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Checking.h" />
     <ClInclude Include="Client.h" />
-    <ClInclude Include="Database.h" />
+    <ClInclude Include="Bank.h" />
     <ClInclude Include="LOC.h" />
     <ClInclude Include="Office.h" />
-    <ClInclude Include="Repo.h" />
     <ClInclude Include="Savings.h" />
     <ClInclude Include="Transaction.h" />
   </ItemGroup>

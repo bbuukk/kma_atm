@@ -1,12 +1,11 @@
-#include "Repo.h"
-#include <vector>
+#include "Bank.h"
 
-mdls::Account& Repo::get_account(std::string num) const {
+mdls::Account& Bank::get_account(std::string num){
 
     std::string query = "call get_acc(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->prepareStatement(query));
     pstmt->setString(1, num);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
@@ -30,12 +29,12 @@ mdls::Account& Repo::get_account(std::string num) const {
     return *acc;
 }
 
-mdls::Office& Repo::get_acc_office(std::string num) const {
+mdls::Office& Bank::get_acc_office(std::string num) {
     
     std::string query = "call get_office(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->prepareStatement(query));
     pstmt->setString(1, num);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
@@ -55,34 +54,34 @@ mdls::Office& Repo::get_acc_office(std::string num) const {
     return *off;
 }
 
-void Repo::block_account(std::string num) const {
+void Bank::block_account(std::string num) {
 
     std::string query = "call block_acc(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->prepareStatement(query));
     pstmt->setString(1, num);
 
     pstmt->execute();
 }
 
-void Repo::unblock_account(std::string num) const {
+void Bank::unblock_account(std::string num) {
 
     std::string query = "call unblock_account(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->prepareStatement(query));
     pstmt->setString(1, num);
 
     pstmt->execute();
 }
 
-std::vector <mdls::Transaction>& Repo::get_acc_transactions(std::string num)const {
+std::vector <mdls::Transaction>& Bank::get_acc_transactions(std::string num) {
 
     std::string query("call get_all_acc_trans(?);");
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->prepareStatement(query));
     pstmt->setString(1, num);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());

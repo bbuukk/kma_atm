@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Office.h"
-
-#include <mysql/jdbc.h>
+#include "Bank.h"
 
 namespace mdls {
 	class Office {

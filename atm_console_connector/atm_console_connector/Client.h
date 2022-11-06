@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Client.h"
-
-#include <mysql/jdbc.h>
+#include "Bank.h"
 
 namespace mdls {
 	class Client {

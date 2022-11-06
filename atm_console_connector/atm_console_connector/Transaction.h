@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Transaction.h"
+#include "Bank.h"
 
-#include <mysql/jdbc.h>
+#include <string>
 
 namespace mdls {
 	class Transaction {

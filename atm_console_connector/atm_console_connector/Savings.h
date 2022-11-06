@@ -2,8 +2,6 @@
 
 #include "Account.h"
 
-#include <mysql/jdbc.h>
-
 namespace mdls {
 
 	class Savings : public Account {

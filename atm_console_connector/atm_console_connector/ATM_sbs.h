@@ -1,11 +1,6 @@
 #pragma once
 
-#include "Database.h"
-#include "Repo.h"
-#include "Bank_sbs.h"
-#include "Account.h"
-
-#include <mysql/jdbc.h>
+#include "Bank.h"
 
 namespace sbs {
 
@@ -13,21 +8,22 @@ namespace sbs {
 	public:
 		ATM(void) = default;
 
-		ATM(const ATM&) = default;
-		ATM& operator=(const ATM&) = default;
-
-		ATM& operator=(ATM&&) noexcept = default;
-		ATM(ATM&&) noexcept = default;
+		ATM(const ATM&) = delete;
+		ATM& operator=(const ATM&) = delete;
 
 		~ATM() = default;
 
-		inline const mdls::Account& get_account() const { return account; };
-		
+		inline const std::unique_ptr<mdls::Account>& get_account() const { return account; };
+		inline const std::unique_ptr<mdls::Card>& get_card() const { return card; };
+
 	private:
-		mdls::Account account; 
+
+		std::unique_ptr<mdls::Account> account;
+		std::unique_ptr<mdls::Card> card;
+
+		
 	};
 }
 
-std::ostream& operator<<(std::ostream& os, const mdls::ATM& off);
 
 

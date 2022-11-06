@@ -1,11 +1,11 @@
-#include "Repo.h"
+#include "Bank.h"
 
-mdls::ATM& Repo::get_atm(std::string num) const {
+mdls::ATM& Bank::get_atm(std::string num){
 
     std::string query = "call get_atm(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
-        this->con->prepareStatement(query));
+        Bank::get_connection()->prepareStatement(query));
     pstmt->setString(1, num);
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
