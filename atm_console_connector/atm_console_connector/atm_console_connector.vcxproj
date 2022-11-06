@@ -107,9 +107,9 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="ATM.cpp" />
-    <ClCompile Include="Out_ATM.cpp" />
+    <ClCompile Include="Out_Client.cpp" />
     <ClCompile Include="ATM_Repo.cpp" />
-    <ClCompile Include="In_ATM.cpp" />
+    <ClCompile Include="In_Client.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Card_Repo.cpp" />
     <ClCompile Include="Checking.cpp" />
@@ -127,7 +127,7 @@
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="ATM.h" />
-    <ClInclude Include="ATM_sbs.h" />
+    <ClInclude Include="ATM_clnt.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Checking.h" />
     <ClInclude Include="Client.h" />

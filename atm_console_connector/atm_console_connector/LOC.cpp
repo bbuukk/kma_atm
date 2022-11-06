@@ -8,8 +8,8 @@ mdls::LOC::LOC(
 	bool blocked, double atm_fee,
 	double intrest, size_t crd_taken,
 	size_t loc_lim, double crd_return,
-	size_t id = 0, size_t off_id = 0,
-	size_t clnt_id = 0, size_t acc_type = 0)
+	size_t id, size_t off_id,
+	size_t clnt_id, size_t acc_type)
 	: Account(
 		num, dgt_code, balance,
 		open_date, blocked,

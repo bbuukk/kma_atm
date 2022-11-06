@@ -57,9 +57,6 @@
     <Filter Include="Source Files\Client">
       <UniqueIdentifier>{d0bafd0f-a4c0-468b-b998-6b2bc77b9d0b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Client\ATM">
-      <UniqueIdentifier>{ffd7a381-35ad-4c6e-b39d-8475eddf9cba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models\Transaction">
       <UniqueIdentifier>{827ae449-be9a-45d4-8505-79ef25255d15}</UniqueIdentifier>
     </Filter>
@@ -113,10 +110,10 @@
     <ClCompile Include="LOC.cpp">
       <Filter>Source Files\Models\Account\LOC</Filter>
     </ClCompile>
-    <ClCompile Include="Out_ATM.cpp">
-      <Filter>Source Files\Client\ATM</Filter>
+    <ClCompile Include="In_Client.cpp">
+      <Filter>Source Files\Client</Filter>
     </ClCompile>
-    <ClCompile Include="In_ATM.cpp">
+    <ClCompile Include="Out_Client.cpp">
       <Filter>Source Files\Client</Filter>
     </ClCompile>
   </ItemGroup>
@@ -151,8 +148,8 @@
     <ClInclude Include="LOC.h">
       <Filter>Source Files\Models\Account\LOC</Filter>
     </ClInclude>
-    <ClInclude Include="ATM_sbs.h">
-      <Filter>Source Files\Client\ATM</Filter>
+    <ClInclude Include="ATM_clnt.h">
+      <Filter>Source Files\Client</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,8 +1,17 @@
 #pragma once
 
 #include <memory>
-#include "Account.h"
-#include "Card.h"
+namespace mdls {
+	class Account;
+	class Checking;
+	class Savings;
+	class LOC;
+	class Office;
+	class Card;
+	class Transaction;
+	class Client;
+	class ATM;
+};
 
 namespace clnt {
 

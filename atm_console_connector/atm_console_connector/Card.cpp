@@ -7,7 +7,7 @@ mdls::Card::Card(std::string pan)
 
 void mdls::Card::change_pin_code(
 	std::string pan, size_t new_pin) {
-	Bank::change_pin_code(pan, new_pin);
+	Bank::change_pin_code(this->id, new_pin);
 	this->pin_code = pin_code;
 };
 
@@ -24,8 +24,8 @@ std::ostream& operator<<(std::ostream& os, const mdls::Card& card) {
 mdls::Card::Card(
 	std::string pan, size_t pin_code,
 	std::string expr_date, size_t cvv,
-	std::string given_date, size_t id = 0,
-	size_t acc_id = 0, size_t clnt_id = 0)
+	std::string given_date, size_t id,
+	size_t acc_id, size_t clnt_id)
 	: pan(pan), pin_code(pin_code),
 	expr_date(expr_date), cvv(cvv),
 	given_date(given_date), id(id),

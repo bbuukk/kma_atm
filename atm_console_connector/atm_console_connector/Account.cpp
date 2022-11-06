@@ -46,8 +46,8 @@ mdls::Account::Account(
 	std::string num, size_t dgt_code,
 	double balance, std::string open_date,
 	bool blocked, double atm_fee,
-	double intrest, size_t id = 0, size_t off_id = 0,
-	size_t clnt_id = 0, size_t acc_type = 0)
+	double intrest, size_t id, size_t off_id,
+	size_t clnt_id, size_t acc_type)
 	: num(num), dgt_code(dgt_code),
 	balance(balance), open_date(open_date),
 	blocked(blocked), atm_fee(atm_fee),

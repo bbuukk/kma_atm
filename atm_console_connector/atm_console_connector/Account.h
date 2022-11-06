@@ -1,7 +1,10 @@
 #pragma once
 
+#include "Bank.h"
+
 #include <string>
 #include <ostream>
+#include <vector>
 
 namespace mdls {
 

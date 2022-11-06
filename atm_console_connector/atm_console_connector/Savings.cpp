@@ -7,8 +7,8 @@ mdls::Savings::Savings(
 	double balance, std::string open_date,
 	bool blocked, double atm_fee,
 	double intrest, size_t trans_lim,
-	size_t id = 0, size_t off_id = 0,
-	size_t clnt_id = 0, size_t acc_type = 0)
+	size_t id, size_t off_id,
+	size_t clnt_id, size_t acc_type)
 	: Account(
 		num, dgt_code, balance,
 		open_date, blocked,
