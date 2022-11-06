@@ -66,10 +66,9 @@ delimiter ;
 -- should make dangling transaction? (коли не вдалось провести транзакцію, чи повинен я в деяких випадках просто відкладати її??)
 -- need to check if one branched if works fine
 
-
-drop procedure if exists transact;
+drop procedure if exists transfer;
 delimiter //
-create procedure transact(
+create procedure transfer(
 in atm_num nvarchar(10),
 in acc_from nvarchar(30),
 in acc_to nvarchar(30),

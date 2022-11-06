@@ -17,6 +17,13 @@ mdls::Transaction::Transaction(
 mdls::Transaction::Transaction(std::string num)
 	: Transaction(Bank::get_transaction(num)) {};
 
+//TODO make check for empty acc_to better
+bool mdls::Transaction::make() const {
+	return acc_to == "" ?
+		  Bank::withdraw(atm_num, acc_from, sum, descript)
+		: Bank::transfer(atm_num, acc_from, acc_to, sum, descript)
+};
+
 std::ostream& operator<<(std::ostream& os, const mdls::Transaction& trans) {
 	return os
 		<< "Transaction number: " << trans.get_num() << "\n"
@@ -28,4 +35,4 @@ std::ostream& operator<<(std::ostream& os, const mdls::Transaction& trans) {
 		<< "Is successful: " << trans.is_successful() << "\n"
 		<< "ATM number: " << trans.get_atm_num() << "\n"
 		<< "Description: " << trans.get_descript() << "\n";
-}
+};

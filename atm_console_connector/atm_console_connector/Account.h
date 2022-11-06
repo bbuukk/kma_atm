@@ -47,8 +47,6 @@ namespace mdls {
 		friend mdls::Account& Bank::get_account(std::string num);
 
 	protected:
-		virtual std::ostream& print(std::ostream& os) const;
-
 		Account(void) = default;
 		Account(
 			std::string num, size_t dgt_code,
@@ -56,6 +54,8 @@ namespace mdls {
 			bool blocked, double atm_fee,
 			double intrest,	size_t id = 0, size_t off_id = 0,
 			size_t clnt_id = 0, size_t acc_type = 0);
+
+		virtual std::ostream& print(std::ostream& os) const;
 
 		inline size_t get_id() const { return id; }; 
 		inline size_t get_office_id() const { return off_id; }; 

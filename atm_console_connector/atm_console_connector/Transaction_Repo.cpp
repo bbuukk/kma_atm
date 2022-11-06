@@ -35,14 +35,14 @@ mdls::Transaction& Bank::get_transaction(std::string trans_num) {
     return *trans;
 }
 
-bool Bank::transact(
+bool Bank::transfer(
     std::string atm_num,
     std::string acc_from,
     std::string acc_to,
     size_t sum,
     std::string description) {
 
-    std::string query = "call transact(?,?,?,?,?);";
+    std::string query = "call transfer(?,?,?,?,?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->

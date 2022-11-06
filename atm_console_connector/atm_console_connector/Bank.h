@@ -53,7 +53,7 @@ public:
 
 	//Transaction repo =============================
 	static mdls::Transaction& get_transaction(std::string trans_num);
-	static bool transact(
+	static bool transfer(
 		std::string atm_num,
 		std::string acc_from,
 		std::string acc_to,
