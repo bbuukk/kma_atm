@@ -13,6 +13,9 @@ namespace mdls {
 	class ATM;
 };
 
+#include "Account.h"
+#include "Card.h"
+
 namespace clnt {
 
 	class ATM {
@@ -27,15 +30,13 @@ namespace clnt {
 
 		~ATM() = default;
 
-		inline const std::unique_ptr<mdls::Account>& get_account() const { return account; };
-		inline const std::unique_ptr<mdls::Card>& get_card() const { return card; };
+		inline const mdls::Account& get_account() const { return account; };
+		inline const mdls::Card& get_card() const { return card; };
 
 	private:
 
-		std::unique_ptr<mdls::Account> account;
-		std::unique_ptr<mdls::Card> card;
-
-		
+		mdls::Account account;
+		mdls::Card card;
 	};
 }
 
