@@ -2,8 +2,6 @@
 
 #include "Bank.h"
 
-#include <string>
-
 namespace mdls {
 	class Transaction {
 	public:
