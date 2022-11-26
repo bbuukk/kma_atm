@@ -32,6 +32,7 @@ mdls::Checking::Checking(
 
 
 std::ostream& mdls::Checking::print(std::ostream& os) const {
+	std::cout << "Checking print\n";
 	return Account::print(os) << "Overdraft limit is: " << overdraft_lim << "\n";
 }
 

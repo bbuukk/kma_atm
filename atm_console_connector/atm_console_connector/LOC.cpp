@@ -34,6 +34,7 @@ mdls::LOC::LOC(
 //	: LOC(Bank::get_loc(num)) {};
 
 std::ostream& mdls::LOC::print(std::ostream& os) const {
+	std::cout << "LOC print\n";
 	return Account::print(os) 
 		<< "Credit is: " << crd_taken << "\n"
 		<< "Creditn limit is: " << loc_lim << "\n"

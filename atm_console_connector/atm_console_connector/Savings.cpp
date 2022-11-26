@@ -30,6 +30,7 @@ mdls::Savings::Savings(
 //	: Savings(Bank::get_savings(num)) {};
 
 std::ostream& mdls::Savings::print(std::ostream& os) const {
+	std::cout << "Savings print\n";
 	return Account::print(os) << "Transaction limit is: " << trans_lim() << "\n";
 }
 
