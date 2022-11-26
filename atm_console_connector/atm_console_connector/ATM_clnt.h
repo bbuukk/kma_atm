@@ -22,21 +22,21 @@ namespace clnt {
 	public:
 		ATM(void) = delete;
 
-		ATM(mdls::Account);
-		ATM(mdls::Card);
+		
+		/*ATM(mdls::Card);*/
 
 		ATM(const ATM&) = delete;
 		ATM& operator=(const ATM&) = delete;
 
 		~ATM() = default;
 
-		inline const mdls::Account& get_account() const { return account; };
-		inline const mdls::Card& get_card() const { return card; };
+		inline const mdls::Account& get_account() const { return account_; };
+		/*inline const mdls::Card& get_card() const { return card_; };*/
 
 	private:
 
-		mdls::Account account;
-		mdls::Card card;
+		mdls::Account account_;
+		/*mdls::Card card_;*/
 	};
 }
 

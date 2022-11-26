@@ -18,6 +18,18 @@ mdls::LOC::LOC(
 		acc_type), crd_taken(crd_taken),
 		loc_lim(loc_lim), crd_return(crd_return) {};
 
+mdls::LOC::LOC(
+	const Account& acc, size_t crd_taken,
+	size_t loc_lim, size_t crd_return)
+	: LOC(
+		acc.num(), acc.digital_code(),
+		acc.balance(), acc.open_date(),
+		acc.is_blocked(), acc.atm_fee(),
+		acc.intrest(), crd_taken,
+		loc_lim, crd_return,
+		acc.id(), acc.office_id(),
+		acc.client_id(), acc.type()) {};
+
 //mdls::LOC::LOC(std::string num)
 //	: LOC(Bank::get_loc(num)) {};
 

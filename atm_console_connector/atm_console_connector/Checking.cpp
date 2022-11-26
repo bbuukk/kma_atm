@@ -17,6 +17,16 @@ mdls::Checking::Checking(
 		off_id, clnt_id, acc_type),
 		overdraft_lim(overdraft_lim) {};
 
+mdls::Checking::Checking(
+	const Account& acc, size_t overdraft_lim)
+	: Checking(
+		acc.num(), acc.digital_code(),
+		acc.balance(), acc.open_date(),
+		acc.is_blocked(), acc.atm_fee(),
+		acc.intrest(), overdraft_lim,
+		acc.id(), acc.office_id(),
+		acc.client_id(), acc.type()) {};
+
 //mdls::Checking::Checking(std::string num)
 //	: Cheking(Bank::get_checking(num)) {};
 

@@ -19,6 +19,8 @@ namespace mdls {
 
 		inline size_t get_overdraft_lim() const { return overdraft_lim; };
 
+		friend mdls::Account& Bank::get_account(const std::string& num);
+
 	private:
 		Checking(void) = default;
 
@@ -29,6 +31,9 @@ namespace mdls {
 			double intrest, size_t overdraft_lim,
 			size_t id = 0, size_t off_id = 0,
 			size_t clnt_id = 0, size_t acc_type = 0);
+
+		Checking(
+			const Account& acc, size_t overdraft_lim);
 
 		std::ostream& print(std::ostream& os) const override;
 

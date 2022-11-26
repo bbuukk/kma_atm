@@ -1,8 +1,18 @@
 #include "Bank.h"
 
 #include "Account.h"
+#include "Savings.h"
+#include "Checking.h"
+#include "LOC.h"
 #include "Office.h"
 #include "Transaction.h"
+
+#define CHECKING 1
+#define STUDENT_CHECKING 2
+#define SAVINGS 3
+#define LOCC 4
+
+class bad_account : public std::exception {};
 
 mdls::Account& Bank::get_account(const std::string& num){
 
@@ -14,11 +24,17 @@ mdls::Account& Bank::get_account(const std::string& num){
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    mdls::Account* acc(nullptr);
+    mdls::Account* account(nullptr);
+
+    size_t trans_lim(0);
+    size_t overdraft_lim(0);
+    size_t crd_taken(0);
+    size_t loc_lim(0);
+    double crd_return(0);
 
     do {
         while (res->next()) {
-            acc = new mdls::Account(
+            mdls::Account acc(
                 res->getString("num"),
                 res->getUInt("dgt_code"),
                 res->getDouble("balance"),
@@ -32,10 +48,31 @@ mdls::Account& Bank::get_account(const std::string& num){
                 res->getUInt("off_id"),
                 res->getUInt("clnt_id"),
                 res->getUInt("acc_type"));
+
+            switch (acc.type()) {
+                case CHECKING:
+                case STUDENT_CHECKING:
+                    account = new mdls::Checking(
+                        acc, res->getUInt("overdraft_lim"));
+                    break;
+                case SAVINGS:
+                    account = new mdls::Savings(
+                        acc, res->getUInt("trans_lim"));
+                    break;
+                case LOCC:
+                    account = new mdls::LOC(
+                        acc,
+                        res->getUInt("crd_taken"),
+                        res->getUInt("loc_lim"),
+                        res->getUInt("crd_return"));
+                    break;
+                default:
+                    throw bad_account();
+            }
         }
     } while (pstmt->getMoreResults());
 
-    return *acc;
+    return *account;
 }
 
 mdls::Office& Bank::get_acc_office(const size_t id) {
@@ -114,6 +151,26 @@ std::vector <mdls::Transaction>& Bank::get_acc_transactions(const size_t id) {
     } while (pstmt->getMoreResults());
 
     return *transs;
+}
+
+size_t Bank::get_acc_type(const std::string& num) {
+
+    std::string query = "call get_acc_type(?);";
+
+    std::unique_ptr<sql::PreparedStatement> pstmt(
+        Bank::get_connection()->prepareStatement(query));
+    pstmt->setString(1, num);
+    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+    size_t acc_type(0);
+
+    do {
+        while (res->next()) {
+            acc_type = res->getUInt("acc_type");
+        }
+    } while (pstmt->getMoreResults());
+
+    return acc_type;
 }
 
 

@@ -16,6 +16,8 @@
 
 select * from Accounts;
 
+select * from Acc_types;
+
 drop procedure if exists get_acc;
 delimiter //
 create procedure get_acc(IN acc_num nvarchar(30)) 
@@ -24,8 +26,8 @@ begin
 		   a.clnt_id, a.acc_type,
            a.num, a.dgt_code,
 		   a.balance, a.open_date,
-           a.is_blocked, a.atm_fee,
-           a.intrest, a.trans_lim,
+           a.is_blocked, a.overdraft_lim,
+           a.atm_fee, a.intrest, a.trans_lim,
            a.crd_taken, a.loc_lim,
            a.crd_return
     from Accounts as a
@@ -74,6 +76,20 @@ begin
 	where a.id = acc_id;
 end //
 delimiter ;
+
+drop procedure if exists get_acc_type;
+delimiter //
+create procedure get_acc_type(IN acc_num nvarchar(30)) 
+begin 
+	select a.acc_type
+    from Accounts as a
+    where a.num = acc_num;
+end //
+delimiter ;
+
+select * from Accounts;
+
+
 
 -- =====================================================================================
 									-- FUNCTIONS

@@ -41,6 +41,8 @@ public:
 
 	static std::vector <mdls::Transaction>&
 		get_acc_transactions(const size_t id);
+
+	size_t get_acc_type(const std::string& num);
 	//static size_t count_acc_transactions(std::string num);
 	//Account& get_acc_balance(size_t acc_id);
 

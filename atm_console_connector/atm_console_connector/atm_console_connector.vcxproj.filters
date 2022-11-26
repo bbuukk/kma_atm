@@ -94,10 +94,10 @@
     <ClCompile Include="LOC.cpp">
       <Filter>Source Files\Models\Account\LOC</Filter>
     </ClCompile>
-    <ClCompile Include="In_Client.cpp">
+    <ClCompile Include="ATM_clnt.cpp">
       <Filter>Source Files\Client</Filter>
     </ClCompile>
-    <ClCompile Include="Out_Client.cpp">
+    <ClCompile Include="format.cpp">
       <Filter>Source Files\Client</Filter>
     </ClCompile>
   </ItemGroup>

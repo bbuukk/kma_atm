@@ -21,6 +21,8 @@ namespace mdls {
 		inline size_t get_loc_limit() const { return loc_lim; };
 		inline double get_credit_returned() const { return crd_return; };
 
+		friend mdls::Account& Bank::get_account(const std::string& num);
+
 	private:
 		LOC(void) = default;
 
@@ -32,6 +34,9 @@ namespace mdls {
 			size_t loc_lim, double crd_return,
 			size_t id = 0, size_t off_id = 0,
 			size_t clnt_id = 0, size_t acc_type = 0);
+
+		LOC(const Account& acc, size_t crd_taken,
+			size_t loc_lim, size_t crd_return);
 
 		std::ostream& print(std::ostream& os) const override;
 

@@ -18,10 +18,14 @@ namespace mdls {
 
 		~Savings() = default;
 
-		inline size_t get_trans_limit() const { return trans_lim; };
+		inline size_t trans_lim() const { return trans_lim_; };
+
+		friend mdls::Account& Bank::get_account(const std::string& num);
 		
 	private:
 		Savings(void) = default;
+
+		Savings(const Account& acc, size_t trans_lim);
 
 		Savings(
 			const std::string& num, size_t dgt_code,
@@ -33,6 +37,6 @@ namespace mdls {
 
 		std::ostream& print(std::ostream& os) const override;
 
-		size_t trans_lim;
+		size_t trans_lim_;
 	};
 }
