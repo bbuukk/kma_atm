@@ -30,13 +30,13 @@ namespace clnt {
 
 		~ATM() = default;
 
-		inline const mdls::Account& get_account() const { return account_; };
-		/*inline const mdls::Card& get_card() const { return card_; };*/
+		inline const std::unique_ptr<mdls::Account>& get_account() const { return account_; };
+		inline const std::unique_ptr<mdls::Card>& get_card() const { return card_; };
 
 	private:
 
-		mdls::Account account_;
-		/*mdls::Card card_;*/
+		std::unique_ptr<mdls::Account> account_;
+		std::unique_ptr<mdls::Card> card_;
 	};
 }
 

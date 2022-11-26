@@ -6,6 +6,12 @@
 #include <ostream>
 #include <QtCore/QCoreApplication>
 
+class Shape {
+public:
+	virtual double area() = 0;
+private:
+};
+
 int main(int argc, char* argv[]) {
 	QCoreApplication a(argc, argv);
 
@@ -18,12 +24,13 @@ int main(int argc, char* argv[]) {
 	std::cin >> account_number;
 	std::cout << "\n";*/
 	
-	mdls::Account account("01234");
-
-	std::cout << account << "\n";
+	mdls::Account& acc2 = Bank::get_account("01234");
+	std::cout << acc2 << "\n";
+	
 
 	/*clnt::ATM atm;*/
 
 	system("pause");
 	return a.exec();
 }
+

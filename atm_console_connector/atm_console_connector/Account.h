@@ -10,13 +10,7 @@ namespace mdls {
 
 	class Account {
 	public:
-		// constructor that's getting info from db
-		Account(const std::string& num);
-
-		//constructor for creating new account in bank
-		/*Account(std::string num, size_t dgt_code,
-				double atm_fee, double intrest);*/
-
+		
 		Account(const Account&) = default;
 		Account& operator=(const Account&) = default;
 		Account& operator=(Account&&) noexcept = default;

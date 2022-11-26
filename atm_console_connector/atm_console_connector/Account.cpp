@@ -2,8 +2,8 @@
 
 #include "Account.h"
 
-mdls::Account::Account(const std::string& num)
-	: Account(Bank::get_account(num)) {};
+//mdls::Account::Account(const std::string& num)
+//	: Account(*(Bank::get_account(num))) {};
 
 mdls::Office& mdls::Account::get_office() {
 	return Bank::get_acc_office(this->id());
