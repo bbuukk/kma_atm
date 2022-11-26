@@ -2,26 +2,46 @@
 #include "ATM_clnt.h"
 #include "Account.h"
 #include "Card.h"
+#include "Transaction.h"
+#include "ATM.h"
 
 //card is nullptr, because account can have 
 //lots of cards, no idea which to pick
-clnt::ATM::ATM(mdls::Account& account) 
-	: account_(account), card_(nullptr)
+clnt::ATM::ATM(
+	std::string& num, mdls::Account& account)
+	: account_(account)
+	, card_(nullptr)
+	, num_(num)
 {};
 
-clnt::ATM::ATM(mdls::Card& card)
+clnt::ATM::ATM(
+	std::string& num, mdls::Card& card)
 	: card_(std::make_unique<mdls::Card>(card))
 	, account_(Bank::get_account(card))
+	, num_(num)
 {};
 
 //maybe it's worth to make deposit using Transaction
 //object in order to make syncronization simplier in future
 bool clnt::ATM::deposit(size_t sum) {
-	this->account_.deposit(sum);
+	mdls::Transaction deposit(num(), account().num(), sum);
+	deposit.make();
+	//TODO fetch new balance from database 
 };
 
-bool clnt::ATM::deposit(size_t sum) {
-	this->account_.withdrawal(sum);
+bool clnt::ATM::withdraw(size_t sum) {
+
+	mdls::Transaction withdraw(num(), account().num(), sum);
+	withdraw.make();
 };
+
+bool clnt::ATM::transfer(
+	const std::string& acc_to,
+	size_t sum, const std::string& descript) {
+
+	mdls::Transaction transfer(num(), account().num(), acc_to, sum, descript);
+	transfer.make();
+};
+
 
 

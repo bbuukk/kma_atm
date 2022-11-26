@@ -10,14 +10,29 @@ namespace mdls {
 		// constructor that's getting info from db
 		Transaction(const std::string& num);
 
+
 		//constructor for creating new transaction,
 		//but not making it, for this use make()
+
+		//transfer
 		Transaction(
-			const std::string& num,
+			const std::string& atm_num,
 			const std::string& acc_from,
 			const std::string& acc_to,
 			size_t sum,
 			const std::string& descript);
+
+		//withdraw
+		Transaction(
+			const std::string& atm_num,
+			const std::string& acc_from,
+			size_t sum);
+
+		//deposit
+		Transaction(
+			const std::string& atm_num,
+			const std::string& acc_to,
+			size_t sum);
 
 		Transaction(const Transaction&) = default;
 		Transaction& operator=(const Transaction&) = default;
@@ -27,15 +42,15 @@ namespace mdls {
 
 		~Transaction() = default;
 
-		inline const std::string& get_num() const { return num; }
-		inline const std::string& get_account_from() const { return acc_from; };
-		inline const std::string& get_account_to() const { return acc_to; };
-		inline size_t get_sum() const { return sum; };
+		inline const std::string& num() const { return num_; }
+		inline const std::string& account_from() const { return acc_from_; };
+		inline const std::string& account_to() const { return acc_to_; };
+		inline size_t sum() const { return sum_; };
 
-		inline const std::string& get_date() const { return date; };
-		inline bool is_successful() const { return successful; };
-		inline const std::string& get_atm_num() const { return atm_num; };
-		inline const std::string& get_descript() const { return descript; }; //description
+		inline const std::string& datetime() const { return datetime_; };
+		inline bool is_successful() const { return successful_; };
+		inline const std::string& atm_num() const { return atm_num_; };
+		inline const std::string& descript() const { return descript_; }; //description
 
 		friend mdls::Transaction& Bank::get_transaction(const std::string& trans_num);
 		friend std::vector <mdls::Transaction>& Bank::get_acc_transactions(const size_t id);
@@ -50,19 +65,19 @@ namespace mdls {
 			const std::string& num,
 			const std::string& acc_from,
 			const std::string& acc_to,
-			size_t sum, const std::string& date,
+			size_t sum, const std::string& datetime,
 			bool successful, const std::string& atm_num,
 			const std::string& descript);
 
-		std::string num;
-		std::string acc_from;
-		std::string acc_to;
-		size_t sum;
+		std::string num_;
+		std::string acc_from_;
+		std::string acc_to_;
+		size_t sum_;
 
-		std::string date;
-		bool successful;
-		std::string atm_num;
-		std::string descript;
+		std::string datetime_;
+		bool successful_;
+		std::string atm_num_;
+		std::string descript_;
 	};
 }
 

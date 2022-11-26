@@ -9,9 +9,9 @@
 				-- functions
 --
 
-drop procedure if exists get_atm;
+drop procedure if exists get_atm1;
 delimiter //
-create procedure get_atm(IN num nvarchar(10)) 
+create procedure get_atm1(IN num nvarchar(10)) 
 begin 
 	select a.num, o.city, a.street
 	from ATMs as a
@@ -21,7 +21,19 @@ begin
 end //
 delimiter ;
 
-select * from ATMs;
+drop procedure if exists get_atm2;
+delimiter //
+create procedure get_atm2(IN id int unsigned) 
+begin 
+	select a.num, o.city, a.street
+	from ATMs as a
+    inner join Offices as o
+    on a.off_id = o.id
+    where a.num = num;
+end //
+delimiter ;
+
+
 
 -- //ATM(
 -- //    std::string num,

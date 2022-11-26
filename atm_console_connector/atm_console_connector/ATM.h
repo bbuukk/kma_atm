@@ -18,9 +18,9 @@ namespace mdls {
 
 		~ATM() = default;
 
-		inline const std::string& get_num() const { return num; };
-		inline const std::string& get_city() const { return city; };
-		inline const std::string& get_street() const { return street; };
+		inline const std::string& num() const { return num_; };
+		inline const std::string& city() const { return city_; };
+		inline const std::string& street() const { return street_; };
 
 		friend mdls::ATM& Bank::get_atm(const std::string& num);
 
@@ -32,9 +32,9 @@ namespace mdls {
 
 		ATM(void) = default;
 
-		std::string num;
-		std::string city;
-		std::string street;
+		std::string num_;
+		std::string city_;
+		std::string street_;
 	};
 }
 
