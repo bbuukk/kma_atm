@@ -94,3 +94,28 @@ bool Bank::withdraw(
 
     return is_successful;
 }
+
+bool Bank::deposit(
+    const size_t id, const size_t sum) {
+
+    std::string query = "call deposit2(?);";
+
+    std::unique_ptr<sql::PreparedStatement> pstmt(
+        Bank::get_connection()->
+        prepareStatement(query));
+
+    pstmt->setUInt(1, id);
+    pstmt->setUInt(2, sum);
+
+    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+    bool is_successful;
+
+    do {
+        while (res->next())
+            is_successful = res->getBoolean("is_successful");
+    } while (pstmt->getMoreResults());
+
+    return is_successful;
+}
+

@@ -24,6 +24,8 @@ namespace mdls {
 		void unblock();
 
 		std::vector<Transaction>& get_transactions();
+		bool deposit(size_t sum);
+		bool withdrawal(size_t sum);
 
 		//getters
 		inline const std::string& num() const { return num_; };

@@ -74,6 +74,8 @@ public:
 		const std::string& acc_from,
 		size_t sum,
 		const std::string& description);
+	static bool deposit(
+		const size_t id, const size_t sum);
 
 
 	static inline const std::unique_ptr<sql::Connection>& get_connection() {

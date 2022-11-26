@@ -30,6 +30,12 @@ namespace clnt {
 
 		~ATM() = default;
 
+		inline size_t balance() {
+			return account_.balance();
+		}
+
+		bool deposit(size_t sum);
+
 		inline const mdls::Account& account() const { return account_; };
 		inline const std::unique_ptr<mdls::Card>& card() const { return card_; };
 

@@ -56,6 +56,22 @@ begin
 end //
 delimiter ;
 
+drop procedure if exists deposit2;
+delimiter //
+create procedure deposit2
+(in id int unsigned,
+ IN t_sum INT,
+ out is_successful tinyint) 
+begin 
+	 set is_successful = true;
+	 update Accounts as a
+	 set balance = balance+t_sum
+	 where a.id = id;
+end //
+delimiter ;
+
+
+
 -- !!make transaction
 -- making ATMtransaction we need:
 -- 	if acc_from balance >= sum

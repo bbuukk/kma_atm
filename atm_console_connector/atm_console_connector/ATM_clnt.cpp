@@ -14,5 +14,14 @@ clnt::ATM::ATM(mdls::Card& card)
 	, account_(Bank::get_account(card))
 {};
 
+//maybe it's worth to make deposit using Transaction
+//object in order to make syncronization simplier in future
+bool clnt::ATM::deposit(size_t sum) {
+	this->account_.deposit(sum);
+};
+
+bool clnt::ATM::deposit(size_t sum) {
+	this->account_.withdrawal(sum);
+};
 
 
