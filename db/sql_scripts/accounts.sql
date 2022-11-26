@@ -14,6 +14,8 @@
 -- • get_acc_tp    	  	  -- returns acc_type 			-- by acc_id
 --
 
+select * from Accounts;
+
 drop procedure if exists get_acc;
 delimiter //
 create procedure get_acc(IN acc_num nvarchar(30)) 
@@ -23,7 +25,9 @@ begin
            a.num, a.dgt_code,
 		   a.balance, a.open_date,
            a.is_blocked, a.atm_fee,
-           a.intrest
+           a.intrest, a.trans_lim,
+           a.crd_taken, a.loc_lim,
+           a.crd_return
     from Accounts as a
     where a.num = acc_num;
 end //

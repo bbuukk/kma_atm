@@ -8,9 +8,9 @@ namespace mdls {
 	public:
 
 		Client(
-			std::string f_name,
-			std::string l_name,
-			std::string mobile_phone);
+			const std::string& f_name,
+			const std::string& l_name,
+			const std::string& mobile_phone);
 
 		Client(const Client&) = default;
 		Client& operator=(const Client&) = default;

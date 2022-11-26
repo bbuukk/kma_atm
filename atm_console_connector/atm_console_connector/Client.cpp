@@ -3,9 +3,9 @@
 #include "Client.h"
 
 mdls::Client::Client(
-	std::string f_name,
-	std::string l_name,
-	std::string mobile_phone)
+	const std::string& f_name,
+	const std::string& l_name,
+	const std::string& mobile_phone)
 	: f_name(f_name),
 	  l_name(l_name),
 	  mobile_phone(mobile_phone) {};

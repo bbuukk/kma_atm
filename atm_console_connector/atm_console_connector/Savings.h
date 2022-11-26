@@ -8,7 +8,7 @@ namespace mdls {
 	public:
 
 		// constructor that's getting info from db
-		Savings(std::string num);
+		Savings(const std::string& num);
 
 		Savings(const Savings&) = default;
 		Savings& operator=(const Savings&) = default;
@@ -24,8 +24,8 @@ namespace mdls {
 		Savings(void) = default;
 
 		Savings(
-			std::string num, size_t dgt_code,
-			double balance, std::string open_date,
+			const std::string& num, size_t dgt_code,
+			double balance, const std::string& open_date,
 			bool blocked, double atm_fee,
 			double intrest, size_t trans_lim,
 			size_t id = 0, size_t off_id = 0,

@@ -8,12 +8,7 @@ namespace mdls {
 	class ATM {
 	public:
 
-		ATM(
-			std::string num,
-			std::string city,
-			std::string street);
-
-		ATM(std::string num);
+		ATM(const std::string& num);
 
 		ATM(const ATM&) = default;
 		ATM& operator=(const ATM&) = default;
@@ -27,7 +22,14 @@ namespace mdls {
 		inline const std::string& get_city() const { return city; };
 		inline const std::string& get_street() const { return street; };
 
+		friend mdls::ATM& Bank::get_atm(const std::string& num);
+
 	private:
+		ATM(
+			const std::string& num,
+			const std::string& city,
+			const std::string& street);
+
 		ATM(void) = default;
 
 		std::string num;

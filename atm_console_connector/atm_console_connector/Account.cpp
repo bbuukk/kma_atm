@@ -2,7 +2,7 @@
 
 #include "Account.h"
 
-mdls::Account::Account(std::string num)
+mdls::Account::Account(const std::string& num)
 	: Account(Bank::get_account(num)) {};
 
 mdls::Office& mdls::Account::get_office() {
@@ -37,14 +37,13 @@ std::ostream& mdls::Account::print(std::ostream& os) const {
 	return os;
 }
 
-
 //TODO do we really need default arguments here? 
 //test if we get sqlexception when we want get_account buy num,
 //but it is not present in bank. if we get sqlException
 //then default arguments are free to go
 mdls::Account::Account(
-	std::string num, size_t dgt_code,
-	double balance, std::string open_date,
+	const std::string& num, size_t dgt_code,
+	double balance, const std::string& open_date,
 	bool blocked, double atm_fee,
 	double intrest, size_t id, size_t off_id,
 	size_t clnt_id, size_t acc_type)

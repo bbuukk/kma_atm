@@ -8,16 +8,16 @@ namespace mdls {
 	public:
 
 		// constructor that's getting info from db
-		Transaction(std::string num);
+		Transaction(const std::string& num);
 
 		//constructor for creating new transaction,
 		//but not making it, for this use make()
 		Transaction(
-			std::string num,
-			std::string acc_from,
-			std::string acc_to,
+			const std::string& num,
+			const std::string& acc_from,
+			const std::string& acc_to,
 			size_t sum,
-			std::string descript);
+			const std::string& descript);
 
 		Transaction(const Transaction&) = default;
 		Transaction& operator=(const Transaction&) = default;
@@ -37,8 +37,8 @@ namespace mdls {
 		inline const std::string& get_atm_num() const { return atm_num; };
 		inline const std::string& get_descript() const { return descript; }; //description
 
-		friend mdls::Transaction& Bank::get_transaction(std::string trans_num);
-		friend std::vector <mdls::Transaction>& Bank::get_acc_transactions(size_t id);
+		friend mdls::Transaction& Bank::get_transaction(const std::string& trans_num);
+		friend std::vector <mdls::Transaction>& Bank::get_acc_transactions(const size_t id);
 
 		//make transaction
 		bool make() const;
@@ -47,12 +47,12 @@ namespace mdls {
 		Transaction(void) = default;
 
 		Transaction(
-			std::string num,
-			std::string acc_from,
-			std::string acc_to,
-			size_t sum, std::string date,
-			bool successful, std::string atm_num,
-			std::string descript);
+			const std::string& num,
+			const std::string& acc_from,
+			const std::string& acc_to,
+			size_t sum, const std::string& date,
+			bool successful, const std::string& atm_num,
+			const std::string& descript);
 
 		std::string num;
 		std::string acc_from;

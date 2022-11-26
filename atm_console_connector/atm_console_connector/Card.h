@@ -8,7 +8,7 @@ namespace mdls {
 	public:
 
 		// constructor that's getting info from db
-		Card(std::string pan);
+		Card(const std::string& pan);
 
 		//constructor for creating new card in bank
 		/*Card(std::string pan,size_t pin_code, size_t cvv);*/
@@ -21,7 +21,7 @@ namespace mdls {
 
 		~Card() = default;
 
-		void change_pin_code(size_t new_pin);
+		void change_pin_code(const size_t new_pin);
 
 		inline const std::string& get_pan() const { return pan; };
 		inline size_t get_pin_code() const { return pin_code; };
@@ -29,15 +29,15 @@ namespace mdls {
 		inline size_t get_cvv() const { return cvv; };
 		inline const std::string& get_given_date() const { return given_date; };
 
-		friend mdls::Card& Bank::get_card(std::string pan);
+		friend mdls::Card& Bank::get_card(const std::string& pan);
 
 	private:
 		Card(void) = default;
 
 		Card(
-			std::string pan, size_t pin_code,
-			std::string expr_date, size_t cvv,
-			std::string given_date, size_t id = 0,
+			const std::string& pan, size_t pin_code,
+			const std::string& expr_date, size_t cvv,
+			const std::string& given_date, size_t id = 0,
 			size_t acc_id = 0, size_t clnt_id = 0);
 
 		inline size_t get_id() const { return id; };

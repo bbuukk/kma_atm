@@ -3,8 +3,8 @@
 #include "Office.h"
 
 mdls::Office::Office(
-	bool head_off, std::string city,
-	std::string street, std::string postal)
+	bool head_off, const std::string& city,
+	const std::string& street, const std::string& postal)
 	: head_off(head_off), city(city),
 	street(street), postal(postal) {};
 

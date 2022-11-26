@@ -3,8 +3,8 @@
 #include "Savings.h"
 
 mdls::Savings::Savings(
-	std::string num, size_t dgt_code,
-	double balance, std::string open_date,
+	const std::string& num, size_t dgt_code,
+	double balance, const std::string& open_date,
 	bool blocked, double atm_fee,
 	double intrest, size_t trans_lim,
 	size_t id, size_t off_id,

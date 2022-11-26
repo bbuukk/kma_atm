@@ -4,17 +4,17 @@
 #include "Transaction.h"
 
 mdls::Transaction::Transaction(
-	std::string num,
-	std::string acc_from,
-	std::string acc_to,
-	size_t sum, std::string date,
-	bool successful, std::string atm_num,
-	std::string descript)
+	const std::string& num,
+	const std::string& acc_from,
+	const std::string& acc_to,
+	size_t sum, const std::string& date,
+	bool successful, const std::string& atm_num,
+	const std::string& descript)
 	: num(num), acc_from(acc_from), acc_to(acc_to),
 	  sum(sum), date(date), successful(successful),
 	  atm_num(atm_num), descript(descript) {};
 
-mdls::Transaction::Transaction(std::string num)
+mdls::Transaction::Transaction(const std::string& num)
 	: Transaction(Bank::get_transaction(num)) {};
 
 //TODO make check for empty acc_to better

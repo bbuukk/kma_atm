@@ -8,9 +8,9 @@ namespace mdls {
 	public:
 		Office(
 			bool head_off,
-			std::string city,
-			std::string street,
-			std::string postal);
+			const std::string& city,
+			const std::string& street,
+			const std::string& postal);
 
 		Office(const Office&) = default;
 		Office& operator=(const Office&) = default;

@@ -7,7 +7,7 @@ namespace mdls {
 	public:
 
 		// constructor that's getting info from db
-		Checking(std::string num);
+		Checking(const std::string& num);
 
 		Checking(const Checking&) = default;
 		Checking& operator=(const Checking&) = default;
@@ -23,8 +23,8 @@ namespace mdls {
 		Checking(void) = default;
 
 		Checking(
-			std::string num, size_t dgt_code,
-			double balance, std::string open_date,
+			const std::string& num, size_t dgt_code,
+			double balance, const std::string& open_date,
 			bool blocked, double atm_fee,
 			double intrest, size_t overdraft_lim,
 			size_t id = 0, size_t off_id = 0,

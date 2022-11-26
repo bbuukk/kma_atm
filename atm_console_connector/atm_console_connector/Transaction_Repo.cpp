@@ -2,7 +2,7 @@
 
 #include "Transaction.h"
 
-mdls::Transaction& Bank::get_transaction(std::string trans_num) {
+mdls::Transaction& Bank::get_transaction(const std::string& trans_num) {
 
     std::string query = "call get_transaction(?);";
 
@@ -36,11 +36,11 @@ mdls::Transaction& Bank::get_transaction(std::string trans_num) {
 }
 
 bool Bank::transfer(
-    std::string atm_num,
-    std::string acc_from,
-    std::string acc_to,
-    size_t sum,
-    std::string description) {
+    const std::string& atm_num,
+    const std::string& acc_from,
+    const std::string& acc_to,
+    const size_t sum,
+    const std::string& description) {
 
     std::string query = "call transfer(?,?,?,?,?);";
 
@@ -67,10 +67,10 @@ bool Bank::transfer(
 }
 
 bool Bank::withdraw(
-    std::string atm_num,
-    std::string acc_from,
-    size_t sum,
-    std::string description) {
+    const std::string& atm_num,
+    const std::string& acc_from,
+    const size_t sum,
+    const std::string& description) {
 
     std::string query = "call withdraw(?,?,?,?,?);";
 

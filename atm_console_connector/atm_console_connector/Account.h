@@ -11,7 +11,7 @@ namespace mdls {
 	class Account {
 	public:
 		// constructor that's getting info from db
-		Account(std::string num);
+		Account(const std::string& num);
 
 		//constructor for creating new account in bank
 		/*Account(std::string num, size_t dgt_code,
@@ -44,13 +44,13 @@ namespace mdls {
 			return acc.print(os);
 		}
 
-		friend mdls::Account& Bank::get_account(std::string num);
+		friend mdls::Account& Bank::get_account(const std::string& num);
 
 	protected:
 		Account(void) = default;
 		Account(
-			std::string num, size_t dgt_code,
-			double balance, std::string open_date,
+			const std::string& num, size_t dgt_code,
+			double balance, const std::string& open_date,
 			bool blocked, double atm_fee,
 			double intrest,	size_t id = 0, size_t off_id = 0,
 			size_t clnt_id = 0, size_t acc_type = 0);

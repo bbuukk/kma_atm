@@ -2,7 +2,7 @@
 
 #include "Card.h"
 
-mdls::Card& Bank::get_card(std::string pan) {
+mdls::Card& Bank::get_card(const std::string& pan) {
 
     std::string query = "call get_card(?);";
 
@@ -31,7 +31,7 @@ mdls::Card& Bank::get_card(std::string pan) {
 }
 
 void Bank::change_pin_code(
-    size_t id, size_t pin_code) {
+    const size_t id, const size_t pin_code) {
 
     std::string query = "call change_pin_code(?,?);";
 

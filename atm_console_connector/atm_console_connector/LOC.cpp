@@ -3,8 +3,8 @@
 #include "LOC.h"
 
 mdls::LOC::LOC(
-	std::string num, size_t dgt_code,
-	double balance, std::string open_date,
+	const std::string& num, size_t dgt_code,
+	double balance, const std::string& open_date,
 	bool blocked, double atm_fee,
 	double intrest, size_t crd_taken,
 	size_t loc_lim, double crd_return,

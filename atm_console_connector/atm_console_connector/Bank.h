@@ -33,37 +33,37 @@ public:
 	}
 
 	//Account repo =============================
-	static mdls::Account& get_account(std::string num);
+	static mdls::Account& get_account(const std::string& num);
 
-	static mdls::Office& get_acc_office(size_t id);
-	static void block_account(size_t id);
-	static void unblock_account(size_t id);
+	static mdls::Office& get_acc_office(const size_t id);
+	static void block_account(const size_t id);
+	static void unblock_account(const size_t id);
 
 	static std::vector <mdls::Transaction>&
-		get_acc_transactions(size_t id);
+		get_acc_transactions(const size_t id);
 	//static size_t count_acc_transactions(std::string num);
 	//Account& get_acc_balance(size_t acc_id);
 
 	//ATM repo =============================
-	static mdls::ATM& get_atm(std::string num);
+	static mdls::ATM& get_atm(const std::string& num);
 
 	//Card repo =============================
-	static mdls::Card& get_card(std::string pan);
-	static void change_pin_code(size_t id, size_t pin_code);
+	static mdls::Card& get_card(const std::string& pan);
+	static void change_pin_code(const size_t id, const  size_t pin_code);
 
 	//Transaction repo =============================
-	static mdls::Transaction& get_transaction(std::string trans_num);
+	static mdls::Transaction& get_transaction(const std::string& trans_num);
 	static bool transfer(
-		std::string atm_num,
-		std::string acc_from,
-		std::string acc_to,
+		const std::string& atm_num,
+		const std::string& acc_from,
+		const std::string& acc_to,
 		size_t sum,
-		std::string description);
+		const std::string& description);
 	static bool withdraw(
-		std::string atm_num,
-		std::string acc_from,
+		const std::string& atm_num,
+		const std::string& acc_from,
 		size_t sum,
-		std::string description);
+		const std::string& description);
 
 
 	static inline const std::unique_ptr<sql::Connection>& get_connection() {

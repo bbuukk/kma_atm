@@ -4,7 +4,7 @@
 #include "Office.h"
 #include "Transaction.h"
 
-mdls::Account& Bank::get_account(std::string num){
+mdls::Account& Bank::get_account(const std::string& num){
 
     std::string query = "call get_acc(?);";
 
@@ -14,7 +14,7 @@ mdls::Account& Bank::get_account(std::string num){
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    mdls::Account* acc;
+    mdls::Account* acc(nullptr);
 
     do {
         while (res->next()) {
@@ -38,7 +38,7 @@ mdls::Account& Bank::get_account(std::string num){
     return *acc;
 }
 
-mdls::Office& Bank::get_acc_office(size_t id) {
+mdls::Office& Bank::get_acc_office(const size_t id) {
     
     std::string query = "call get_office(?);";
 
@@ -63,7 +63,7 @@ mdls::Office& Bank::get_acc_office(size_t id) {
     return *off;
 }
 
-void Bank::block_account(size_t id) {
+void Bank::block_account(const size_t id) {
 
     std::string query = "call block_acc(?);";
 
@@ -74,7 +74,7 @@ void Bank::block_account(size_t id) {
     pstmt->execute();
 }
 
-void Bank::unblock_account(size_t id) {
+void Bank::unblock_account(const size_t id) {
 
     std::string query = "call unblock_account(?);";
 
@@ -85,7 +85,7 @@ void Bank::unblock_account(size_t id) {
     pstmt->execute();
 }
 
-std::vector <mdls::Transaction>& Bank::get_acc_transactions(size_t id) {
+std::vector <mdls::Transaction>& Bank::get_acc_transactions(const size_t id) {
 
     std::string query("call get_all_acc_trans(?);");
 
