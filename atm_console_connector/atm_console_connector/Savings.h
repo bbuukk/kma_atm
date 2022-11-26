@@ -20,7 +20,9 @@ namespace mdls {
 
 		inline size_t trans_lim() const { return trans_lim_; };
 
-		friend mdls::Account& Bank::get_account(const std::string& num);
+		//TODO delete?
+		/*friend mdls::Account& Bank::get_account(const std::string& num);*/
+		friend class Bank;
 		
 	private:
 		Savings(void) = default;

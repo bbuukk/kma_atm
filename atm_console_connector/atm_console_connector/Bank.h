@@ -19,6 +19,8 @@ namespace mdls {
 
 #include <mysql/jdbc.h>
 
+//TODO experiment with global variable pstmt and resSet
+
 class Bank {
 public:
 
@@ -34,6 +36,11 @@ public:
 
 	//Account repo =============================
 	static mdls::Account& get_account(const std::string& num);
+	static mdls::Account& get_account(const mdls::Card& card);
+
+	static mdls::Account& extract_account(
+		std::unique_ptr<sql::ResultSet>& res,
+		std::unique_ptr<sql::PreparedStatement>& pstmt);
 
 	static mdls::Office& get_acc_office(const size_t id);
 	static void block_account(const size_t id);
@@ -51,6 +58,7 @@ public:
 
 	//Card repo =============================
 	static mdls::Card& get_card(const std::string& pan);
+	
 	static void change_pin_code(const size_t id, const  size_t pin_code);
 
 	//Transaction repo =============================

@@ -23,13 +23,16 @@ namespace mdls {
 
 		void change_pin_code(const size_t new_pin);
 
-		inline const std::string& get_pan() const { return pan; };
-		inline size_t get_pin_code() const { return pin_code; };
-		inline const std::string& get_expr_date() const { return expr_date; };
-		inline size_t get_cvv() const { return cvv; };
-		inline const std::string& get_given_date() const { return given_date; };
+		inline const std::string& pan() const { return pan_; };
+		inline size_t pin_code() const { return pin_code_; };
+		inline const std::string& expr_date() const { return expr_date_; };
+		inline size_t cvv() const { return cvv_; };
+		inline const std::string& given_date() const { return given_date_; };
 
-		friend mdls::Card& Bank::get_card(const std::string& pan);
+		//TODO delete?
+		/*friend mdls::Card& Bank::get_card(const std::string& pan);*/
+
+		friend class Bank;
 
 	private:
 		Card(void) = default;
@@ -40,19 +43,19 @@ namespace mdls {
 			const std::string& given_date, size_t id = 0,
 			size_t acc_id = 0, size_t clnt_id = 0);
 
-		inline size_t get_id() const { return id; };
-		inline size_t get_acc_id() const { return acc_id; };
-		inline size_t get_clnt_id() const { return clnt_id; };
+		inline size_t id() const { return id_; };
+		inline size_t acc_id() const { return acc_id_; };
+		inline size_t clnt_id() const { return clnt_id_; };
 		
-		size_t id;
-		size_t acc_id;
-		size_t clnt_id;
+		size_t id_;
+		size_t acc_id_;
+		size_t clnt_id_;
 
-		std::string pan;
-		size_t pin_code;
-		std::string expr_date;
-		size_t cvv;
-		std::string given_date;
+		std::string pan_;
+		size_t pin_code_;
+		std::string expr_date_;
+		size_t cvv_;
+		std::string given_date_;
 	};
 }
 

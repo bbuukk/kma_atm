@@ -6,6 +6,7 @@
 #include "LOC.h"
 #include "Office.h"
 #include "Transaction.h"
+#include "Card.h"
 
 #define CHECKING 1
 #define STUDENT_CHECKING 2
@@ -24,13 +25,14 @@ mdls::Account& Bank::get_account(const std::string& num){
 
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    mdls::Account* account(nullptr);
+    return extract_account(res, pstmt);
+}
 
-    size_t trans_lim(0);
-    size_t overdraft_lim(0);
-    size_t crd_taken(0);
-    size_t loc_lim(0);
-    double crd_return(0);
+mdls::Account& Bank::extract_account(
+    std::unique_ptr<sql::ResultSet>& res,
+    std::unique_ptr<sql::PreparedStatement>& pstmt) {
+
+    mdls::Account* account(nullptr);
 
     do {
         while (res->next()) {
@@ -50,30 +52,43 @@ mdls::Account& Bank::get_account(const std::string& num){
                 res->getUInt("acc_type"));
 
             switch (acc.type()) {
-                case CHECKING:
-                case STUDENT_CHECKING:
-                    account = new mdls::Checking(
-                        acc, res->getUInt("overdraft_lim"));
-                    break;
-                case SAVINGS:
-                    account = new mdls::Savings(
-                        acc, res->getUInt("trans_lim"));
-                    break;
-                case LOCC:
-                    account = new mdls::LOC(
-                        acc,
-                        res->getUInt("crd_taken"),
-                        res->getUInt("loc_lim"),
-                        res->getUInt("crd_return"));
-                    break;
-                default:
-                    throw bad_account();
+            case CHECKING:
+            case STUDENT_CHECKING:
+                account = new mdls::Checking(
+                    acc, res->getUInt("overdraft_lim"));
+                break;
+            case SAVINGS:
+                account = new mdls::Savings(
+                    acc, res->getUInt("trans_lim"));
+                break;
+            case LOCC:
+                account = new mdls::LOC(
+                    acc,
+                    res->getUInt("crd_taken"),
+                    res->getUInt("loc_lim"),
+                    res->getUInt("crd_return"));
+                break;
+            default:
+                throw bad_account();
             }
         }
     } while (pstmt->getMoreResults());
 
     return *account;
-}
+};
+
+mdls::Account& Bank::get_account(const mdls::Card& card) {
+
+    std::string query = "call get_acc_by_id(?);";
+    
+    std::unique_ptr<sql::PreparedStatement> pstmt(
+        Bank::get_connection()->prepareStatement(query));
+    pstmt->setUInt(1, card.id());
+
+    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+    return extract_account(res, pstmt);
+};
 
 mdls::Office& Bank::get_acc_office(const size_t id) {
     

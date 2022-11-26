@@ -19,7 +19,9 @@ namespace mdls {
 
 		inline size_t get_overdraft_lim() const { return overdraft_lim; };
 
-		friend mdls::Account& Bank::get_account(const std::string& num);
+		//TODO delete?
+		/*friend mdls::Account& Bank::get_account(const std::string& num);*/
+		friend class Bank;
 
 	private:
 		Checking(void) = default;

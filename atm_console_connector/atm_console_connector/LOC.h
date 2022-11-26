@@ -21,7 +21,9 @@ namespace mdls {
 		inline size_t get_loc_limit() const { return loc_lim; };
 		inline double get_credit_returned() const { return crd_return; };
 
-		friend mdls::Account& Bank::get_account(const std::string& num);
+		//TODO delete?
+		/*friend mdls::Account& Bank::get_account(const std::string& num);*/
+		friend class Bank;
 
 	private:
 		LOC(void) = default;

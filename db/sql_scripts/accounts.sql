@@ -34,6 +34,25 @@ begin
     where a.num = acc_num;
 end //
 delimiter ;
+
+drop procedure if exists get_acc_by_id;
+delimiter //
+create procedure get_acc_by_id
+(in id int unsigned)
+begin 
+	select a.id, a.off_id,
+		   a.clnt_id, a.acc_type,
+           a.num, a.dgt_code,
+		   a.balance, a.open_date,
+           a.is_blocked, a.overdraft_lim,
+           a.atm_fee, a.intrest, a.trans_lim,
+           a.crd_taken, a.loc_lim,
+           a.crd_return
+    from Accounts as a
+    where a.id = id;
+end //
+delimiter ;
+
 -- (
 -- 			size_t id, size_t off_id,
 -- 			size_t clnt_id, size_t acc_type,

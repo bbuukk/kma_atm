@@ -39,6 +39,11 @@ namespace mdls {
 		}
 
 		friend mdls::Account& Bank::get_account(const std::string& num);
+
+		//TODO worth to replace this by making friend 
+		//every method from Bank, that needs to?
+
+		friend class Bank;
 		
 		friend class Checking;
 		friend class Savings;
