@@ -1,6 +1,7 @@
 
 #include <memory>
 
+
 #include "ATM_clnt.h"
 #include "Account.h"
 #include "Card.h"
@@ -61,4 +62,11 @@ bool clnt::ATM::change_pin(const size_t new_pin) {
 		throw no_card();
 
 	return (*card_).change_pin_code(new_pin);
+};
+
+//std::vector <mdls::Transaction>& Bank::get_acc_transactions(const size_t id)
+
+std::vector <mdls::Transaction>& clnt::ATM::transactions_history() {
+
+	return Bank::get_transactions(account());
 };

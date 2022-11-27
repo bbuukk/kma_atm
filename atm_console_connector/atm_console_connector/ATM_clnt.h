@@ -45,6 +45,8 @@ namespace clnt {
 		std::string info();
 		bool change_pin(const size_t new_pin);
 
+		std::vector <mdls::Transaction>& transactions_history();
+
 		inline const std::string& num() const { return num_; };
 		inline const std::string& city() const { return city_; };
 		inline const std::string& street() const { return street_; };
