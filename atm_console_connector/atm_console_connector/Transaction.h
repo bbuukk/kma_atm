@@ -68,7 +68,7 @@ namespace mdls {
 	};
 }
 
-std::ostream& operator<<(std::ostream& os, const mdls::Transaction& off);
+std::ostream& operator<<(std::ostream& os, const mdls::Transaction& trans);
 
 
 

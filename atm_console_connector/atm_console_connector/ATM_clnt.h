@@ -43,6 +43,7 @@ namespace clnt {
 			size_t sum, const std::string& descript);
 
 		std::string info();
+		std::string account_info();
 		bool change_pin(const size_t new_pin);
 
 		std::vector <mdls::Transaction>& transactions_history();

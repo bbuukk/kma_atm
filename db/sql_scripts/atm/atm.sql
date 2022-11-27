@@ -1,17 +1,7 @@
-			-- atm relating scripts
 
-				-- procedures
---
--- • get_atm_info    	  --  get info about ATM  			-- by mach_id 
--- • get_atm    	  	  --  get ATM all data members	 	-- by mach_id 
-
---
-				-- functions
---
-
-drop procedure if exists get_atm1;
+drop procedure if exists atm_by_num;
 delimiter //
-create procedure get_atm1(IN num nvarchar(10)) 
+create procedure atm_by_num(IN num nvarchar(10)) 
 begin 
 	select a.num, o.city, a.street
 	from ATMs as a
@@ -21,9 +11,9 @@ begin
 end //
 delimiter ;
 
-drop function if exists get_atm_id;
+drop function if exists atm_by_id;
 delimiter //
-create function atm_id(num nvarchar(10))
+create function atm_by_id(num nvarchar(10))
 returns int unsigned deterministic
 begin 
 	declare id int unsigned;

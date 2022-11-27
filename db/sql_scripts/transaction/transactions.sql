@@ -136,19 +136,5 @@ begin
     return fee;
 end //
 delimiter ;	
-
-drop procedure if exists acc_trans;
-delimiter //
-create procedure acc_trans
-(in acc_id int unsigned) 
-begin 
-	select t.num, t.acc_from,
-		   t.acc_to, t.sum, t.date,
-           t.is_successful, t.descript
-    from Transactions as t
-    where t.acc_from = acc_id OR t.acc_to = acc_id;
-end //
-delimiter ;
-
 	
 

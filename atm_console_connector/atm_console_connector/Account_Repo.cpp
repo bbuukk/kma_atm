@@ -17,7 +17,7 @@ class bad_account : public std::exception {};
 
 mdls::Account& Bank::get_account(const std::string& num){
 
-    std::string query = "call get_acc(?);";
+    std::string query = "call acc_by_num(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->prepareStatement(query));
@@ -79,7 +79,7 @@ mdls::Account& Bank::extract_account(
 
 mdls::Account& Bank::get_account(const mdls::Card& card) {
 
-    std::string query = "call get_acc_by_id(?);";
+    std::string query = "call acc_by_card_id(?);";
     
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->prepareStatement(query));
@@ -92,7 +92,7 @@ mdls::Account& Bank::get_account(const mdls::Card& card) {
 
 mdls::Office& Bank::get_acc_office(const size_t id) {
     
-    std::string query = "call get_office(?);";
+    std::string query = "call acc_office(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->prepareStatement(query));
@@ -128,7 +128,7 @@ void Bank::block_account(const size_t id) {
 
 void Bank::unblock_account(const size_t id) {
 
-    std::string query = "call unblock_account(?);";
+    std::string query = "call unblock_acc(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->prepareStatement(query));
@@ -173,7 +173,7 @@ std::vector <mdls::Transaction>& Bank::get_transactions(const mdls::Account& acc
 
 size_t Bank::get_acc_type(const std::string& num) {
 
-    std::string query = "call get_acc_type(?);";
+    std::string query = "call acc_type(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->prepareStatement(query));

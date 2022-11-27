@@ -64,7 +64,10 @@ bool clnt::ATM::change_pin(const size_t new_pin) {
 	return (*card_).change_pin_code(new_pin);
 };
 
-//std::vector <mdls::Transaction>& Bank::get_acc_transactions(const size_t id)
+//TODO
+std::string clnt::ATM::account_info() {
+	return "" + account().num();
+};
 
 std::vector <mdls::Transaction>& clnt::ATM::transactions_history() {
 

@@ -2,10 +2,12 @@
 #include "Bank.h"
 #include "Account.h"
 #include "ATM_clnt.h"
+#include "Transaction.h"
 
 #include <ostream>
 #include <QtCore/QCoreApplication>
 #include <string>
+#include <iostream>
 
 class Shape {
 public:
@@ -35,6 +37,18 @@ int main(int argc, char* argv[]) {
 
 	std::string info = atm.info();
 	std::cout << info << "\n";
+
+	std::string acc_info = atm.account_info();
+	std::cout << acc_info << "\n";
+
+	for (mdls::Transaction& trans : atm.transactions_history()) {
+		std::cout << trans << "\n";
+	}
+
+
+
+	
+	
 
 	system("pause");
 	return a.exec();

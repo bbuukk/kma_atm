@@ -4,7 +4,7 @@
 
 mdls::Card& Bank::get_card(const std::string& pan) {
 
-    std::string query = "call get_card(?);";
+    std::string query = "call card_by_pan(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
         Bank::get_connection()->
