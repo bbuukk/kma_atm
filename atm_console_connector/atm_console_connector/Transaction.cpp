@@ -2,11 +2,12 @@
 #include "Bank.h"
 
 #include "Transaction.h"
+#include "Account.h"
 
 mdls::Transaction::Transaction(
 	const std::string& num,
-	const std::string& acc_from,
-	const std::string& acc_to,
+	const std::shared_ptr<mdls::Account> acc_from,
+	const std::shared_ptr<mdls::Account> acc_to,
 	size_t sum, const std::string& datetime,
 	bool successful, const std::string& atm_num,
 	const std::string& descript)
@@ -15,37 +16,51 @@ mdls::Transaction::Transaction(
 	, atm_num_(atm_num), descript_(descript) 
 {};
 
-//transef
 mdls::Transaction::Transaction(
 	const std::string& atm_num,
-	const std::string& acc_to,
+	std::unique_ptr<mdls::Account> acc_from,
+	std::unique_ptr<mdls::Account> acc_to,
 	size_t sum)
-	: Transaction(
-		atm_num, "", acc_to
-		, sum, "")
+	: num_("")
+	, acc_from_(acc_to.release())
+	, acc_to_(acc_to.release())
+	, sum_(sum), datetime_(""), successful_(0)
+	, atm_num_(atm_num), descript_("") 
 {};
 
-//transef
-mdls::Transaction::Transaction(
-	const std::string& atm_num,
-	const std::string& acc_from,
-	const std::string& acc_to,
-	size_t sum,
-	const std::string& descript)
-	: Transaction(
-		"", acc_from, acc_to, sum, "",
-		false, atm_num, descript)
-{};
+////transef
+//mdls::Transaction::Transaction(
+//	const std::string& atm_num,
+//	const std::string& acc_to,
+//	size_t sum)
+//	: Transaction(
+//		atm_num, "", acc_to
+//		, sum, "")
+//{};
+//
+////transef
+//mdls::Transaction::Transaction(
+//	const std::string& atm_num,
+//	const std::string& acc_from,
+//	const std::string& acc_to,
+//	size_t sum,
+//	const std::string& descript)
+//	: Transaction(
+//		"", acc_from, acc_to, sum, "",
+//		false, atm_num, descript)
+//{};
+//
+////withdraw
+//mdls::Transaction::Transaction(
+//	const std::string& atm_num,
+//	const std::string& acc_from,
+//	size_t sum)
+//	: Transaction(
+//		atm_num, acc_from, ""
+//		, sum, "")
+//{};
 
-//withdraw
-mdls::Transaction::Transaction(
-	const std::string& atm_num,
-	const std::string& acc_from,
-	size_t sum)
-	: Transaction(
-		atm_num, acc_from, ""
-		, sum, "")
-{};
+
 
 
 mdls::Transaction::Transaction(const std::string& num)
@@ -54,9 +69,7 @@ mdls::Transaction::Transaction(const std::string& num)
 //TODO make check for empty acc_to better
 //TOOD we have 3 types of transaction, one condition check isn't enough
 bool mdls::Transaction::make() const {
-	return account_to() == "" ?
-		  Bank::withdraw(atm_num(), account_from(), sum(), descript())
-		: Bank::transfer(atm_num(), account_from(), account_to(), sum(), descript());
+	return Bank::make_transaction(*this);
 };
 
 std::ostream& operator<<(std::ostream& os, const mdls::Transaction& trans) {

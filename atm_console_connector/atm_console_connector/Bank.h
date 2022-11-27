@@ -63,19 +63,8 @@ public:
 
 	//Transaction repo =============================
 	static mdls::Transaction& get_transaction(const std::string& trans_num);
-	static bool transfer(
-		const std::string& atm_num,
-		const std::string& acc_from,
-		const std::string& acc_to,
-		size_t sum,
-		const std::string& description);
-	static bool withdraw(
-		const std::string& atm_num,
-		const std::string& acc_from,
-		size_t sum,
-		const std::string& description);
-	static bool deposit(
-		const size_t id, const size_t sum);
+	bool make_transaction(mdls::Transaction& transaction);
+
 
 
 	static inline const std::unique_ptr<sql::Connection>& get_connection() {
@@ -84,6 +73,21 @@ public:
 
 private:
 	Bank(void);
+
+	static bool transfer(
+		const std::string& atm_num,
+		const mdls::Account& acc_from,
+		const mdls::Account& acc_to,
+		const size_t sum,
+		const std::string& description);
+	static bool withdraw(
+		const std::string& atm_num,
+		const mdls::Account& acc_from,
+		const size_t sum);
+	static bool deposit(
+		const std::string& atm_num,
+		const mdls::Account& acc_to,
+		const size_t sum);
 
 	inline const std::unique_ptr<sql::Connection>& in_get_connection() const { return con; };
 

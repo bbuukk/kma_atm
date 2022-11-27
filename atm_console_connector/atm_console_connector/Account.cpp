@@ -2,8 +2,9 @@
 
 #include "Account.h"
 
-//mdls::Account::Account(const std::string& num)
-//	: Account(*(Bank::get_account(num))) {};
+//constructor just for listing accounts via their numbers
+mdls::Account::Account(const std::string& num)
+	: Account(num, 0, 0, "", 0, 0, 0, 0, 0, 0, 0) {};
 
 //TODO do we really need default arguments here? 
 //test if we get sqlexception when we want get_account buy num,
@@ -40,12 +41,20 @@ mdls::Account::get_transactions() {
 	return Bank::get_acc_transactions(this->id());
 }
 
-bool mdls::Account::deposit(size_t sum) {
-	bool is_successful = Bank::deposit(id(), sum);
-	balance_ += sum;
-
-	return is_successful;
-};
+//TODO delete
+//bool mdls::Account::deposit(size_t sum) {
+//	bool is_successful = Bank::deposit(id(), sum);
+//	balance_ += sum;
+//
+//	return is_successful;
+//};
+//
+//bool mdls::Account::withdraw(size_t sum) {
+//	bool is_successful = Bank::withdraw(id(), sum);
+//	balance_ += sum;
+//
+//	return is_successful;
+//};
 
 std::ostream& mdls::Account::print(std::ostream& os) const {
 	os << "Account number: " << num().c_str() << "\n";
