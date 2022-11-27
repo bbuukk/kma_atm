@@ -5,9 +5,10 @@
 mdls::Card::Card(const std::string& pan)
 	: Card(Bank::get_card(pan)) {}
 
-void mdls::Card::change_pin_code(const size_t new_pin) {
-	Bank::change_pin_code(this->id(), new_pin);
+bool mdls::Card::change_pin_code(const size_t new_pin) {
+	bool is_successful = Bank::change_pin_code(id(), new_pin);
 	this->pin_code_ = new_pin;
+	return is_successful;
 };
 
 std::ostream& operator<<(std::ostream& os, const mdls::Card& card) {

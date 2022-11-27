@@ -21,18 +21,18 @@ begin
 end //
 delimiter ;
 
-drop procedure if exists get_atm2;
+drop function if exists get_atm_id;
 delimiter //
-create procedure get_atm2(IN id int unsigned) 
+create function atm_id(num nvarchar(10))
+returns int unsigned deterministic
 begin 
-	select a.num, o.city, a.street
-	from ATMs as a
-    inner join Offices as o
-    on a.off_id = o.id
-    where a.num = num;
+	declare id int unsigned;
+	select atms.id into id
+    from ATMs as atms
+    where atms.num = num;
+    return id;
 end //
-delimiter ;
-
+delimiter ;	
 
 
 -- //ATM(

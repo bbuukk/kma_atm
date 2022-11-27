@@ -10,7 +10,6 @@ namespace mdls {
 		// constructor that's getting info from db
 		Transaction(const std::string& num);
 
-
 		//constructor for creating new transaction,
 		//but not making it, for this use make()
 		
@@ -19,7 +18,7 @@ namespace mdls {
 			const std::string& atm_num
 			, std::unique_ptr<mdls::Account> acc_from
 			, std::unique_ptr<mdls::Account> acc_to
-			, size_t sum);
+			, size_t sum, const std::string& descript = "");
 
 		Transaction(const Transaction&) = default;
 		Transaction& operator=(const Transaction&) = default;
@@ -29,8 +28,8 @@ namespace mdls {
 		~Transaction() = default;
 
 		inline const std::string& num() const { return num_; }
-		inline const mdls::Account& account_from() const { return *acc_from_; };
-		inline const mdls::Account& account_to() const { return *acc_to_; };
+		inline const std::unique_ptr<mdls::Account>& account_from() const { return acc_from_; };
+		inline const std::unique_ptr<mdls::Account>& account_to() const { return acc_to_; };
 		inline size_t sum() const { return sum_; };
 
 		inline const std::string& datetime() const { return datetime_; };
@@ -70,4 +69,6 @@ namespace mdls {
 }
 
 std::ostream& operator<<(std::ostream& os, const mdls::Transaction& off);
+
+
 

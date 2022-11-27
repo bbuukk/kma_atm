@@ -5,6 +5,7 @@
 
 #include <ostream>
 #include <QtCore/QCoreApplication>
+#include <string>
 
 class Shape {
 public:
@@ -26,9 +27,14 @@ int main(int argc, char* argv[]) {
 	
 	mdls::Account& acc2 = Bank::get_account("01234");
 	std::cout << acc2 << "\n";
-	
 
-	/*clnt::ATM atm;*/
+	clnt::ATM atm("01234", acc2);
+	atm.withdraw(30);
+	atm.deposit(30);
+	atm.transfer("43210", 300, "For cocaine");
+
+	std::string info = atm.info();
+	std::cout << info << "\n";
 
 	system("pause");
 	return a.exec();

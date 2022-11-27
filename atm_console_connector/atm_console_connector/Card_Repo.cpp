@@ -30,23 +30,25 @@ mdls::Card& Bank::get_card(const std::string& pan) {
     return *card;
 }
 
-void Bank::change_pin_code(
+bool Bank::change_pin_code(
     const size_t id, const size_t pin_code) {
+    try {
 
-    std::string query = "call change_pin_code(?,?);";
+        std::string query = "call change_pin_code(?,?);";
 
-    std::unique_ptr<sql::PreparedStatement> pstmt(
-        Bank::get_connection()->
-        prepareStatement(query));
+        std::unique_ptr<sql::PreparedStatement> pstmt(
+            Bank::get_connection()->
+            prepareStatement(query));
 
-    pstmt->setUInt(1, id);
-    pstmt->setUInt(2, pin_code);
-    pstmt->execute();
+        pstmt->setUInt(1, id);
+        pstmt->setUInt(2, pin_code);
+        pstmt->execute();
 
-    //Card(
-//    std::string pan, size_t pin_code,
-//    std::string expr_date, size_t cvv,
-//    std::string given_date);
+        return true;
+    }
+    catch (sql::SQLException e) {
+        return false;
+    }
 }
 
 

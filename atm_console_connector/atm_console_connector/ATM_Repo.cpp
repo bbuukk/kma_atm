@@ -26,6 +26,27 @@ mdls::ATM& Bank::get_atm(const std::string& num){
     return *atm;
 }
 
+size_t Bank::get_atm_id(const std::string& num) {
+
+    std::string query = "call get_atm_id(?);";
+
+    std::unique_ptr<sql::PreparedStatement> pstmt(
+        Bank::get_connection()->prepareStatement(query));
+    pstmt->setString(1, num);
+
+    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+    size_t id;
+
+    do {
+        while (res->next()) {
+            id = res->getUInt("id");
+        }
+    } while (pstmt->getMoreResults());
+
+    return id;
+}
+
 //mdls::ATM& Bank::get_atm(const size_t id) {
 //
 //    std::string query = "call get_atm2(?);";

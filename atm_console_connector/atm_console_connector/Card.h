@@ -21,7 +21,7 @@ namespace mdls {
 
 		~Card() = default;
 
-		void change_pin_code(const size_t new_pin);
+		bool change_pin_code(const size_t new_pin);
 
 		inline const std::string& pan() const { return pan_; };
 		inline size_t pin_code() const { return pin_code_; };

@@ -55,14 +55,15 @@ public:
 
 	//ATM repo =============================
 	static mdls::ATM& get_atm(const std::string& num);
+	static size_t get_atm_id(const std::string& num);
 
 	//Card repo =============================
 	static mdls::Card& get_card(const std::string& pan);
 	
-	static void change_pin_code(const size_t id, const  size_t pin_code);
+	static bool change_pin_code(const size_t id, const  size_t pin_code);
 
 	//Transaction repo =============================
-	/*static mdls::Transaction& get_transaction(const std::string& trans_num);*/
+	static mdls::Transaction& get_transaction(const std::string& trans_num);
 	static bool make_transaction(mdls::Transaction& transaction);
 
 	static inline const std::unique_ptr<sql::Connection>& get_connection() {
