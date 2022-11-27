@@ -46,8 +46,8 @@ public:
 	static void block_account(const size_t id);
 	static void unblock_account(const size_t id);
 
-	static std::vector <mdls::Transaction>&
-		get_acc_transactions(const size_t id);
+	//static std::vector <mdls::Transaction>&
+	//	get_acc_transactions(const size_t id);
 
 	size_t get_acc_type(const std::string& num);
 	//static size_t count_acc_transactions(std::string num);
@@ -62,10 +62,8 @@ public:
 	static void change_pin_code(const size_t id, const  size_t pin_code);
 
 	//Transaction repo =============================
-	static mdls::Transaction& get_transaction(const std::string& trans_num);
-	bool make_transaction(mdls::Transaction& transaction);
-
-
+	/*static mdls::Transaction& get_transaction(const std::string& trans_num);*/
+	static bool make_transaction(mdls::Transaction& transaction);
 
 	static inline const std::unique_ptr<sql::Connection>& get_connection() {
 		return get().in_get_connection();

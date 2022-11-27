@@ -6,12 +6,12 @@
 
 mdls::Transaction::Transaction(
 	const std::string& num,
-	const std::shared_ptr<mdls::Account> acc_from,
-	const std::shared_ptr<mdls::Account> acc_to,
+	std::unique_ptr<mdls::Account> acc_from,
+	std::unique_ptr<mdls::Account> acc_to,
 	size_t sum, const std::string& datetime,
 	bool successful, const std::string& atm_num,
 	const std::string& descript)
-	: num_(num), acc_from_(acc_from), acc_to_(acc_to)
+	: num_(num), acc_from_(acc_from.release()), acc_to_(acc_to.release())
 	, sum_(sum), datetime_(datetime), successful_(successful)
 	, atm_num_(atm_num), descript_(descript) 
 {};
@@ -63,12 +63,12 @@ mdls::Transaction::Transaction(
 
 
 
-mdls::Transaction::Transaction(const std::string& num)
-	: Transaction(Bank::get_transaction(num)) {};
+//mdls::Transaction::Transaction(const std::string& num)
+//	: Transaction(Bank::get_transaction(num)) {};
 
 //TODO make check for empty acc_to better
 //TOOD we have 3 types of transaction, one condition check isn't enough
-bool mdls::Transaction::make() const {
+bool mdls::Transaction::make() {
 	return Bank::make_transaction(*this);
 };
 
@@ -79,7 +79,7 @@ std::ostream& operator<<(std::ostream& os, const mdls::Transaction& trans) {
 		<< "Payee account number: " << trans.account_to() << "\n"
 		<< "Transaction sum: " << trans.sum() << "\n"
 
-		<< "Transaction date: " << trans.date() << "\n"
+		<< "Transaction date: " << trans.datetime() << "\n"
 		<< "Is successful: " << trans.is_successful() << "\n"
 		<< "ATM number: " << trans.atm_num() << "\n"
 		<< "Description: " << trans.descript() << "\n";

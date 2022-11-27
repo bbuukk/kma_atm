@@ -42,7 +42,7 @@ namespace mdls {
 		friend std::vector <mdls::Transaction>& Bank::get_acc_transactions(const size_t id);*/
 
 		//make transaction
-		bool make() const;
+		bool make();
 
 		friend class Bank;
 
@@ -51,8 +51,8 @@ namespace mdls {
 
 		Transaction(
 			const std::string& num,
-			const std::shared_ptr<mdls::Account> acc_from,
-			const std::shared_ptr<mdls::Account> acc_to,
+			std::unique_ptr<mdls::Account> acc_from,
+			std::unique_ptr<mdls::Account> acc_to,
 			size_t sum, const std::string& datetime,
 			bool successful, const std::string& atm_num,
 			const std::string& descript);

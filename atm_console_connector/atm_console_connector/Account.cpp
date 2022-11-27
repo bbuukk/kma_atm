@@ -36,10 +36,10 @@ void mdls::Account::unblock() {
 	this->blocked_ = 0;
 }
 
-std::vector<mdls::Transaction>&
-mdls::Account::get_transactions() {
-	return Bank::get_acc_transactions(this->id());
-}
+//std::vector<mdls::Transaction>&
+//mdls::Account::get_transactions() {
+//	return Bank::get_acc_transactions(this->id());
+//}
 
 //TODO delete
 //bool mdls::Account::deposit(size_t sum) {

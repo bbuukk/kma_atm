@@ -137,36 +137,37 @@ void Bank::unblock_account(const size_t id) {
     pstmt->execute();
 }
 
-std::vector <mdls::Transaction>& Bank::get_acc_transactions(const size_t id) {
-
-    std::string query("call get_all_acc_trans(?);");
-
-    std::unique_ptr<sql::PreparedStatement> pstmt(
-        Bank::get_connection()->prepareStatement(query));
-    pstmt->setUInt(1, id);
-
-    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
-
-    std::vector <mdls::Transaction>* transs(new std::vector<mdls::Transaction>);
-
-    do {
-        while (res->next()) {
-            (*transs).push_back(
-                mdls::Transaction(
-                res->getString("num"),
-                res->getString("acc_from"),
-                res->getString("acc_to"),
-                res->getUInt("sum"),
-
-                res->getString("date"),
-                res->getBoolean("is_successful"),
-                res->getString("atm_num"),
-                res->getString("descript")));
-        }
-    } while (pstmt->getMoreResults());
-
-    return *transs;
-}
+//TODO
+//std::vector <mdls::Transaction>& Bank::get_acc_transactions(const size_t id) {
+//
+//    std::string query("call get_all_acc_trans(?);");
+//
+//    std::unique_ptr<sql::PreparedStatement> pstmt(
+//        Bank::get_connection()->prepareStatement(query));
+//    pstmt->setUInt(1, id);
+//
+//    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+//
+//    std::vector <mdls::Transaction>* transs(new std::vector<mdls::Transaction>);
+//
+//    do {
+//        while (res->next()) {
+//            (*transs).push_back(
+//                mdls::Transaction(
+//                res->getString("num"),
+//                res->getString("acc_from"),
+//                res->getString("acc_to"),
+//                res->getUInt("sum"),
+//
+//                res->getString("date"),
+//                res->getBoolean("is_successful"),
+//                res->getString("atm_num"),
+//                res->getString("descript")));
+//        }
+//    } while (pstmt->getMoreResults());
+//
+//    return *transs;
+//}
 
 size_t Bank::get_acc_type(const std::string& num) {
 
