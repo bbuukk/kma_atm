@@ -1,7 +1,7 @@
 
 #include "Bank.h"
 #include "Account.h"
-#include "ATM_clnt.h"
+#include "clnt_ATM.h"
 #include "Transaction.h"
 
 #include <ostream>
