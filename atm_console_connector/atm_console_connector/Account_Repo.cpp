@@ -151,19 +151,15 @@ std::vector <mdls::Transaction>& Bank::get_transactions(const mdls::Account& acc
 
     do {
         while (res->next()) {
-            mdls::Account acc_from(res->getString("acc_from"));
-            mdls::Account acc_to(res->getString("acc_to"));
-
             (*transs).push_back(
                 mdls::Transaction(
                 res->getString("num"),
-                std::make_unique<mdls::Account>(acc_to),
-                std::make_unique<mdls::Account>(acc_from),
+                res->getString("acc_from"),
+                res->getString("acc_to"),
                 res->getUInt("sum"),
 
                 res->getString("date"),
-                res->getBoolean("is_successful"),
-                res->getString("atm_num"),
+                res->getBoolean("successful"),
                 res->getString("descript")));
         }
     } while (pstmt->getMoreResults());

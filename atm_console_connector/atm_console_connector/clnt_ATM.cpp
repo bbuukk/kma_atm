@@ -26,31 +26,34 @@ clnt::ATM::ATM(
 	street_ = atm.street();
 };
 
-bool clnt::ATM::transfer(
-	const std::string& acc_to_num,
-	size_t sum, const std::string& descript) {
+//TODO
+//bool clnt::ATM::transfer(
+//	const std::string& acc_to_num,
+//	size_t sum, const std::string& descript) {
+//
+//	mdls::Account account_to = Bank::get_account(acc_to_num);
+//
+//	mdls::Transaction transfer(num(),
+//		std::make_unique<mdls::Account>(account()),
+//		std::make_unique<mdls::Account>(account_to),
+//		sum, descript);
+//	return transfer.make();
+//};
 
-	mdls::Account account_to = Bank::get_account(acc_to_num);
+//TODO
+//bool clnt::ATM::deposit(size_t sum) {
+//	mdls::Transaction deposit(num(),nullptr,
+//		std::make_unique<mdls::Account>(account()), sum);
+//	return deposit.make();
+//};
 
-	mdls::Transaction transfer(num(),
-		std::make_unique<mdls::Account>(account()),
-		std::make_unique<mdls::Account>(account_to),
-		sum, descript);
-	return transfer.make();
-};
-
-bool clnt::ATM::deposit(size_t sum) {
-	mdls::Transaction deposit(num(),nullptr,
-		std::make_unique<mdls::Account>(account()), sum);
-	return deposit.make();
-};
-
-bool clnt::ATM::withdraw(size_t sum) {
-	mdls::Transaction withdraw(num(),
-		std::make_unique<mdls::Account>(account()),
-		nullptr, sum);
-	return withdraw.make();
-};
+//TODO
+//bool clnt::ATM::withdraw(size_t sum) {
+//	mdls::Transaction withdraw(num(),
+//		std::make_unique<mdls::Account>(account()),
+//		nullptr, sum);
+//	return withdraw.make();
+//};
 
 std::string clnt::ATM::info() {
 	return city() + ", " + street();

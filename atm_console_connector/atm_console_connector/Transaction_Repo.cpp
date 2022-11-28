@@ -5,15 +5,6 @@
 #include "Transaction.h"
 #include "Account.h"
 
-//Transaction(
-//    const std::string& num,
-//    std::unique_ptr<mdls::Account> acc_from,
-//    std::unique_ptr<mdls::Account> acc_to,
-//    size_t sum, const std::string& datetime,
-//    bool successful, const std::string& atm_num,
-//    const std::string& descript);
-
-//TODO
 mdls::Transaction& Bank::get_transaction(const std::string& trans_num) {
 
     std::string query = "call get_transaction(?);";
@@ -30,18 +21,14 @@ mdls::Transaction& Bank::get_transaction(const std::string& trans_num) {
 
     do {
         while (res->next()) {
-            mdls::Account acc_from(res->getString("acc_from"));
-            mdls::Account acc_to(res->getString("acc_to"));
-
             trans = new mdls::Transaction(
                 res->getString("num"),
-                std::make_unique<mdls::Account>(acc_to),
-                std::make_unique<mdls::Account>(acc_from),
+                res->getString("acc_from"),
+                res->getString("acc_to"),
                 res->getUInt("sum"),
 
                 res->getString("date"),
                 res->getBoolean("successful"),
-                res->getString("atm_num"),
                 res->getString("descript"));
         }
     } while (pstmt->getMoreResults());
@@ -49,17 +36,18 @@ mdls::Transaction& Bank::get_transaction(const std::string& trans_num) {
     return *trans;
 }
 
-bool Bank::make_transaction(mdls::Transaction& trans) {
-
-    if (trans.acc_from_ == nullptr) {
-        return Bank::deposit(trans.atm_num(), *trans.account_to(), trans.sum());
-    }
-    if (trans.acc_to_ == nullptr) {
-        return Bank::withdraw(trans.atm_num(), *trans.account_from(), trans.sum());
-    }
-
-    return Bank::transfer(trans.atm_num(), *trans.account_from(), *trans.account_to(), trans.sum(), trans.descript()); 
-}
+//TODO
+//bool Bank::make_transaction(mdls::Transaction& trans) {
+//
+//    if (trans.acc_from_ == nullptr) {
+//        return Bank::deposit(trans.atm_num(), *trans.account_to(), trans.sum());
+//    }
+//    if (trans.acc_to_ == nullptr) {
+//        return Bank::withdraw(trans.atm_num(), *trans.account_from(), trans.sum());
+//    }
+//
+//    return Bank::transfer(trans.atm_num(), *trans.account_from(), *trans.account_to(), trans.sum(), trans.descript()); 
+//}
 
 //Bank::deposit(atm_num(), account_to(), sum());
 bool Bank::deposit(
