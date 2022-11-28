@@ -107,7 +107,6 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="ATM.cpp" />
-    <ClCompile Include="clnt_Account.cpp" />
     <ClCompile Include="clnt_Transaction.cpp" />
     <ClCompile Include="format.cpp" />
     <ClCompile Include="ATM_Repo.cpp" />
@@ -129,7 +128,6 @@
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="ATM.h" />
-    <ClInclude Include="clnt_Account.h" />
     <ClInclude Include="clnt_ATM.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Checking.h" />

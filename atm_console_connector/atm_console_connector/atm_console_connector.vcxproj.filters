@@ -47,9 +47,6 @@
     <Filter Include="Source Files\Client\Transaction">
       <UniqueIdentifier>{a8ea9ba9-20b9-4365-954c-0672894a3972}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Client\Account">
-      <UniqueIdentifier>{f66a54f0-0829-4f64-acb4-18396f78b5f0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bank.cpp">
@@ -109,9 +106,6 @@
     <ClCompile Include="clnt_Transaction.cpp">
       <Filter>Source Files\Client\Transaction</Filter>
     </ClCompile>
-    <ClCompile Include="clnt_Account.cpp">
-      <Filter>Source Files\Client\Account</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bank.h">
@@ -149,9 +143,6 @@
     </ClInclude>
     <ClInclude Include="clnt_Transaction.h">
       <Filter>Source Files\Client\Transaction</Filter>
-    </ClInclude>
-    <ClInclude Include="clnt_Account.h">
-      <Filter>Source Files\Client\Account</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
