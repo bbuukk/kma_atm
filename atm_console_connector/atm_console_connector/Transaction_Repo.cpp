@@ -4,6 +4,7 @@
 #include "Bank.h"
 #include "Transaction.h"
 #include "Account.h"
+#include "clnt_Transaction.h"
 
 mdls::Transaction& Bank::get_transaction(const std::string& trans_num) {
 
@@ -36,20 +37,18 @@ mdls::Transaction& Bank::get_transaction(const std::string& trans_num) {
     return *trans;
 }
 
-//TODO
-//bool Bank::make_transaction(mdls::Transaction& trans) {
-//
-//    if (trans.acc_from_ == nullptr) {
-//        return Bank::deposit(trans.atm_num(), *trans.account_to(), trans.sum());
-//    }
-//    if (trans.acc_to_ == nullptr) {
-//        return Bank::withdraw(trans.atm_num(), *trans.account_from(), trans.sum());
-//    }
-//
-//    return Bank::transfer(trans.atm_num(), *trans.account_from(), *trans.account_to(), trans.sum(), trans.descript()); 
-//}
+bool Bank::make_transaction(clnt::Transaction& trans) {
 
-//Bank::deposit(atm_num(), account_to(), sum());
+    if (trans.payer() == nullptr) {
+        return Bank::deposit(trans.atm_num(), *trans.payee(), trans.sum());
+    }
+    if (trans.payee() == nullptr) {
+        return Bank::withdraw(trans.atm_num(), *trans.payer(), trans.sum());
+    }
+
+    return Bank::transfer(trans.atm_num(), *trans.payer(), *trans.payee(), trans.sum(), trans.descript()); 
+}
+
 bool Bank::deposit(
     const std::string& atm_num,
     const mdls::Account& acc_to,

@@ -31,9 +31,9 @@ int main(int argc, char* argv[]) {
 	std::cout << acc2 << "\n";
 
 	clnt::ATM atm("01234", acc2);
-	/*atm.withdraw(30);
+	atm.withdraw(30);
 	atm.deposit(30);
-	atm.transfer("43210", 300, "For cocaine");*/
+	atm.transfer("43210", 300, "For cocaine");
 
 	std::string info = atm.info();
 	std::cout << info << "\n";

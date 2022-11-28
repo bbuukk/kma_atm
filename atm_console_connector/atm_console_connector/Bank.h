@@ -12,6 +12,12 @@ namespace mdls {
 	class ATM;
 };
 
+namespace clnt {
+	class Transaction;
+	class ATM;
+};
+
+
 #include <string>
 #include <ostream>
 #include <memory>
@@ -62,7 +68,7 @@ public:
 
 	//Transaction repo =============================
 	static mdls::Transaction& get_transaction(const std::string& trans_num);
-	static bool make_transaction(mdls::Transaction& transaction);
+	static bool make_transaction(clnt::Transaction& trans);
 
 	static inline const std::unique_ptr<sql::Connection>& get_connection() {
 		return get().in_get_connection();

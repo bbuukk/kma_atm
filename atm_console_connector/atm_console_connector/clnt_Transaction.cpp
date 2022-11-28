@@ -4,9 +4,9 @@
 #include "Account.h"
 
 clnt::Transaction::Transaction(
-	const std::string& atm_num
-	, mdls::Account& payer
-	, mdls::Account& payee
+	  const std::string& atm_num
+	, const mdls::Account& payer
+	, const mdls::Account& payee
 	, size_t sum, const std::string& descript)
 	: payer_(std::make_unique<mdls::Account>(payer))
 	, payee_(std::make_unique<mdls::Account>(payee))
@@ -14,19 +14,18 @@ clnt::Transaction::Transaction(
 {};
 
 clnt::Transaction::Transaction(
-	const std::string& atm_num
-	, std::unique_ptr<mdls::Account>& payer
-	, std::unique_ptr<mdls::Account>& payee
-	, size_t sum, const std::string& descript = "")
+	  const std::string& atm_num
+	, std::unique_ptr<mdls::Account> payer
+	, std::unique_ptr<mdls::Account> payee
+	, size_t sum)
 	: payer_(payer.release())
 	, payee_(payee.release())
-	, sum_(sum), atm_num_(atm_num), descript_(descript)
+	, sum_(sum), atm_num_(atm_num), descript_("")
 {};
 
 bool clnt::Transaction::make() {
 	return Bank::make_transaction(*this);
 };
-
 
 std::ostream& operator<<(std::ostream& os, const clnt::Transaction& trans) {
 	return os

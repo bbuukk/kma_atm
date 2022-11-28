@@ -9,17 +9,17 @@ namespace clnt {
 
 		//for transfer only
 		Transaction(
-			const std::string& atm_num
-			, mdls::Account& payer
-			, mdls::Account& payee
+			  const std::string& atm_num
+			, const mdls::Account& payer
+			, const mdls::Account& payee
 			, size_t sum, const std::string& descript = "");
 
 		//for deposit or withdraw
 		Transaction(
-			const std::string& atm_num
-			, std::unique_ptr<mdls::Account>& acc_from
-			, std::unique_ptr<mdls::Account>& acc_to
-			, size_t sum, const std::string& descript = "");
+			  const std::string& atm_num
+			, std::unique_ptr<mdls::Account> payer
+			, std::unique_ptr<mdls::Account> payee
+			, size_t sum);
 
 		//deleted for now(no need)
 		Transaction(const Transaction&) = delete;
