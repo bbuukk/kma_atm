@@ -67,6 +67,10 @@ std::string clnt::ATM::account_info() {
 	return "" + account().num();
 };
 
+//mdls::Transaction& clnt::ATM::transaction(std::string& num) {
+//	return Bank::get_transaction(num);
+//};
+
 std::vector <mdls::Transaction>& clnt::ATM::transactions_history() {
 
 	return Bank::get_transactions(account());

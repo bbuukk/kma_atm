@@ -7,34 +7,39 @@
 #include "clnt_Transaction.h"
 
 mdls::Transaction& Bank::get_transaction(const std::string& trans_num) {
+    try {
 
-    std::string query = "call get_transaction(?);";
+        std::string query = "call get_transaction(?);";
 
-    std::unique_ptr<sql::PreparedStatement> pstmt(
-        Bank::get_connection()->
-        prepareStatement(query));
+        std::unique_ptr<sql::PreparedStatement> pstmt(
+            Bank::get_connection()->
+            prepareStatement(query));
 
-    pstmt->setString(1, trans_num);
+        pstmt->setString(1, trans_num);
 
-    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    mdls::Transaction* trans;
+        mdls::Transaction* trans;
 
-    do {
-        while (res->next()) {
-            trans = new mdls::Transaction(
-                res->getString("num"),
-                res->getString("acc_from"),
-                res->getString("acc_to"),
-                res->getUInt("sum"),
+        do {
+            while (res->next()) {
+                trans = new mdls::Transaction(
+                    res->getString("num"),
+                    res->getString("acc_from"),
+                    res->getString("acc_to"),
+                    res->getUInt("sum"),
 
-                res->getString("date"),
-                res->getBoolean("successful"),
-                res->getString("descript"));
-        }
-    } while (pstmt->getMoreResults());
+                    res->getString("date"),
+                    res->getBoolean("successful"),
+                    res->getString("descript"));
+            }
+        } while (pstmt->getMoreResults());
 
-    return *trans;
+        return (*trans);
+
+    }catch (sql::SQLException e) {
+        return *(new mdls::Transaction());
+    }
 }
 
 bool Bank::make_transaction(clnt::Transaction& trans) {

@@ -5,6 +5,18 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source Files\Server">
+      <UniqueIdentifier>{286edc6d-2e79-41ac-9f11-b3e3a8e2d09b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Server\Repository">
+      <UniqueIdentifier>{ac5e2506-3d3a-4d9a-b83f-7b4ba1225957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Client">
+      <UniqueIdentifier>{d0bafd0f-a4c0-468b-b998-6b2bc77b9d0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Client\Transaction">
+      <UniqueIdentifier>{a8ea9ba9-20b9-4365-954c-0672894a3972}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{e9c43bd7-5c18-42ce-88b9-81692b502f51}</UniqueIdentifier>
     </Filter>
@@ -16,6 +28,9 @@
     </Filter>
     <Filter Include="Source Files\Models\Account\Savings">
       <UniqueIdentifier>{5287066f-6fb1-4029-bf35-752149fc8607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Account\LOC">
+      <UniqueIdentifier>{5991bbd2-a50e-446c-b858-19aa2a241f60}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Models\Office">
       <UniqueIdentifier>{35d0d142-e219-44ca-b5ce-e70085ddaaf1}</UniqueIdentifier>
@@ -29,23 +44,8 @@
     <Filter Include="Source Files\Models\Client">
       <UniqueIdentifier>{36dd14a4-5fae-4daa-8123-de09fab5e43b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Models\Account\LOC">
-      <UniqueIdentifier>{5991bbd2-a50e-446c-b858-19aa2a241f60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Server">
-      <UniqueIdentifier>{286edc6d-2e79-41ac-9f11-b3e3a8e2d09b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Server\Repository">
-      <UniqueIdentifier>{ac5e2506-3d3a-4d9a-b83f-7b4ba1225957}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Client">
-      <UniqueIdentifier>{d0bafd0f-a4c0-468b-b998-6b2bc77b9d0b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Models\Transaction">
       <UniqueIdentifier>{827ae449-be9a-45d4-8505-79ef25255d15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Client\Transaction">
-      <UniqueIdentifier>{a8ea9ba9-20b9-4365-954c-0672894a3972}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

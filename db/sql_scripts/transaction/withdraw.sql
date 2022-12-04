@@ -7,7 +7,7 @@
 -- should check for currencies of atm itself 
 
 -- call withdraw("01234", 1, 30);
--- select * from Accounts;
+select * from Accounts;
 -- select * from Transactions;
 
 drop procedure if exists withdraw;

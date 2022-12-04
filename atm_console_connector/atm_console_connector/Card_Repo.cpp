@@ -4,30 +4,30 @@
 
 mdls::Card& Bank::get_card(const std::string& pan) {
 
-    std::string query = "call card_by_pan(?);";
+        std::string query = "call card_by_pan(?);";
 
-    std::unique_ptr<sql::PreparedStatement> pstmt(
-        Bank::get_connection()->
-        prepareStatement(query));
+        std::unique_ptr<sql::PreparedStatement> pstmt(
+            Bank::get_connection()->
+            prepareStatement(query));
 
-    pstmt->setString(1, pan);
+        pstmt->setString(1, pan);
 
-    std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-    mdls::Card* card;
+        mdls::Card* card;
 
-    do {
-        while (res->next()) {
-            card = new mdls::Card(
-                res->getString("pan"),
-                res->getUInt("pin_code"),
-                res->getString("expr_date"),
-                res->getUInt("cvv"),
-                res->getString("given_date"));
-        }
-    } while (pstmt->getMoreResults());
+        do {
+            while (res->next()) {
+                card = new mdls::Card(
+                    res->getString("pan"),
+                    res->getUInt("pin_code"),
+                    res->getString("expr_date"),
+                    res->getUInt("cvv"),
+                    res->getString("given_date"));
+            }
+        } while (pstmt->getMoreResults());
 
-    return *card;
+        return *card;
 }
 
 bool Bank::change_pin_code(

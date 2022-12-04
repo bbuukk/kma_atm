@@ -16,6 +16,12 @@
 -- • get_acc_blnc   	  -- returns balance of acc 	
 -- • is_acc_blocked 	  -- returns is_blocked of acc 
 
+select * from Accounts;
+select * from Transactions;
+
+call get_transaction("01234");
+call get_transaction("43210");
+
 drop procedure if exists get_transaction;
 delimiter //
 create procedure get_transaction
@@ -26,17 +32,13 @@ begin
            a2.num as acc_to,
            t.sum, t.date,
            t.successful,
-           atms.num as atm_num,
            t.descript
     from Transactions as t
     inner join Accounts as a1
     on t.acc_from = a1.id
     left join Accounts as a2
     on t.acc_to = a2.id
-    left join ATMs as atms
-    on t.atm_id = atms.id
     where t.num = trans_num;
-    
 end //
 delimiter ;
 
@@ -137,4 +139,17 @@ begin
 end //
 delimiter ;	
 	
+drop function if exists atm_id;
+delimiter //
+create function atm_id(
+atm_num nvarchar(10))
+returns int unsigned deterministic
+begin     
+	 declare atm_id int unsigned;
+	 select atms.id into atm_id
+     from ATMs as atms
+	 where atms.num = atm_num;
+     return atm_id;
+end //
+delimiter ;	
 
