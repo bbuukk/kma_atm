@@ -20,8 +20,8 @@ namespace mdls {
 
 		Office& get_office();
 
-		void block();
-		void unblock();
+		bool block();
+		bool unblock();
 
 		std::vector<Transaction>& get_transactions();
 		//TODO delete

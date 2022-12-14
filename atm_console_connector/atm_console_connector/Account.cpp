@@ -26,14 +26,20 @@ mdls::Office& mdls::Account::get_office() {
 	return Bank::get_acc_office(this->id());
 }
 
-void mdls::Account::block() {
-	Bank::block_account(this->id());	
-	this->blocked_ = 1;
+bool mdls::Account::block() {
+	if (Bank::block_account(this->id())) {
+		this->blocked_ = 1;
+		return true;
+	}
+	return false;
 }
 
-void mdls::Account::unblock() {
-	Bank::unblock_account(this->id());
-	this->blocked_ = 0;
+bool mdls::Account::unblock() {
+	if (Bank::unblock_account(this->id())) {
+		this->blocked_ = 0;
+		return true;
+	}
+	return false;
 }
 
 //std::vector<mdls::Transaction>&

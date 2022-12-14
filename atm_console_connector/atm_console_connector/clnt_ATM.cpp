@@ -64,6 +64,22 @@ bool clnt::ATM::change_pin(const size_t new_pin) {
 	return (*card_).change_pin_code(new_pin);
 };
 
+//bool clnt::ATM::block_account() {
+//	return Bank::block_account(account());
+//};
+//
+//bool clnt::ATM::unblock_account() {
+//	return Bank::unblock_account(account());
+//};
+
+bool clnt::ATM::block_account() {
+	return account_.block();
+};
+
+bool clnt::ATM::unblock_account() {
+	return account_.unblock();
+};
+
 //TODO add more info about account
 std::string clnt::ATM::account_info() {
 	return "" + account().num();

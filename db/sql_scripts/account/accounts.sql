@@ -100,14 +100,12 @@ begin
 end //
 delimiter ;
 
-call acc_trans(1);
-
 drop procedure if exists acc_trans;
 delimiter //
 create procedure acc_trans
 (in acc_id int unsigned) 
 begin 
-	select t.num, a1.num as payer, a2.num as payee,
+	select t.num as atm_num, a1.num as payer, a2.num as payee,
 		   t.sum, t.date, t.successful, t.descript
     from Transactions as t
     left join Accounts as a1

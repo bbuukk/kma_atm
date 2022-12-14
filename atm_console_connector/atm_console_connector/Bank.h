@@ -49,8 +49,12 @@ public:
 		std::unique_ptr<sql::PreparedStatement>& pstmt);
 
 	static mdls::Office& get_acc_office(const size_t id);
-	static void block_account(const size_t id);
-	static void unblock_account(const size_t id);
+
+	/*static bool block_account(const mdls::Account&);
+	static bool unblock_account(const mdls::Account&);*/
+
+	static bool block_account(const size_t id);
+	static bool unblock_account(const size_t id);
 
 	static std::vector <mdls::Transaction>&
 		get_transactions(const mdls::Account&);

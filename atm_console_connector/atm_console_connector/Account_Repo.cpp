@@ -115,26 +115,74 @@ mdls::Office& Bank::get_acc_office(const size_t id) {
     return *off;
 }
 
-void Bank::block_account(const size_t id) {
+//bool Bank::block_account(const mdls::Account& acc) {
+//
+//    try{
+//        std::string query = "call block_acc(?);";
+//
+//        std::unique_ptr<sql::PreparedStatement> pstmt(
+//            Bank::get_connection()->prepareStatement(query));
+//        pstmt->setUInt(1, acc.id());
+//
+//        pstmt->execute();
+//        return true;
+//    }
+//    catch (sql::SQLException e) {
+//        return false;
+//    }
+//}
+//
+//bool Bank::unblock_account(const mdls::Account& acc) {
+//
+//    try{
+//        std::string query = "call unblock_acc(?);";
+//
+//        std::unique_ptr<sql::PreparedStatement> pstmt(
+//            Bank::get_connection()->prepareStatement(query));
+//        pstmt->setUInt(1, acc.id());
+//
+//        pstmt->execute();
+//        return true;
+//
+//    }catch (sql::SQLException e) {
+//        return false;
+//    }
+//}
 
-    std::string query = "call block_acc(?);";
+bool Bank::block_account(const size_t id) {
 
-    std::unique_ptr<sql::PreparedStatement> pstmt(
-        Bank::get_connection()->prepareStatement(query));
-    pstmt->setUInt(1, id);
+    try{
+        std::string query = "call block_acc(?);";
 
-    pstmt->execute();
+        std::unique_ptr<sql::PreparedStatement> pstmt(
+            Bank::get_connection()->prepareStatement(query));
+        pstmt->setUInt(1, id);
+
+        pstmt->execute();
+        return true;
+
+    }catch (sql::SQLException e) {
+        return false;
+    }
 }
 
-void Bank::unblock_account(const size_t id) {
+//todo |question| ampersands in catch (sql::SQLException& e ) not (sql::SQLException e)???
 
-    std::string query = "call unblock_acc(?);";
+bool Bank::unblock_account(const size_t id) {
 
-    std::unique_ptr<sql::PreparedStatement> pstmt(
-        Bank::get_connection()->prepareStatement(query));
-    pstmt->setUInt(1, id);
+    try {
+        std::string query = "call unblock_acc(?);";
 
-    pstmt->execute();
+        std::unique_ptr<sql::PreparedStatement> pstmt(
+            Bank::get_connection()->prepareStatement(query));
+        pstmt->setUInt(1, id);
+
+        pstmt->execute();
+        return true;
+    }
+    catch (sql::SQLException e) {
+        return false;
+    }
 }
 
 std::vector <mdls::Transaction>& Bank::get_transactions(const mdls::Account& acc) {

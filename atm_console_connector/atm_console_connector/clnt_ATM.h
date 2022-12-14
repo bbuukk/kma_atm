@@ -46,6 +46,9 @@ namespace clnt {
 		std::string account_info();
 		bool change_pin(const size_t new_pin);
 
+		bool block_account();
+		bool unblock_account();
+
 		/*mdls::Transaction& transaction(std::string& num);*/
 		std::vector <mdls::Transaction>& transactions_history();
 

@@ -49,13 +49,6 @@ int main(int argc, char* argv[]) {
 
 	std::cout << "|-----------------------------------------------------------|" << "\n";
 
-	/*undefined*/
-	/*std::string transaction_num = "01234";
-	mdls::Transaction trans = atm.transaction(transaction_num);*/
-	/*std::cout << atm.transaction(transaction_num) << "\n";*/
-
-	/*std::cout << "|-----------------------------------------------------------|" << "\n";*/
-
 	//info about atm location (city, street)
 	std::string info = atm.info();
 	std::cout << info << "\n";
@@ -70,6 +63,13 @@ int main(int argc, char* argv[]) {
 	for (mdls::Transaction& trans : atm.transactions_history()) {
 		std::cout << trans << "\n";
 	}
+
+	std::cout << "|-----------------------------------------------------------|" << "\n";
+
+	std::cout << std::boolalpha;
+	std::cout << atm.block_account() << "\n";
+	std::cout << atm.unblock_account() << "\n";
+	std::cout << std::noboolalpha;
 
 	std::cout << "|-----------------------------------------------------------|" << "\n";
 
