@@ -16,12 +16,6 @@
 -- • get_acc_blnc   	  -- returns balance of acc 	
 -- • is_acc_blocked 	  -- returns is_blocked of acc 
 
-select * from Accounts;
-select * from Transactions;
-
-call get_transaction("01234");
-call get_transaction("43210");
-
 drop procedure if exists get_transaction;
 delimiter //
 create procedure get_transaction

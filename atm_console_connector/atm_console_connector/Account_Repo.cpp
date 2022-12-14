@@ -153,9 +153,9 @@ std::vector <mdls::Transaction>& Bank::get_transactions(const mdls::Account& acc
         while (res->next()) {
             (*transs).push_back(
                 mdls::Transaction(
-                res->getString("num"),
-                res->getString("acc_from"),
-                res->getString("acc_to"),
+                res->getString("atm_num"),
+                res->getString("payer"),
+                res->getString("payee"),
                 res->getUInt("sum"),
 
                 res->getString("date"),

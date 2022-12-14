@@ -17,3 +17,4 @@ begin
 	select is_successful;
 end //
 delimiter ;
+
