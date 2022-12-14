@@ -64,7 +64,7 @@ bool clnt::ATM::change_pin(const size_t new_pin) {
 	return (*card_).change_pin_code(new_pin);
 };
 
-//TODO
+//TODO add more info about account
 std::string clnt::ATM::account_info() {
 	return "" + account().num();
 };
