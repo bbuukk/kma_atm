@@ -40,6 +40,7 @@ bool clnt::ATM::transfer(
 bool clnt::ATM::deposit(size_t sum) {
 	clnt::Transaction deposit(num(), nullptr,
 		std::make_unique<mdls::Account>(account()), sum);
+
 	return deposit.make();
 };
 
@@ -47,6 +48,7 @@ bool clnt::ATM::withdraw(size_t sum) {
 	clnt::Transaction withdraw(num(),
 		std::make_unique<mdls::Account>(account()),
 		nullptr, sum);
+
 	return withdraw.make();
 };
 
