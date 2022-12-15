@@ -21,7 +21,7 @@ clnt::ATM::ATM(
 	, account_(account)
 	, card_(card.release())
 {
-	mdls::ATM atm = Bank::get_atm(num);
+	mdls::ATM& atm = Bank::get_atm(num);
 	city_ = atm.city();
 	street_ = atm.street();
 };
