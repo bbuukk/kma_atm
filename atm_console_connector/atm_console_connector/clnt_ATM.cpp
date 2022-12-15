@@ -30,7 +30,7 @@ bool clnt::ATM::transfer(
 	const std::string& acc_to_num,
 	size_t sum, const std::string& descript) {
 
-	mdls::Account payee = Bank::get_account(acc_to_num);
+	mdls::Account& payee = Bank::get_account(acc_to_num);
 
 	clnt::Transaction transfer(num(), account(), payee, sum, descript);
 	return transfer.make();
