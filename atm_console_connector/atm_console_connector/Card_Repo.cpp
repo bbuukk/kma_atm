@@ -2,8 +2,16 @@
 
 #include "Card.h"
 
+//try {
+//
+//}
+//catch (sql::SQLException e) {
+//    return false;
+//}
+
 mdls::Card& Bank::get_card(const std::string& pan) {
 
+    try {
         std::string query = "call card_by_pan(?);";
 
         std::unique_ptr<sql::PreparedStatement> pstmt(
@@ -28,6 +36,11 @@ mdls::Card& Bank::get_card(const std::string& pan) {
         } while (pstmt->getMoreResults());
 
         return *card;
+
+    }
+    catch (sql::SQLException e) {
+        return *(new mdls::Card());
+    }     
 }
 
 bool Bank::change_pin_code(

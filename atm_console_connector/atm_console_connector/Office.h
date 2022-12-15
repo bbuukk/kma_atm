@@ -25,6 +25,8 @@ namespace mdls {
 		inline const std::string& get_street() const { return street; };
 		inline const std::string& get_postal() const { return postal; };
 
+		friend class Bank;
+
 	private:
 		Office(void) = default;
 

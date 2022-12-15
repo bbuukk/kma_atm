@@ -7,6 +7,7 @@
 #include "clnt_Transaction.h"
 
 mdls::Transaction& Bank::get_transaction(const std::string& trans_num) {
+
     try {
 
         std::string query = "call get_transaction(?);";
@@ -44,21 +45,27 @@ mdls::Transaction& Bank::get_transaction(const std::string& trans_num) {
 
 bool Bank::make_transaction(clnt::Transaction& trans) {
 
-    if (trans.payer() == nullptr) {
-        return Bank::deposit(trans.atm_num(), *trans.payee(), trans.sum());
-    }
-    if (trans.payee() == nullptr) {
-        return Bank::withdraw(trans.atm_num(), *trans.payer(), trans.sum());
-    }
+    try{
 
-    return Bank::transfer(trans.atm_num(), *trans.payer(), *trans.payee(), trans.sum(), trans.descript()); 
+        if (trans.payer() == nullptr) {
+            return Bank::deposit(trans.atm_num(), *trans.payee(), trans.sum());
+        }
+
+        if (trans.payee() == nullptr) {
+            return Bank::withdraw(trans.atm_num(), *trans.payer(), trans.sum());
+        }
+
+        return Bank::transfer(trans.atm_num(), *trans.payer(), *trans.payee(), trans.sum(), trans.descript());
+
+    }catch (sql::SQLException e) {
+        return false;
+    }
 }
 
 bool Bank::deposit(
     const std::string& atm_num,
     const mdls::Account& acc_to,
     const size_t sum) {
-    try {
 
         std::string query = "call deposit(?,?,?);";
 
@@ -80,10 +87,6 @@ bool Bank::deposit(
         } while (pstmt->getMoreResults());
 
         return is_successful;
-    }
-    catch (sql::SQLException e) {
-        return false;
-    }
 }
 
 bool Bank::withdraw(
@@ -91,7 +94,6 @@ bool Bank::withdraw(
     const mdls::Account& acc_from,
     const size_t sum) {
 
-    try{
         std::string query = "call withdraw(?,?,?);";
 
         std::unique_ptr<sql::PreparedStatement> pstmt(
@@ -112,10 +114,6 @@ bool Bank::withdraw(
         } while (pstmt->getMoreResults());
 
         return is_successful;
-
-    }catch (sql::SQLException e) {
-        return false;
-    }
 }
 
 
@@ -125,7 +123,7 @@ bool Bank::transfer(
     const mdls::Account& acc_to,
     const size_t sum,
     const std::string& description){
-    try {
+
         std::string query = "call transfer(?,?,?,?,?);";
 
         std::unique_ptr<sql::PreparedStatement> pstmt(
@@ -148,9 +146,5 @@ bool Bank::transfer(
         } while (pstmt->getMoreResults());
 
         return is_successful;
-
-    }catch (sql::SQLException e) {
-        return false;
-    }
 }
 

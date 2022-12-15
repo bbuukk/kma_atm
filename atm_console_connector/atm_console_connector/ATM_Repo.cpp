@@ -4,6 +4,8 @@
 
 mdls::ATM& Bank::get_atm(const std::string& num){
 
+    try {
+
     std::string query = "call atm_by_num(?);";
 
     std::unique_ptr<sql::PreparedStatement> pstmt(
@@ -24,9 +26,15 @@ mdls::ATM& Bank::get_atm(const std::string& num){
     } while (pstmt->getMoreResults());
 
     return *atm;
+
+    }catch (sql::SQLException e) {
+        return *(new mdls::ATM());
+    }
 }
 
 size_t Bank::get_atm_id(const std::string& num) {
+
+    try{
 
     std::string query = "call atm_by_id(?);";
 
@@ -45,5 +53,9 @@ size_t Bank::get_atm_id(const std::string& num) {
     } while (pstmt->getMoreResults());
 
     return id;
+
+    }catch (sql::SQLException e) {
+        return 0;
+    }
 }
 

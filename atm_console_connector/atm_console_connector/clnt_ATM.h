@@ -49,7 +49,6 @@ namespace clnt {
 		bool block_account();
 		bool unblock_account();
 
-		/*mdls::Transaction& transaction(std::string& num);*/
 		std::vector <mdls::Transaction>& transactions_history();
 
 		inline const std::string& num() const { return num_; };
